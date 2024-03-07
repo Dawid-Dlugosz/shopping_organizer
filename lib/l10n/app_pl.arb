@@ -1,0 +1,14 @@
+{
+    "@@locale": "pl",
+    "nickname": "Nazwa użytkownika",
+    "logIn": "Zaloguj się",
+    "password": "Hasło",
+    "register": "Rejestracja",
+    "email": "E-mail",
+    "invalidEmail": "Nieprawidłowy typ e-mail",
+    "userDisabled": "Konto dezaktywowane. \n Napisz na kontakt@doment",
+    "userNotFound": "Błędny e-mail",
+    "wrongPassword": "Błędne hasło",
+    "errorOcured": "Wystąpił błąd podczas logowania:",
+    "unexpectedError": "Nieoczekiwany błąd"
+}
