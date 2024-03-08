@@ -1,0 +1,18 @@
+{
+    "@@locale": "en",
+    "nickname": "Nickname",
+    "logIn": "Log in",
+    "password": "Password",
+    "register": "Register",
+    "email": "E-mail",
+    "invalidEmail": "Invalid e-mail",
+    "userDisabled": "Account disabled. \n Contact with us kontakt@doment",
+    "userNotFound": "E-mail not found",
+    "wrongPassword": "Wrong password",
+    "errorOcured": "An error occurred while logging in:",
+    "unexpectedError": "Unexpected Error",
+    "signOn": "Sign on",
+    "enterEmail": "Enter login",
+    "enterPassword": "Enter password",
+    "enterNickname": "Enter nickname"
+}
