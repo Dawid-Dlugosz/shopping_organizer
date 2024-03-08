@@ -7,7 +7,7 @@ import 'package:shopping_organizer/features/auth/presentation/dialogs/auth_error
 import 'package:shopping_organizer/features/auth/presentation/utils/auth_cubit_utils.dart';
 
 import 'package:shopping_organizer/features/auth/presentation/widgets/header.dart';
-import 'package:shopping_organizer/features/auth/presentation/widgets/login/login_buttons.dart';
+import 'package:shopping_organizer/features/auth/presentation/widgets/login/login_content.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/register/register_button.dart';
 
 class LoginPage extends StatelessWidget {
@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   Header(title: AppLocalizations.of(context)!.logIn),
                   const SizedBox(height: 20),
-                  const LoginButtons(),
+                  const LoginContent(),
                   const SizedBox(height: 20),
                   const Divider(),
                   const SizedBox(height: 20),

@@ -19,17 +19,45 @@ class AuthRepositoryImpl implements AuthRepository {
     required String password,
   }) async {
     try {
-      final user = await firebaseAuth.signInWithEmailAndPassword(
+      final userCredential = await firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      return Right(user);
+      return Right(userCredential);
     } on FirebaseAuthException catch (e) {
       return Left(Failure.auth(message: e.code));
     } catch (e, s) {
       _logger.e(
         'AuthRepositoryImpl siginIn',
+        error: e,
+        stackTrace: s,
+      );
+
+      return const Left(Failure.general());
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserCredential>> signOn({
+    required String email,
+    required String password,
+    required String displayName,
+  }) async {
+    try {
+      final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      await userCredential.user?.updateDisplayName(displayName);
+
+      return Right(userCredential);
+    } on FirebaseAuthException catch (e) {
+      return Left(Failure.auth(message: e.code));
+    } catch (e, s) {
+      _logger.e(
+        'AuthRepositoryImpl signOn',
         error: e,
         stackTrace: s,
       );

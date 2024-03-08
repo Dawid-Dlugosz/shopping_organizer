@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:shopping_organizer/features/auth/presentation/dialogs/auth_error_dialog.dart';
+import 'package:shopping_organizer/features/auth/presentation/utils/auth_cubit_utils.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/header.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/register/register_content.dart';

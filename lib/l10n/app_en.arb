@@ -10,5 +10,9 @@
     "userNotFound": "E-mail not found",
     "wrongPassword": "Wrong password",
     "errorOcured": "An error occurred while logging in:",
-    "unexpectedError": "Unexpected Error"
+    "unexpectedError": "Unexpected Error",
+    "signOn": "Sign on",
+    "enterEmail": "Enter login",
+    "enterPassword": "Enter password",
+    "enterNickname": "Enter nickname"
 }

@@ -10,5 +10,9 @@
     "userNotFound": "Błędny e-mail",
     "wrongPassword": "Błędne hasło",
     "errorOcured": "Wystąpił błąd podczas logowania:",
-    "unexpectedError": "Nieoczekiwany błąd"
+    "unexpectedError": "Nieoczekiwany błąd",
+    "signOn": "Rejestracja",
+    "enterEmail": "Podaj e-mail",
+    "enterPassword": "Podaj hasło",
+    "enterNickname": "Enter nickname"
 }
