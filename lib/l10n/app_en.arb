@@ -14,5 +14,7 @@
     "signOn": "Sign on",
     "enterEmail": "Enter login",
     "enterPassword": "Enter password",
-    "enterNickname": "Enter nickname"
+    "enterNickname": "Enter nickname",
+    "shoppingLists": "Shopping lists",
+    "expanses": "Expanses"
 }

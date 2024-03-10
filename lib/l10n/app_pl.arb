@@ -14,5 +14,7 @@
     "signOn": "Rejestracja",
     "enterEmail": "Podaj e-mail",
     "enterPassword": "Podaj hasło",
-    "enterNickname": "Enter nickname"
+    "enterNickname": "Enter nickname",
+    "shoppingLists": "Listy zakupów",
+    "expanses": "Wydatki"
 }

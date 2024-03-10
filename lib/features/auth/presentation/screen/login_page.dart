@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
+
+import 'package:shopping_organizer/core/go_router/route_names.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:shopping_organizer/features/auth/presentation/dialogs/auth_error_dialog.dart';
 import 'package:shopping_organizer/features/auth/presentation/utils/auth_cubit_utils.dart';
-
 import 'package:shopping_organizer/features/auth/presentation/widgets/header.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/login/login_content.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/register/register_button.dart';
@@ -19,7 +21,7 @@ class LoginPage extends StatelessWidget {
       listener: (context, state) {
         state.mapOrNull(
           authorized: (_) {
-            // go to home page
+            context.go(RouteNames.shoppingList);
           },
           error: (value) {
             String message = value.code == null
