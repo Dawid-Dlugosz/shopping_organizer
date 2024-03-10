@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.go(RouteNames.loginScreen);
+      if (getIt<FirebaseAuth>().currentUser == null) {
+        context.go(RouteNames.loginScreen);
+      } else {
+        context.go(RouteNames.shoppingList);
+      }
     });
     super.initState();
   }

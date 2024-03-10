@@ -18,4 +18,6 @@
     "userCreateError": "Wystąpił błąd przy uzupełnianu danych użytkownika. Spróbuj się zalogować.",
     "unservicedError": "Nieobsługiwany błąd",
     "emptyUserError": "Błąd przy pobieraniu użytkownika"
+    "shoppingLists": "Listy zakupów",
+    "expanses": "Wydatki"
 }
