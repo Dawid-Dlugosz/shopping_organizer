@@ -47,11 +47,17 @@ class AuthCubit extends Cubit<AuthState> {
     failureOrUserCredential.fold(
       (failure) => _emitError(failure),
       (userCredential) => emit(
-        AuthState.authorized(
+        AuthState.created(
           user: userCredential.user!,
         ),
       ),
     );
+  }
+
+  // TODO TESTY
+  Future<void> signOut() async {
+    await authRepository.signOut();
+    emit(const AuthState.unAuthorized());
   }
 
   void _emitError(Failure failure) {

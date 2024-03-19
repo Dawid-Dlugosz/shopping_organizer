@@ -14,5 +14,8 @@
     "signOn": "Rejestracja",
     "enterEmail": "Podaj e-mail",
     "enterPassword": "Podaj hasło",
-    "enterNickname": "Enter nickname"
+    "enterNickname": "Enter nickname",
+    "userCreateError": "Wystąpił błąd przy tworzeniu użytkownika",
+    "unservicedError": "Unserviced error",
+    "emptyUserError": "User download failed"
 }

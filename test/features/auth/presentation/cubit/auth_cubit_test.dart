@@ -307,7 +307,7 @@ void main() {
             },
             skip: 1,
             expect: () => [
-              AuthState.authorized(user: user),
+              AuthState.created(user: user),
             ],
           );
 
