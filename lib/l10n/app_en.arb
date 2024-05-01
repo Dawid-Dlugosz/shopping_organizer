@@ -15,7 +15,7 @@
     "enterEmail": "Enter login",
     "enterPassword": "Enter password",
     "enterNickname": "Enter nickname",
-    "userCreateError": "An error creating the user occurred",
+    "userCreateError": "An error occurred while filling in user data. Try logging in.",
     "unservicedError": "Unserviced error",
     "emptyUserError": "User download failed"
 

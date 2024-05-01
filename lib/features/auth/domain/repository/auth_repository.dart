@@ -15,4 +15,6 @@ abstract class AuthRepository {
   });
 
   Future<void> signOut();
+
+  Future<Stream<User?>> sessionListener();
 }

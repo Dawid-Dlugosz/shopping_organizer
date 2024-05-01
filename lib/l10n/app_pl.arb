@@ -15,7 +15,7 @@
     "enterEmail": "Podaj e-mail",
     "enterPassword": "Podaj hasło",
     "enterNickname": "Enter nickname",
-    "userCreateError": "Wystąpił błąd przy tworzeniu użytkownika",
+    "userCreateError": "Wystąpił błąd przy uzupełnianu danych użytkownika. Spróbuj się zalogować.",
     "unservicedError": "Unserviced error",
     "emptyUserError": "User download failed"
 }

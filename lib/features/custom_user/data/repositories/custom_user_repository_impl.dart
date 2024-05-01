@@ -54,8 +54,7 @@ class CustomUserRepositoryImpl implements CustomUserRepository {
         {
           'fcmToken': fcmToken,
         },
-      );
-      return const Right(unit);
+      ).catchError(throw Exception());
     } catch (e, s) {
       _logger.e(
         'CustomUserRepositoryImpl updatePhoneId',

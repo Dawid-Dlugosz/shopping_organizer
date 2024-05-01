@@ -10,35 +10,35 @@ import 'package:shopping_organizer/features/auth/presentation/screen/login_page.
 import 'package:shopping_organizer/features/auth/presentation/screen/register_page.dart';
 import 'package:shopping_organizer/injectable_configure.dart';
 
-class _FirebaseAuthListener extends ChangeNotifier {
-  _FirebaseAuthListener(AuthCubit cubit, BuildContext context) {
-    _streamSubscription = cubit.stream.listen((event) {
-      if (event != _lastState) {
-        _lastState = event;
+// class _FirebaseAuthListener extends ChangeNotifier {
+//   _FirebaseAuthListener(AuthCubit cubit, BuildContext context) {
+//     _streamSubscription = cubit.stream.listen((event) {
+//       if (event != _lastState) {
+//         _lastState = event;
 
-        notifyListeners();
-      }
-    });
-  }
+//         notifyListeners();
+//       }
+//     });
+//   }
 
-  StreamSubscription? _streamSubscription;
-  AuthState? _lastState;
+//   StreamSubscription? _streamSubscription;
+//   AuthState? _lastState;
 
-  @override
-  void dispose() {
-    _streamSubscription?.cancel();
-    super.dispose();
-  }
-}
+//   @override
+//   void dispose() {
+//     _streamSubscription?.cancel();
+//     super.dispose();
+//   }
+// }
 
 class CustomRouter {
   static GoRouter routers(BuildContext context) => GoRouter(
         initialLocation: '/',
-        refreshListenable: _FirebaseAuthListener(
-          getIt<AuthCubit>(),
-          context,
-        ),
-        redirect: _checkAuthorization,
+        // refreshListenable: _FirebaseAuthListener(
+        //   getIt<AuthCubit>(),
+        //   context,
+        // ),
+        // redirect: _checkAuthorization,
         routes: [
           GoRoute(
             path: '/',
@@ -55,11 +55,12 @@ class CustomRouter {
         ],
       );
 
-  static String? _checkAuthorization(
-    BuildContext context,
-    GoRouterState state,
-  ) =>
-      context.read<AuthCubit>().state.mapOrNull(
-            unAuthorized: (_) => RouteNames.loginScreen,
-          );
+  // static String? _checkAuthorization(
+  //   BuildContext context,
+  //   GoRouterState state,
+  // ) {
+  //   return context.read<AuthCubit>().state.mapOrNull(
+  //         unAuthorized: (_) => RouteNames.loginScreen,
+  //       );
+  // }
 }

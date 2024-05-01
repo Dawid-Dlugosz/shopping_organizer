@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,6 +15,24 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this.authRepository) : super(const AuthState.unAuthorized());
 
   final AuthRepository authRepository;
+  StreamSubscription<User?>? _streamSubscription;
+
+  Future<void> sessionListener() async {
+    final stream = await authRepository.sessionListener();
+    _streamSubscription = stream.listen(
+      (user) {
+        if (user != null) {
+          emit(
+            AuthState.authorized(
+              user: user,
+            ),
+          );
+        } else {
+          emit(const AuthState.unAuthorized());
+        }
+      },
+    );
+  }
 
   Future<void> signIn({required String email, required String password}) async {
     emit(const AuthState.unAuthorized());
@@ -65,5 +85,12 @@ class AuthCubit extends Cubit<AuthState> {
       auth: (code) => emit(AuthState.error(code: code.message)),
       general: (_) => emit(const AuthState.error()),
     );
+  }
+
+  @disposeMethod
+  @override
+  Future<void> close() {
+    _streamSubscription?.cancel();
+    return super.close();
   }
 }

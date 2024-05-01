@@ -9,7 +9,6 @@ import 'package:shopping_organizer/features/custom_user/domain/repositories/cust
 part 'custom_user_state.dart';
 part 'cusom_user_cubit.freezed.dart';
 
-// TODO TESTY I REPO
 @LazySingleton()
 class CustomUserCubit extends Cubit<CustomUserState> {
   CustomUserCubit(this.customUserRepository)
@@ -28,7 +27,9 @@ class CustomUserCubit extends Cubit<CustomUserState> {
           message: CustomUserError.createFailure.code,
         ),
       ),
-      (_) => emit(CustomUserState.loaded(customUser: customUser)),
+      (_) => emit(
+        CustomUserState.loaded(customUser: customUser),
+      ),
     );
   }
 
@@ -51,6 +52,9 @@ class CustomUserCubit extends Cubit<CustomUserState> {
             ),
           ),
           (_) => emit(
+            // CustomUserState.error(
+            //   message: CustomUserError.repoFailure.code,
+            // ),
             CustomUserState.loaded(customUser: newCustomUser),
           ),
         );
