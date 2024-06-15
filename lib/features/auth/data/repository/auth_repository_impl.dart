@@ -65,4 +65,16 @@ class AuthRepositoryImpl implements AuthRepository {
       return const Left(Failure.general());
     }
   }
+
+  // TODO TESTY
+  @override
+  Future<void> signOut() async {
+    await firebaseAuth.signOut();
+  }
+
+  // TODO TESTY
+  @override
+  Future<Stream<User?>> sessionListener() async {
+    return firebaseAuth.authStateChanges();
+  }
 }

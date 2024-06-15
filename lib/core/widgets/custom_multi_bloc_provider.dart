@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
 import 'package:shopping_organizer/injectable_configure.dart';
 
 class CustomMultiBlocProvider extends StatelessWidget {
@@ -15,6 +16,9 @@ class CustomMultiBlocProvider extends StatelessWidget {
         BlocProvider(
           create: (_) => getIt<AuthCubit>(),
         ),
+        BlocProvider(
+          create: (_) => getIt<CustomUserCubit>(),
+        )
       ],
       child: child,
     );
