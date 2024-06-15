@@ -18,5 +18,4 @@
     "userCreateError": "An error occurred while filling in user data. Try logging in.",
     "unservicedError": "Unserviced error",
     "emptyUserError": "User download failed"
-
 }

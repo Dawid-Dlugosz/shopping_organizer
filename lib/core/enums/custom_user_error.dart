@@ -1,7 +1,7 @@
 enum CustomUserError {
+  createFailure('create-failure'),
   emptyUser('empty-user'),
-  repoFailure('repo-failure'),
-  createFailure('create-failure');
+  fcmError('fcm-error');
 
   final String code;
 

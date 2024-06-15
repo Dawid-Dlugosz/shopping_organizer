@@ -15,46 +15,52 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$UserCubitState {
+mixin _$CustomUserState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(CustomUser customUser) loaded,
-    required TResult Function(String? message) error,
+    required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(CustomUser customUser)? loaded,
-    TResult? Function(String? message)? error,
+    TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(CustomUser customUser)? loaded,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_$Initial value) initial,
+    required TResult Function(_$Loading value) loading,
     required TResult Function(_$Loaded value) loaded,
     required TResult Function(_$Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_$Initial value)? initial,
+    TResult? Function(_$Loading value)? loading,
     TResult? Function(_$Loaded value)? loaded,
     TResult? Function(_$Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_$Initial value)? initial,
+    TResult Function(_$Loading value)? loading,
     TResult Function(_$Loaded value)? loaded,
     TResult Function(_$Error value)? error,
     required TResult orElse(),
@@ -63,16 +69,16 @@ mixin _$UserCubitState {
 }
 
 /// @nodoc
-abstract class $UserCubitStateCopyWith<$Res> {
-  factory $UserCubitStateCopyWith(
+abstract class $CustomUserStateCopyWith<$Res> {
+  factory $CustomUserStateCopyWith(
           CustomUserState value, $Res Function(CustomUserState) then) =
-      _$UserCubitStateCopyWithImpl<$Res, CustomUserState>;
+      _$CustomUserStateCopyWithImpl<$Res, CustomUserState>;
 }
 
 /// @nodoc
-class _$UserCubitStateCopyWithImpl<$Res, $Val extends CustomUserState>
-    implements $UserCubitStateCopyWith<$Res> {
-  _$UserCubitStateCopyWithImpl(this._value, this._then);
+class _$CustomUserStateCopyWithImpl<$Res, $Val extends CustomUserState>
+    implements $CustomUserStateCopyWith<$Res> {
+  _$CustomUserStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -81,35 +87,35 @@ class _$UserCubitStateCopyWithImpl<$Res, $Val extends CustomUserState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$$InitialImplCopyWith<$Res> {
+  factory _$$$InitialImplCopyWith(
+          _$$InitialImpl value, $Res Function(_$$InitialImpl) then) =
+      __$$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$UserCubitStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$$InitialImplCopyWithImpl<$Res>
+    extends _$CustomUserStateCopyWithImpl<$Res, _$$InitialImpl>
+    implements _$$$InitialImplCopyWith<$Res> {
+  __$$$InitialImplCopyWithImpl(
+      _$$InitialImpl _value, $Res Function(_$$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl extends _Initial {
-  const _$InitialImpl() : super._();
+class _$$InitialImpl extends _$Initial {
+  const _$$InitialImpl() : super._();
 
   @override
   String toString() {
-    return 'UserCubitState.initial()';
+    return 'CustomUserState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$$InitialImpl);
   }
 
   @override
@@ -119,8 +125,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(CustomUser customUser) loaded,
-    required TResult Function(String? message) error,
+    required TResult Function(String message) error,
   }) {
     return initial();
   }
@@ -129,8 +136,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(CustomUser customUser)? loaded,
-    TResult? Function(String? message)? error,
+    TResult? Function(String message)? error,
   }) {
     return initial?.call();
   }
@@ -139,8 +147,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(CustomUser customUser)? loaded,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -152,7 +161,8 @@ class _$InitialImpl extends _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_$Initial value) initial,
+    required TResult Function(_$Loading value) loading,
     required TResult Function(_$Loaded value) loaded,
     required TResult Function(_$Error value) error,
   }) {
@@ -162,7 +172,8 @@ class _$InitialImpl extends _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_$Initial value)? initial,
+    TResult? Function(_$Loading value)? loading,
     TResult? Function(_$Loaded value)? loaded,
     TResult? Function(_$Error value)? error,
   }) {
@@ -172,7 +183,8 @@ class _$InitialImpl extends _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_$Initial value)? initial,
+    TResult Function(_$Loading value)? loading,
     TResult Function(_$Loaded value)? loaded,
     TResult Function(_$Error value)? error,
     required TResult orElse(),
@@ -184,9 +196,124 @@ class _$InitialImpl extends _Initial {
   }
 }
 
-abstract class _Initial extends CustomUserState {
-  const factory _Initial() = _$InitialImpl;
-  const _Initial._() : super._();
+abstract class _$Initial extends CustomUserState {
+  const factory _$Initial() = _$$InitialImpl;
+  const _$Initial._() : super._();
+}
+
+/// @nodoc
+abstract class _$$$LoadingImplCopyWith<$Res> {
+  factory _$$$LoadingImplCopyWith(
+          _$$LoadingImpl value, $Res Function(_$$LoadingImpl) then) =
+      __$$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$$LoadingImplCopyWithImpl<$Res>
+    extends _$CustomUserStateCopyWithImpl<$Res, _$$LoadingImpl>
+    implements _$$$LoadingImplCopyWith<$Res> {
+  __$$$LoadingImplCopyWithImpl(
+      _$$LoadingImpl _value, $Res Function(_$$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$$LoadingImpl extends _$Loading {
+  const _$$LoadingImpl() : super._();
+
+  @override
+  String toString() {
+    return 'CustomUserState.loading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(CustomUser customUser) loaded,
+    required TResult Function(String message) error,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(CustomUser customUser)? loaded,
+    TResult? Function(String message)? error,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(CustomUser customUser)? loaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_$Initial value) initial,
+    required TResult Function(_$Loading value) loading,
+    required TResult Function(_$Loaded value) loaded,
+    required TResult Function(_$Error value) error,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_$Initial value)? initial,
+    TResult? Function(_$Loading value)? loading,
+    TResult? Function(_$Loaded value)? loaded,
+    TResult? Function(_$Error value)? error,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_$Initial value)? initial,
+    TResult Function(_$Loading value)? loading,
+    TResult Function(_$Loaded value)? loaded,
+    TResult Function(_$Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _$Loading extends CustomUserState {
+  const factory _$Loading() = _$$LoadingImpl;
+  const _$Loading._() : super._();
 }
 
 /// @nodoc
@@ -202,7 +329,7 @@ abstract class _$$$LoadedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$$LoadedImplCopyWithImpl<$Res>
-    extends _$UserCubitStateCopyWithImpl<$Res, _$$LoadedImpl>
+    extends _$CustomUserStateCopyWithImpl<$Res, _$$LoadedImpl>
     implements _$$$LoadedImplCopyWith<$Res> {
   __$$$LoadedImplCopyWithImpl(
       _$$LoadedImpl _value, $Res Function(_$$LoadedImpl) _then)
@@ -240,7 +367,7 @@ class _$$LoadedImpl extends _$Loaded {
 
   @override
   String toString() {
-    return 'UserCubitState.loaded(customUser: $customUser)';
+    return 'CustomUserState.loaded(customUser: $customUser)';
   }
 
   @override
@@ -265,8 +392,9 @@ class _$$LoadedImpl extends _$Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(CustomUser customUser) loaded,
-    required TResult Function(String? message) error,
+    required TResult Function(String message) error,
   }) {
     return loaded(customUser);
   }
@@ -275,8 +403,9 @@ class _$$LoadedImpl extends _$Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(CustomUser customUser)? loaded,
-    TResult? Function(String? message)? error,
+    TResult? Function(String message)? error,
   }) {
     return loaded?.call(customUser);
   }
@@ -285,8 +414,9 @@ class _$$LoadedImpl extends _$Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(CustomUser customUser)? loaded,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -298,7 +428,8 @@ class _$$LoadedImpl extends _$Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_$Initial value) initial,
+    required TResult Function(_$Loading value) loading,
     required TResult Function(_$Loaded value) loaded,
     required TResult Function(_$Error value) error,
   }) {
@@ -308,7 +439,8 @@ class _$$LoadedImpl extends _$Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_$Initial value)? initial,
+    TResult? Function(_$Loading value)? loading,
     TResult? Function(_$Loaded value)? loaded,
     TResult? Function(_$Error value)? error,
   }) {
@@ -318,7 +450,8 @@ class _$$LoadedImpl extends _$Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_$Initial value)? initial,
+    TResult Function(_$Loading value)? loading,
     TResult Function(_$Loaded value)? loaded,
     TResult Function(_$Error value)? error,
     required TResult orElse(),
@@ -347,12 +480,12 @@ abstract class _$$$ErrorImplCopyWith<$Res> {
           _$$ErrorImpl value, $Res Function(_$$ErrorImpl) then) =
       __$$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? message});
+  $Res call({String message});
 }
 
 /// @nodoc
 class __$$$ErrorImplCopyWithImpl<$Res>
-    extends _$UserCubitStateCopyWithImpl<$Res, _$$ErrorImpl>
+    extends _$CustomUserStateCopyWithImpl<$Res, _$$ErrorImpl>
     implements _$$$ErrorImplCopyWith<$Res> {
   __$$$ErrorImplCopyWithImpl(
       _$$ErrorImpl _value, $Res Function(_$$ErrorImpl) _then)
@@ -361,13 +494,13 @@ class __$$$ErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
   }) {
     return _then(_$$ErrorImpl(
-      message: freezed == message
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -375,14 +508,14 @@ class __$$$ErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$$ErrorImpl extends _$Error {
-  const _$$ErrorImpl({this.message}) : super._();
+  const _$$ErrorImpl({required this.message}) : super._();
 
   @override
-  final String? message;
+  final String message;
 
   @override
   String toString() {
-    return 'UserCubitState.error(message: $message)';
+    return 'CustomUserState.error(message: $message)';
   }
 
   @override
@@ -406,8 +539,9 @@ class _$$ErrorImpl extends _$Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(CustomUser customUser) loaded,
-    required TResult Function(String? message) error,
+    required TResult Function(String message) error,
   }) {
     return error(message);
   }
@@ -416,8 +550,9 @@ class _$$ErrorImpl extends _$Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(CustomUser customUser)? loaded,
-    TResult? Function(String? message)? error,
+    TResult? Function(String message)? error,
   }) {
     return error?.call(message);
   }
@@ -426,8 +561,9 @@ class _$$ErrorImpl extends _$Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(CustomUser customUser)? loaded,
-    TResult Function(String? message)? error,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -439,7 +575,8 @@ class _$$ErrorImpl extends _$Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_$Initial value) initial,
+    required TResult Function(_$Loading value) loading,
     required TResult Function(_$Loaded value) loaded,
     required TResult Function(_$Error value) error,
   }) {
@@ -449,7 +586,8 @@ class _$$ErrorImpl extends _$Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_$Initial value)? initial,
+    TResult? Function(_$Loading value)? loading,
     TResult? Function(_$Loaded value)? loaded,
     TResult? Function(_$Error value)? error,
   }) {
@@ -459,7 +597,8 @@ class _$$ErrorImpl extends _$Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_$Initial value)? initial,
+    TResult Function(_$Loading value)? loading,
     TResult Function(_$Loaded value)? loaded,
     TResult Function(_$Error value)? error,
     required TResult orElse(),
@@ -472,10 +611,10 @@ class _$$ErrorImpl extends _$Error {
 }
 
 abstract class _$Error extends CustomUserState {
-  const factory _$Error({final String? message}) = _$$ErrorImpl;
+  const factory _$Error({required final String message}) = _$$ErrorImpl;
   const _$Error._() : super._();
 
-  String? get message;
+  String get message;
   @JsonKey(ignore: true)
   _$$$ErrorImplCopyWith<_$$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

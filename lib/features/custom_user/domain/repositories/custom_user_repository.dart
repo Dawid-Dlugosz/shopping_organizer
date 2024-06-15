@@ -11,4 +11,8 @@ abstract class CustomUserRepository {
     required String userId,
     required String fcmToken,
   });
+
+  Future<Either<Failure, CustomUser>> getCustomUser({
+    required String userId,
+  });
 }

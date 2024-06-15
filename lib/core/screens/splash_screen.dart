@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 
 import 'package:shopping_organizer/core/go_router/route_names.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:shopping_organizer/features/custom_user/domain/entities/custom_user.dart';
 import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -34,10 +33,10 @@ class _SplashScreenState extends State<SplashScreen> {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         state.maybeMap(authorized: (value) {
-          context.read<CustomUserCubit>();
+          final customUserCubit = context.read<CustomUserCubit>();
+          customUserCubit.getCustomUser(userId: value.user.uid);
           context.go(RouteNames.homeScreen);
         }, orElse: () {
-          // TODO DELETE CUSTOMUSER
           context.go(RouteNames.loginScreen);
         });
       },

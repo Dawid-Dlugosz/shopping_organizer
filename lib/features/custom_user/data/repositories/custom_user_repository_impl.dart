@@ -54,7 +54,8 @@ class CustomUserRepositoryImpl implements CustomUserRepository {
         {
           'fcmToken': fcmToken,
         },
-      ).catchError(throw Exception());
+      );
+      return right(unit);
     } catch (e, s) {
       _logger.e(
         'CustomUserRepositoryImpl updatePhoneId',
@@ -62,6 +63,33 @@ class CustomUserRepositoryImpl implements CustomUserRepository {
         stackTrace: s,
       );
       return const Left(Failure.general());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CustomUser>> getCustomUser(
+      {required String userId}) async {
+    try {
+      final documentSnapshot = await firebaseFirestore
+          .collection(FirestoreCollectionType.users.type)
+          .doc(userId)
+          .get();
+
+      final documentBody = documentSnapshot.data();
+
+      if (documentBody != null) {
+        return right(CustomUser.fromJson(documentBody));
+      } else {
+        throw Exception('Empty body');
+      }
+    } catch (e, s) {
+      _logger.e(
+        'CustomUserRepositoryImpl getCustomUser',
+        error: e,
+        stackTrace: s,
+      );
+
+      return left(const Failure.general());
     }
   }
 }

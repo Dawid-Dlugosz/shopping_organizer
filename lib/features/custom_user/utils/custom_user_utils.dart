@@ -11,7 +11,7 @@ class CustomUserUtils {
       return AppLocalizations.of(context)!.userCreateError;
     } else if (message == CustomUserError.emptyUser.code) {
       return AppLocalizations.of(context)!.emptyUserError;
-    } else if (message == CustomUserError.repoFailure.code) {
+    } else if (message == CustomUserError.fcmError.code) {
       return AppLocalizations.of(context)!.unservicedError;
     }
     return AppLocalizations.of(context)!.unexpectedError;

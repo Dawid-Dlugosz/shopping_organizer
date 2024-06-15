@@ -1,4 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
@@ -10,13 +11,21 @@ import 'package:shopping_organizer/features/custom_user/presentation/cubit/custo
 
 class MockCustomUserRepository extends Mock implements CustomUserRepository {}
 
+class MockFirebaseMessaging extends Mock implements FirebaseMessaging {}
+
 void main() {
   late CustomUserCubit cubit;
   late MockCustomUserRepository mockCustomUserRepository;
+  late MockFirebaseMessaging mockFirebaseMessaging;
 
   setUp(() {
     mockCustomUserRepository = MockCustomUserRepository();
-    cubit = CustomUserCubit(mockCustomUserRepository);
+    mockFirebaseMessaging = MockFirebaseMessaging();
+
+    cubit = CustomUserCubit(
+      mockCustomUserRepository,
+      mockFirebaseMessaging,
+    );
   });
 
   const customUser = CustomUser(
@@ -75,80 +84,122 @@ void main() {
           );
         },
       );
-
       group(
-        'updateFCMToken',
+        'getCustomUser',
         () {
           blocTest(
-            'Should emit [Error] when repo return right but state is not loaded',
+            'Should emit [Error] with empty user message when  gettCustomUser return left',
             build: () => cubit,
             setUp: () {
               when(
-                () => mockCustomUserRepository.updateFCMToken(
+                () => mockCustomUserRepository.getCustomUser(
                   userId: any(named: 'userId'),
-                  fcmToken: any(named: 'fcmToken'),
+                ),
+              ).thenAnswer(
+                (invocation) async => const Left(
+                  Failure.general(),
                 ),
               );
             },
             act: (_) {
-              cubit.updateFCMToken(fcmToken: '123');
+              cubit.getCustomUser(userId: '123');
             },
             expect: () => [
-              CustomUserState.error(
-                message: CustomUserError.emptyUser.code,
-              )
+              CustomUserState.error(message: CustomUserError.emptyUser.code)
             ],
           );
 
           blocTest(
-            'Should emit [] when fcmToken from sate is the same as function argument',
+            'Should emit [Error] with fcmError message when updateFCMToken return left',
             build: () => cubit,
-            seed: () => const CustomUserState.loaded(customUser: customUser),
-            act: (_) {
-              cubit.updateFCMToken(fcmToken: '123');
-            },
-            expect: () => [],
-          );
-          blocTest(
-            'Should emit [Loaded] when fcmToken from sate is diferent  as function argument as repo return right',
-            build: () => cubit,
-            seed: () => const CustomUserState.loaded(customUser: customUser),
             setUp: () {
               when(
-                () => mockCustomUserRepository.updateFCMToken(
+                () => mockCustomUserRepository.getCustomUser(
                   userId: any(named: 'userId'),
-                  fcmToken: any(named: 'fcmToken'),
                 ),
-              ).thenAnswer((_) async => const Right(unit));
+              ).thenAnswer(
+                (invocation) async => const Right(customUser),
+              );
+
+              when(() => mockFirebaseMessaging.getToken()).thenAnswer(
+                (invocation) async => 'testFCM',
+              );
+              when(
+                () => mockCustomUserRepository.updateFCMToken(
+                    userId: '123', fcmToken: 'testFCM'),
+              ).thenAnswer(
+                (invocation) async => const Left(
+                  Failure.general(),
+                ),
+              );
             },
             act: (_) {
-              cubit.updateFCMToken(fcmToken: '23');
+              cubit.getCustomUser(userId: '123');
+            },
+            expect: () =>
+                [CustomUserState.error(message: CustomUserError.fcmError.code)],
+          );
+
+          blocTest(
+            'Should emit [Loaded] with not change fcmToken',
+            build: () => cubit,
+            setUp: () {
+              when(
+                () => mockCustomUserRepository.getCustomUser(
+                  userId: any(named: 'userId'),
+                ),
+              ).thenAnswer(
+                (invocation) async => const Right(customUser),
+              );
+
+              when(() => mockFirebaseMessaging.getToken()).thenAnswer(
+                (invocation) async => '123',
+              );
+
+              when(
+                () => mockCustomUserRepository.updateFCMToken(
+                    userId: '123', fcmToken: '123'),
+              ).thenAnswer(
+                (invocation) async => const Right(unit),
+              );
+            },
+            act: (_) {
+              cubit.getCustomUser(userId: '123');
+            },
+            expect: () => [
+              const CustomUserState.loaded(customUser: customUser),
+            ],
+          );
+
+          blocTest(
+            'Should emit [Loaded] with  change fcmToken',
+            build: () => cubit,
+            setUp: () {
+              when(
+                () => mockCustomUserRepository.getCustomUser(
+                  userId: any(named: 'userId'),
+                ),
+              ).thenAnswer(
+                (invocation) async => const Right(customUser),
+              );
+
+              when(() => mockFirebaseMessaging.getToken()).thenAnswer(
+                (invocation) async => '321',
+              );
+
+              when(
+                () => mockCustomUserRepository.updateFCMToken(
+                    userId: '123', fcmToken: '321'),
+              ).thenAnswer(
+                (invocation) async => const Right(unit),
+              );
+            },
+            act: (_) {
+              cubit.getCustomUser(userId: '123');
             },
             expect: () => [
               CustomUserState.loaded(
-                customUser: customUser.copyWith(fcmToken: '23'),
-              )
-            ],
-          );
-
-          blocTest(
-            'Should emit [Error] when fcmToken from sate is diferent  as function argument as repo return left',
-            build: () => cubit,
-            seed: () => const CustomUserState.loaded(customUser: customUser),
-            setUp: () {
-              when(
-                () => mockCustomUserRepository.updateFCMToken(
-                  userId: any(named: 'userId'),
-                  fcmToken: any(named: 'fcmToken'),
-                ),
-              ).thenAnswer((_) async => const Left(Failure.general()));
-            },
-            act: (_) {
-              cubit.updateFCMToken(fcmToken: '23');
-            },
-            expect: () => [
-              CustomUserState.error(
-                message: CustomUserError.repoFailure.code,
+                customUser: customUser.copyWith(fcmToken: '321'),
               ),
             ],
           );

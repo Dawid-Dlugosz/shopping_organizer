@@ -44,9 +44,13 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i8.CustomUserRepository>(
         () => _i9.CustomUserRepositoryImpl(gh<_i4.FirebaseFirestore>()));
     gh.lazySingleton<_i10.AuthCubit>(
-        () => _i10.AuthCubit(gh<_i6.AuthRepository>()));
-    gh.lazySingleton<_i11.CustomUserCubit>(
-        () => _i11.CustomUserCubit(gh<_i8.CustomUserRepository>()));
+      () => _i10.AuthCubit(gh<_i6.AuthRepository>()),
+      dispose: (i) => i.close(),
+    );
+    gh.lazySingleton<_i11.CustomUserCubit>(() => _i11.CustomUserCubit(
+          gh<_i8.CustomUserRepository>(),
+          gh<_i5.FirebaseMessaging>(),
+        ));
     return this;
   }
 }
