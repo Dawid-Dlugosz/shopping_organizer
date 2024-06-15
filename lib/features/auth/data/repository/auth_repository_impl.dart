@@ -42,15 +42,12 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, UserCredential>> signOn({
     required String email,
     required String password,
-    required String displayName,
   }) async {
     try {
       final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-
-      await userCredential.user?.updateDisplayName(displayName);
 
       return Right(userCredential);
     } on FirebaseAuthException catch (e) {

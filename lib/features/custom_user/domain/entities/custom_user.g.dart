@@ -8,6 +8,7 @@ part of 'custom_user.dart';
 
 _$CustomUserImpl _$$CustomUserImplFromJson(Map<String, dynamic> json) =>
     _$CustomUserImpl(
+      nickname: json['nickname'] as String,
       fcmToken: json['fcmToken'] as String,
       userId: json['userId'] as String,
       shoppingLists: (json['shoppingLists'] as List<dynamic>)
@@ -17,6 +18,7 @@ _$CustomUserImpl _$$CustomUserImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$CustomUserImplToJson(_$CustomUserImpl instance) =>
     <String, dynamic>{
+      'nickname': instance.nickname,
       'fcmToken': instance.fcmToken,
       'userId': instance.userId,
       'shoppingLists': instance.shoppingLists.map((e) => e.toJson()).toList(),

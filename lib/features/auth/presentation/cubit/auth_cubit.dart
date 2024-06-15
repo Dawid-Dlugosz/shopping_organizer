@@ -2,19 +2,29 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shopping_organizer/core/failures/failure.dart';
 import 'package:shopping_organizer/features/auth/domain/repository/auth_repository.dart';
+import 'package:shopping_organizer/features/custom_user/domain/entities/custom_user.dart';
+import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
 
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
 @LazySingleton()
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(this.authRepository) : super(const AuthState.unAuthorized());
+  AuthCubit(
+    this.authRepository,
+    this.customUserCubit,
+    this.firebaseMessaging,
+  ) : super(const AuthState.unAuthorized());
 
   final AuthRepository authRepository;
+  final CustomUserCubit customUserCubit;
+  final FirebaseMessaging firebaseMessaging;
+
   StreamSubscription<User?>? _streamSubscription;
 
   Future<void> sessionListener() async {
@@ -36,6 +46,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> signIn({required String email, required String password}) async {
     emit(const AuthState.unAuthorized());
+
     final failureOrUserCredential = await authRepository.signIn(
       email: email,
       password: password,
@@ -43,10 +54,15 @@ class AuthCubit extends Cubit<AuthState> {
 
     failureOrUserCredential.fold(
       (failure) => _emitError(failure),
-      (userCredential) => emit(
-        AuthState.authorized(
-          user: userCredential.user!,
-        ),
+      (userCredential) => _customUserService(userCredential),
+    );
+  }
+
+  Future<void> _customUserService(UserCredential userCredential) async {
+    await customUserCubit.getCustomUser(userId: userCredential.user!.uid);
+    emit(
+      AuthState.authorized(
+        user: userCredential.user!,
       ),
     );
   }
@@ -61,15 +77,35 @@ class AuthCubit extends Cubit<AuthState> {
     final failureOrUserCredential = await authRepository.signOn(
       email: email,
       password: password,
-      displayName: nickname,
     );
 
     failureOrUserCredential.fold(
       (failure) => _emitError(failure),
-      (userCredential) => emit(
-        AuthState.created(
-          user: userCredential.user!,
-        ),
+      (userCredential) => _createCustomUserService(
+        nickname: nickname,
+        userCredential: userCredential,
+      ),
+    );
+  }
+
+  Future<void> _createCustomUserService({
+    required UserCredential userCredential,
+    required String nickname,
+  }) async {
+    final fcmToken = (await firebaseMessaging.getToken())!;
+
+    final customUser = CustomUser(
+      fcmToken: fcmToken,
+      userId: userCredential.user!.uid,
+      shoppingLists: [],
+      nickname: nickname,
+    );
+
+    await customUserCubit.createCustomUser(customUser: customUser);
+
+    emit(
+      AuthState.authorized(
+        user: userCredential.user!,
       ),
     );
   }

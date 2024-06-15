@@ -9,17 +9,17 @@ class ExternalLogin extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () {},
-          child: Text('Google'),
+          child: const Text('Google'),
         ),
         const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {},
-          child: Text('facebook'),
+          child: const Text('facebook'),
         ),
         const SizedBox(height: 20),
         ElevatedButton(
           onPressed: () {},
-          child: Text('Apple'),
+          child: const Text('Apple'),
         ),
       ],
     );

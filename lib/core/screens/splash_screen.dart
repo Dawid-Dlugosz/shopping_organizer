@@ -1,12 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:shopping_organizer/core/go_router/route_names.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
+import 'package:shopping_organizer/injectable_configure.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -38,9 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         state.maybeMap(authorized: (value) {
-          final customUserCubit = context.read<CustomUserCubit>();
-          customUserCubit.getCustomUser(userId: value.user.uid);
-          context.go(RouteNames.homeScreen);
+          context.go(RouteNames.shoppingList);
         }, orElse: () {
           context.go(RouteNames.loginScreen);
         });

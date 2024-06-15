@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 import 'package:go_router/go_router.dart';
+
 import 'package:shopping_organizer/core/go_router/route_names.dart';
 import 'package:shopping_organizer/core/screens/splash_screen.dart';
-import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:shopping_organizer/features/auth/presentation/screen/login_page.dart';
 import 'package:shopping_organizer/features/auth/presentation/screen/register_page.dart';
 import 'package:shopping_organizer/features/home_page/presentation/screens/home_page.dart';

@@ -20,6 +20,7 @@ CustomUser _$CustomUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CustomUser {
+  String get nickname => throw _privateConstructorUsedError;
   String get fcmToken => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   List<CustomUserShopList> get shoppingLists =>
@@ -38,7 +39,10 @@ abstract class $CustomUserCopyWith<$Res> {
       _$CustomUserCopyWithImpl<$Res, CustomUser>;
   @useResult
   $Res call(
-      {String fcmToken, String userId, List<CustomUserShopList> shoppingLists});
+      {String nickname,
+      String fcmToken,
+      String userId,
+      List<CustomUserShopList> shoppingLists});
 }
 
 /// @nodoc
@@ -54,11 +58,16 @@ class _$CustomUserCopyWithImpl<$Res, $Val extends CustomUser>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? nickname = null,
     Object? fcmToken = null,
     Object? userId = null,
     Object? shoppingLists = null,
   }) {
     return _then(_value.copyWith(
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
       fcmToken: null == fcmToken
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
@@ -84,7 +93,10 @@ abstract class _$$CustomUserImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String fcmToken, String userId, List<CustomUserShopList> shoppingLists});
+      {String nickname,
+      String fcmToken,
+      String userId,
+      List<CustomUserShopList> shoppingLists});
 }
 
 /// @nodoc
@@ -98,11 +110,16 @@ class __$$CustomUserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? nickname = null,
     Object? fcmToken = null,
     Object? userId = null,
     Object? shoppingLists = null,
   }) {
     return _then(_$CustomUserImpl(
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
       fcmToken: null == fcmToken
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
@@ -124,7 +141,8 @@ class __$$CustomUserImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$CustomUserImpl implements _CustomUser {
   const _$CustomUserImpl(
-      {required this.fcmToken,
+      {required this.nickname,
+      required this.fcmToken,
       required this.userId,
       required final List<CustomUserShopList> shoppingLists})
       : _shoppingLists = shoppingLists;
@@ -132,6 +150,8 @@ class _$CustomUserImpl implements _CustomUser {
   factory _$CustomUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$CustomUserImplFromJson(json);
 
+  @override
+  final String nickname;
   @override
   final String fcmToken;
   @override
@@ -146,7 +166,7 @@ class _$CustomUserImpl implements _CustomUser {
 
   @override
   String toString() {
-    return 'CustomUser(fcmToken: $fcmToken, userId: $userId, shoppingLists: $shoppingLists)';
+    return 'CustomUser(nickname: $nickname, fcmToken: $fcmToken, userId: $userId, shoppingLists: $shoppingLists)';
   }
 
   @override
@@ -154,6 +174,8 @@ class _$CustomUserImpl implements _CustomUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomUserImpl &&
+            (identical(other.nickname, nickname) ||
+                other.nickname == nickname) &&
             (identical(other.fcmToken, fcmToken) ||
                 other.fcmToken == fcmToken) &&
             (identical(other.userId, userId) || other.userId == userId) &&
@@ -163,7 +185,7 @@ class _$CustomUserImpl implements _CustomUser {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, fcmToken, userId,
+  int get hashCode => Object.hash(runtimeType, nickname, fcmToken, userId,
       const DeepCollectionEquality().hash(_shoppingLists));
 
   @JsonKey(ignore: true)
@@ -182,7 +204,8 @@ class _$CustomUserImpl implements _CustomUser {
 
 abstract class _CustomUser implements CustomUser {
   const factory _CustomUser(
-          {required final String fcmToken,
+          {required final String nickname,
+          required final String fcmToken,
           required final String userId,
           required final List<CustomUserShopList> shoppingLists}) =
       _$CustomUserImpl;
@@ -190,6 +213,8 @@ abstract class _CustomUser implements CustomUser {
   factory _CustomUser.fromJson(Map<String, dynamic> json) =
       _$CustomUserImpl.fromJson;
 
+  @override
+  String get nickname;
   @override
   String get fcmToken;
   @override

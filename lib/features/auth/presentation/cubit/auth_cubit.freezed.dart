@@ -20,7 +20,6 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() unAuthorized,
     required TResult Function(User user) authorized,
-    required TResult Function(User user) created,
     required TResult Function(String? code) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +27,6 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unAuthorized,
     TResult? Function(User user)? authorized,
-    TResult? Function(User user)? created,
     TResult? Function(String? code)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +34,6 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unAuthorized,
     TResult Function(User user)? authorized,
-    TResult Function(User user)? created,
     TResult Function(String? code)? error,
     required TResult orElse(),
   }) =>
@@ -45,7 +42,6 @@ mixin _$AuthState {
   TResult map<TResult extends Object?>({
     required TResult Function(_$UnAuthorized value) unAuthorized,
     required TResult Function(_$Authorized value) authorized,
-    required TResult Function(_$Created value) created,
     required TResult Function(_$Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,7 +49,6 @@ mixin _$AuthState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_$UnAuthorized value)? unAuthorized,
     TResult? Function(_$Authorized value)? authorized,
-    TResult? Function(_$Created value)? created,
     TResult? Function(_$Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +56,6 @@ mixin _$AuthState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_$UnAuthorized value)? unAuthorized,
     TResult Function(_$Authorized value)? authorized,
-    TResult Function(_$Created value)? created,
     TResult Function(_$Error value)? error,
     required TResult orElse(),
   }) =>
@@ -125,7 +119,6 @@ class _$$UnAuthorizedImpl implements _$UnAuthorized {
   TResult when<TResult extends Object?>({
     required TResult Function() unAuthorized,
     required TResult Function(User user) authorized,
-    required TResult Function(User user) created,
     required TResult Function(String? code) error,
   }) {
     return unAuthorized();
@@ -136,7 +129,6 @@ class _$$UnAuthorizedImpl implements _$UnAuthorized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unAuthorized,
     TResult? Function(User user)? authorized,
-    TResult? Function(User user)? created,
     TResult? Function(String? code)? error,
   }) {
     return unAuthorized?.call();
@@ -147,7 +139,6 @@ class _$$UnAuthorizedImpl implements _$UnAuthorized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unAuthorized,
     TResult Function(User user)? authorized,
-    TResult Function(User user)? created,
     TResult Function(String? code)? error,
     required TResult orElse(),
   }) {
@@ -162,7 +153,6 @@ class _$$UnAuthorizedImpl implements _$UnAuthorized {
   TResult map<TResult extends Object?>({
     required TResult Function(_$UnAuthorized value) unAuthorized,
     required TResult Function(_$Authorized value) authorized,
-    required TResult Function(_$Created value) created,
     required TResult Function(_$Error value) error,
   }) {
     return unAuthorized(this);
@@ -173,7 +163,6 @@ class _$$UnAuthorizedImpl implements _$UnAuthorized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_$UnAuthorized value)? unAuthorized,
     TResult? Function(_$Authorized value)? authorized,
-    TResult? Function(_$Created value)? created,
     TResult? Function(_$Error value)? error,
   }) {
     return unAuthorized?.call(this);
@@ -184,7 +173,6 @@ class _$$UnAuthorizedImpl implements _$UnAuthorized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_$UnAuthorized value)? unAuthorized,
     TResult Function(_$Authorized value)? authorized,
-    TResult Function(_$Created value)? created,
     TResult Function(_$Error value)? error,
     required TResult orElse(),
   }) {
@@ -265,7 +253,6 @@ class _$$AuthorizedImpl implements _$Authorized {
   TResult when<TResult extends Object?>({
     required TResult Function() unAuthorized,
     required TResult Function(User user) authorized,
-    required TResult Function(User user) created,
     required TResult Function(String? code) error,
   }) {
     return authorized(user);
@@ -276,7 +263,6 @@ class _$$AuthorizedImpl implements _$Authorized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unAuthorized,
     TResult? Function(User user)? authorized,
-    TResult? Function(User user)? created,
     TResult? Function(String? code)? error,
   }) {
     return authorized?.call(user);
@@ -287,7 +273,6 @@ class _$$AuthorizedImpl implements _$Authorized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unAuthorized,
     TResult Function(User user)? authorized,
-    TResult Function(User user)? created,
     TResult Function(String? code)? error,
     required TResult orElse(),
   }) {
@@ -302,7 +287,6 @@ class _$$AuthorizedImpl implements _$Authorized {
   TResult map<TResult extends Object?>({
     required TResult Function(_$UnAuthorized value) unAuthorized,
     required TResult Function(_$Authorized value) authorized,
-    required TResult Function(_$Created value) created,
     required TResult Function(_$Error value) error,
   }) {
     return authorized(this);
@@ -313,7 +297,6 @@ class _$$AuthorizedImpl implements _$Authorized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_$UnAuthorized value)? unAuthorized,
     TResult? Function(_$Authorized value)? authorized,
-    TResult? Function(_$Created value)? created,
     TResult? Function(_$Error value)? error,
   }) {
     return authorized?.call(this);
@@ -324,7 +307,6 @@ class _$$AuthorizedImpl implements _$Authorized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_$UnAuthorized value)? unAuthorized,
     TResult Function(_$Authorized value)? authorized,
-    TResult Function(_$Created value)? created,
     TResult Function(_$Error value)? error,
     required TResult orElse(),
   }) {
@@ -341,151 +323,6 @@ abstract class _$Authorized implements AuthState {
   User get user;
   @JsonKey(ignore: true)
   _$$$AuthorizedImplCopyWith<_$$AuthorizedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$$CreatedImplCopyWith<$Res> {
-  factory _$$$CreatedImplCopyWith(
-          _$$CreatedImpl value, $Res Function(_$$CreatedImpl) then) =
-      __$$$CreatedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({User user});
-}
-
-/// @nodoc
-class __$$$CreatedImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$$CreatedImpl>
-    implements _$$$CreatedImplCopyWith<$Res> {
-  __$$$CreatedImplCopyWithImpl(
-      _$$CreatedImpl _value, $Res Function(_$$CreatedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? user = null,
-  }) {
-    return _then(_$$CreatedImpl(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$$CreatedImpl implements _$Created {
-  const _$$CreatedImpl({required this.user});
-
-  @override
-  final User user;
-
-  @override
-  String toString() {
-    return 'AuthState.created(user: $user)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$$CreatedImpl &&
-            (identical(other.user, user) || other.user == user));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, user);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$$CreatedImplCopyWith<_$$CreatedImpl> get copyWith =>
-      __$$$CreatedImplCopyWithImpl<_$$CreatedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() unAuthorized,
-    required TResult Function(User user) authorized,
-    required TResult Function(User user) created,
-    required TResult Function(String? code) error,
-  }) {
-    return created(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? unAuthorized,
-    TResult? Function(User user)? authorized,
-    TResult? Function(User user)? created,
-    TResult? Function(String? code)? error,
-  }) {
-    return created?.call(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unAuthorized,
-    TResult Function(User user)? authorized,
-    TResult Function(User user)? created,
-    TResult Function(String? code)? error,
-    required TResult orElse(),
-  }) {
-    if (created != null) {
-      return created(user);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_$UnAuthorized value) unAuthorized,
-    required TResult Function(_$Authorized value) authorized,
-    required TResult Function(_$Created value) created,
-    required TResult Function(_$Error value) error,
-  }) {
-    return created(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_$UnAuthorized value)? unAuthorized,
-    TResult? Function(_$Authorized value)? authorized,
-    TResult? Function(_$Created value)? created,
-    TResult? Function(_$Error value)? error,
-  }) {
-    return created?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$UnAuthorized value)? unAuthorized,
-    TResult Function(_$Authorized value)? authorized,
-    TResult Function(_$Created value)? created,
-    TResult Function(_$Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (created != null) {
-      return created(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _$Created implements AuthState {
-  const factory _$Created({required final User user}) = _$$CreatedImpl;
-
-  User get user;
-  @JsonKey(ignore: true)
-  _$$$CreatedImplCopyWith<_$$CreatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -555,7 +392,6 @@ class _$$ErrorImpl implements _$Error {
   TResult when<TResult extends Object?>({
     required TResult Function() unAuthorized,
     required TResult Function(User user) authorized,
-    required TResult Function(User user) created,
     required TResult Function(String? code) error,
   }) {
     return error(code);
@@ -566,7 +402,6 @@ class _$$ErrorImpl implements _$Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unAuthorized,
     TResult? Function(User user)? authorized,
-    TResult? Function(User user)? created,
     TResult? Function(String? code)? error,
   }) {
     return error?.call(code);
@@ -577,7 +412,6 @@ class _$$ErrorImpl implements _$Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unAuthorized,
     TResult Function(User user)? authorized,
-    TResult Function(User user)? created,
     TResult Function(String? code)? error,
     required TResult orElse(),
   }) {
@@ -592,7 +426,6 @@ class _$$ErrorImpl implements _$Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_$UnAuthorized value) unAuthorized,
     required TResult Function(_$Authorized value) authorized,
-    required TResult Function(_$Created value) created,
     required TResult Function(_$Error value) error,
   }) {
     return error(this);
@@ -603,7 +436,6 @@ class _$$ErrorImpl implements _$Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_$UnAuthorized value)? unAuthorized,
     TResult? Function(_$Authorized value)? authorized,
-    TResult? Function(_$Created value)? created,
     TResult? Function(_$Error value)? error,
   }) {
     return error?.call(this);
@@ -614,7 +446,6 @@ class _$$ErrorImpl implements _$Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_$UnAuthorized value)? unAuthorized,
     TResult Function(_$Authorized value)? authorized,
-    TResult Function(_$Created value)? created,
     TResult Function(_$Error value)? error,
     required TResult orElse(),
   }) {
