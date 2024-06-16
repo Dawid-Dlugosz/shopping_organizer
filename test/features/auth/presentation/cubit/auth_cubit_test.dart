@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
@@ -7,10 +8,16 @@ import 'package:shopping_organizer/core/enums/firebase_auth_error.dart';
 import 'package:shopping_organizer/core/failures/failure.dart';
 import 'package:shopping_organizer/features/auth/domain/repository/auth_repository.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:shopping_organizer/features/custom_user/domain/entities/custom_user.dart';
+import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 
 class MockUserCredential extends Mock implements UserCredential {}
+
+class MockCustomUserCubit extends Mock implements CustomUserCubit {}
+
+class MockFirebaseMessaging extends Mock implements FirebaseMessaging {}
 
 class MockUser extends Mock implements User {}
 
@@ -18,13 +25,23 @@ void main() {
   late AuthCubit cubit;
   late MockAuthRepository authRepository;
   late MockUserCredential userCredential;
+  late MockCustomUserCubit mockCustomUserCubit;
+  late MockFirebaseMessaging mockFirebaseMessaging;
+
   late MockUser user;
 
   setUp(() {
     userCredential = MockUserCredential();
     user = MockUser();
     authRepository = MockAuthRepository();
-    cubit = AuthCubit(authRepository);
+    mockFirebaseMessaging = MockFirebaseMessaging();
+    mockCustomUserCubit = MockCustomUserCubit();
+
+    cubit = AuthCubit(
+      authRepository,
+      mockCustomUserCubit,
+      mockFirebaseMessaging,
+    );
   });
 
   group(
@@ -52,6 +69,11 @@ void main() {
               ).thenAnswer((_) async => Right(userCredential));
 
               when(() => userCredential.user).thenReturn(user);
+
+              when(() => user.uid).thenReturn('asdsdasd');
+
+              when(() => mockCustomUserCubit.getCustomUser(
+                  userId: any(named: 'userId'))).thenAnswer((_) async => {});
             },
             act: (_) {
               cubit.signIn(
@@ -292,9 +314,24 @@ void main() {
                 () => authRepository.signOn(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
-                  displayName: any(named: 'displayName'),
                 ),
               ).thenAnswer((_) async => Right(userCredential));
+
+              when(() => mockFirebaseMessaging.getToken())
+                  .thenAnswer((_) async => 'sasds');
+
+              when(() => user.uid).thenReturn('asdsdasd');
+
+              when(() => mockCustomUserCubit.createCustomUser(
+                    customUser: const CustomUser(
+                      nickname: 'nickname',
+                      fcmToken: 'sasds',
+                      userId: 'asdsdasd',
+                      shoppingLists: [],
+                    ),
+                  )).thenAnswer(
+                (_) async => {},
+              );
 
               when(() => userCredential.user).thenReturn(user);
             },
@@ -307,7 +344,7 @@ void main() {
             },
             skip: 1,
             expect: () => [
-              AuthState.created(user: user),
+              AuthState.authorized(user: user),
             ],
           );
 
@@ -319,7 +356,6 @@ void main() {
                 () => authRepository.signOn(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
-                  displayName: any(named: 'displayName'),
                 ),
               ).thenAnswer(
                 (_) async => Left(
@@ -352,7 +388,6 @@ void main() {
                 () => authRepository.signOn(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
-                  displayName: any(named: 'displayName'),
                 ),
               ).thenAnswer(
                 (_) async => Left(
@@ -385,7 +420,6 @@ void main() {
                 () => authRepository.signOn(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
-                  displayName: any(named: 'displayName'),
                 ),
               ).thenAnswer(
                 (_) async => Left(
@@ -421,7 +455,6 @@ void main() {
                 () => authRepository.signOn(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
-                  displayName: any(named: 'displayName'),
                 ),
               ).thenAnswer(
                 (_) async => Left(
@@ -455,7 +488,6 @@ void main() {
                 () => authRepository.signOn(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
-                  displayName: any(named: 'displayName'),
                 ),
               ).thenAnswer(
                 (_) async => Left(
@@ -486,7 +518,6 @@ void main() {
                 () => authRepository.signOn(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
-                  displayName: any(named: 'displayName'),
                 ),
               ).thenAnswer(
                 (_) async => const Left(

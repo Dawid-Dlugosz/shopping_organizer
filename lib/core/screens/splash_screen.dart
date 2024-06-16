@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:shopping_organizer/core/go_router/route_names.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
 import 'package:shopping_organizer/injectable_configure.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,18 +21,15 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (getIt<FirebaseAuth>().currentUser == null) {
+        
         context.go(RouteNames.loginScreen);
       } else {
+        context.read<CustomUserCubit>().getCustomUser(userId: getIt<FirebaseAuth>().currentUser!.uid);
         context.go(RouteNames.shoppingList);
       }
     });
     super.initState();
   }
-
-  // JEŚŁI SIĘ LOGUJE, POBIERAM UŻYTKOWNIKA
-  // ROBIĘ UPDATE FCM, ROBIENIE FCM MOGĘ ZROBIĆ W POBIERANIU UŻYTWKONIKA, BĘDZIE LEPIEJ
-
-  // JEŚLI TWORZE KONTO, TWORZĘ NOWEGO UŻYTKOWNIKA
 
   @override
   Widget build(BuildContext context) {

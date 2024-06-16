@@ -60,6 +60,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> _customUserService(UserCredential userCredential) async {
     await customUserCubit.getCustomUser(userId: userCredential.user!.uid);
+
     emit(
       AuthState.authorized(
         user: userCredential.user!,

@@ -7,9 +7,9 @@ import 'package:shopping_organizer/core/go_router/route_names.dart';
 import 'package:shopping_organizer/core/screens/splash_screen.dart';
 import 'package:shopping_organizer/features/auth/presentation/screen/login_page.dart';
 import 'package:shopping_organizer/features/auth/presentation/screen/register_page.dart';
-import 'package:shopping_organizer/features/home_page/presentation/screens/home_page.dart';
-import 'package:shopping_organizer/features/home_page/presentation/screens/pages/expanses.dart';
-import 'package:shopping_organizer/features/home_page/presentation/screens/pages/shopping_lists.dart';
+import 'package:shopping_organizer/features/home_page/home_page.dart';
+import 'package:shopping_organizer/features/home_page/widgets/expanses.dart';
+import 'package:shopping_organizer/features/home_page/widgets/shopping_lists.dart';
 
 class CustomRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
