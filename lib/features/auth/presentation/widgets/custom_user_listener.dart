@@ -20,10 +20,10 @@ class CustomUserListener extends StatelessWidget {
             final message = value.message;
             final snackBar = SnackBar(
               content: Text(
-                CustomUserUtils.getErrorInformation(message!, context),
+                CustomUserUtils.getErrorInformation(message, context),
               ),
             );
-
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
             context.read<AuthCubit>().signOut();
           },

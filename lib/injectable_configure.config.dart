@@ -17,12 +17,12 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'core/register_module.dart' as _i12;
 import 'features/auth/data/repository/auth_repository_impl.dart' as _i7;
 import 'features/auth/domain/repository/auth_repository.dart' as _i6;
-import 'features/auth/presentation/cubit/auth_cubit.dart' as _i10;
+import 'features/auth/presentation/cubit/auth_cubit.dart' as _i11;
 import 'features/custom_user/data/repositories/custom_user_repository_impl.dart'
     as _i9;
 import 'features/custom_user/domain/repositories/custom_user_repository.dart'
     as _i8;
-import 'features/custom_user/presentation/cubit/custom_user_cubit.dart' as _i11;
+import 'features/custom_user/presentation/cubit/custom_user_cubit.dart' as _i10;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -43,14 +43,18 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i7.AuthRepositoryImpl(gh<_i3.FirebaseAuth>()));
     gh.lazySingleton<_i8.CustomUserRepository>(
         () => _i9.CustomUserRepositoryImpl(gh<_i4.FirebaseFirestore>()));
-    gh.lazySingleton<_i10.AuthCubit>(
-      () => _i10.AuthCubit(gh<_i6.AuthRepository>()),
-      dispose: (i) => i.close(),
-    );
-    gh.lazySingleton<_i11.CustomUserCubit>(() => _i11.CustomUserCubit(
+    gh.lazySingleton<_i10.CustomUserCubit>(() => _i10.CustomUserCubit(
           gh<_i8.CustomUserRepository>(),
           gh<_i5.FirebaseMessaging>(),
         ));
+    gh.lazySingleton<_i11.AuthCubit>(
+      () => _i11.AuthCubit(
+        gh<_i6.AuthRepository>(),
+        gh<_i10.CustomUserCubit>(),
+        gh<_i5.FirebaseMessaging>(),
+      ),
+      dispose: (i) => i.close(),
+    );
     return this;
   }
 }

@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/web.dart';
-import 'package:shopping_organizer/core/enums/firestore_collection_type.dart';
 
+import 'package:shopping_organizer/core/enums/firestore_collection_type.dart';
 import 'package:shopping_organizer/core/failures/failure.dart';
 import 'package:shopping_organizer/features/custom_user/domain/entities/custom_user.dart';
 import 'package:shopping_organizer/features/custom_user/domain/repositories/custom_user_repository.dart';

@@ -31,6 +31,7 @@ void main() {
   const customUser = CustomUser(
     fcmToken: '123',
     userId: '123',
+    nickname: '222',
     shoppingLists: [],
   );
 

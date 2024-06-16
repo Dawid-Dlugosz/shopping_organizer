@@ -223,7 +223,6 @@ void main() {
               final failureOrUserCredential = await authRepositoryImpl.signOn(
                 email: 'email',
                 password: 'password',
-                displayName: 'displayName',
               );
 
               expect(
@@ -246,7 +245,6 @@ void main() {
               final failureOrUserCredential = await authRepositoryImpl.signOn(
                 email: 'email',
                 password: 'password',
-                displayName: 'displayName',
               );
 
               expect(
@@ -275,7 +273,6 @@ void main() {
               final failureOrUserCredential = await authRepositoryImpl.signOn(
                 email: 'email',
                 password: 'password',
-                displayName: 'displayName',
               );
 
               expect(
@@ -306,7 +303,6 @@ void main() {
               final failureOrUserCredential = await authRepositoryImpl.signOn(
                 email: 'email',
                 password: 'password',
-                displayName: 'displayName',
               );
 
               expect(
@@ -337,7 +333,6 @@ void main() {
               final failureOrUserCredential = await authRepositoryImpl.signOn(
                 email: 'email',
                 password: 'password',
-                displayName: 'displayName',
               );
 
               expect(
