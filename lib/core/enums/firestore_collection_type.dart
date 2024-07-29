@@ -1,5 +1,6 @@
 enum FirestoreCollectionType {
-  users("users");
+  users('users'),
+  shoppingList('shoppingLists');
 
   const FirestoreCollectionType(this.type);
 

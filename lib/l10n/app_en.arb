@@ -19,5 +19,19 @@
     "unservicedError": "Unserviced error",
     "emptyUserError": "User download failed",
     "shoppingLists": "Shopping lists",
-    "expanses": "Expanses"
+    "expanses": "Expanses",
+    "createShoppingList": "Create shopping list",
+    "cancel": "Cancel",
+    "save": "Save",
+    "piece": "Piece",
+    "packing": "Packing",
+    "grams": "Grams",
+    "kilograms": "Kilograms",
+    "clear": "Clear",
+    "name": "Name",
+    "quantity": "Quantity",
+    "enterName": "Enter name",
+    "enterQuantity": "Enter quantity",
+    "enterRequiredFields": "Complete all required fields",
+    "addedShoppingList": "Shopping list was added"
 }
