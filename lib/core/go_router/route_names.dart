@@ -2,5 +2,6 @@ class RouteNames {
   static const loginScreen = '/login',
       registerScreen = '/register',
       shoppingList = '/shoppingList',
-      expanses = '/wydatki';
+      expanses = '/wydatki',
+      shoppingListForm = '/shoppingListFrom';
 }

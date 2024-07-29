@@ -19,5 +19,19 @@
     "unservicedError": "Nieobsługiwany błąd",
     "emptyUserError": "Błąd przy pobieraniu użytkownika",
     "shoppingLists": "Listy zakupów",
-    "expanses": "Wydatki"
+    "expanses": "Wydatki",
+    "createShoppingList": "Stwórz listę zakupów",
+    "cancel": "Anuluj",
+    "save": "Zapisz",
+    "piece": "Sztuk",
+    "packing": "Opakowań",
+    "grams": "Gramy",
+    "kilograms": "Kilogramy",
+    "clear": "Wyczyść",
+    "name": "Nazwa",
+    "quantity": "Ilość",
+    "enterName": "Podaj nazwę",
+    "enterQuantity": "Podaj ilość",
+    "enterRequiredFields": "Uzupełnij wymagane pola",
+    "addedShoppingList": "Lista zakupów została dodana"
 }

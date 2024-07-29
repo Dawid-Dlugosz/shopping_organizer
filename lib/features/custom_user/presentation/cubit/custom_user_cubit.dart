@@ -60,7 +60,7 @@ class CustomUserCubit extends Cubit<CustomUserState> {
     final failureOrUnit = await customUserRepository.createCustomUser(
       customUser: customUser,
     );
-    print('dsasdsd ${failureOrUnit}');
+
     failureOrUnit.fold(
       (_) => emit(
         CustomUserState.error(
