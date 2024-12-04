@@ -28,8 +28,12 @@ mixin _$ShoppingListContainer {
       throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this ShoppingListContainer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingListContainer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShoppingListContainerCopyWith<ShoppingListContainer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$ShoppingListContainerCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShoppingListContainer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +100,8 @@ class _$ShoppingListContainerCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ShoppingListContainer
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShoppingListItemCollectionCopyWith<$Res> get shoppingListItemCollection {
@@ -133,6 +141,8 @@ class __$$ShoppingListContainerImplCopyWithImpl<$Res>
       $Res Function(_$ShoppingListContainerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingListContainer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -213,12 +223,14 @@ class _$ShoppingListContainerImpl implements _ShoppingListContainer {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, ownerId, ownerNickname, id,
       shoppingListItemCollection, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingListContainer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShoppingListContainerImplCopyWith<_$ShoppingListContainerImpl>
@@ -254,8 +266,11 @@ abstract class _ShoppingListContainer implements ShoppingListContainer {
   ShoppingListItemCollection get shoppingListItemCollection;
   @override
   String? get name;
+
+  /// Create a copy of ShoppingListContainer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShoppingListContainerImplCopyWith<_$ShoppingListContainerImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

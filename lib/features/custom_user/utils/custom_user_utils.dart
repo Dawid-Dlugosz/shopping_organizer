@@ -13,6 +13,8 @@ class CustomUserUtils {
       return AppLocalizations.of(context)!.emptyUserError;
     } else if (message == CustomUserError.fcmError.code) {
       return AppLocalizations.of(context)!.unservicedError;
+    } else if (message == CustomUserError.updateList.code) {
+      return AppLocalizations.of(context)!.addShopingListError;
     }
     return AppLocalizations.of(context)!.unexpectedError;
   }

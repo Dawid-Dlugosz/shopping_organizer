@@ -206,6 +206,26 @@ void main() {
           );
         },
       );
+
+      group('addShoppingList', () {
+        blocTest(
+          'Shoule emit [Loaded] with new shoppingListId',
+          build: () => cubit,
+          seed: () => const CustomUserState.loaded(customUser: customUser),
+          act: (_) {
+            cubit.addShoppingList(
+              shoppingListID: '123',
+            );
+          },
+          expect: () => [
+            CustomUserState.loaded(
+              customUser: customUser.copyWith(
+                shoppingLists: ['123'],
+              ),
+            )
+          ],
+        );
+      });
     },
   );
 }

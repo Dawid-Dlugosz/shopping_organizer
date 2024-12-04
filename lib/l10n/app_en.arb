@@ -33,5 +33,6 @@
     "enterName": "Enter name",
     "enterQuantity": "Enter quantity",
     "enterRequiredFields": "Complete all required fields",
-    "addedShoppingList": "Shopping list was added"
+    "addedShoppingList": "Shopping list was added",
+    "addShopingListError": "Problem with add shopping list"
 }

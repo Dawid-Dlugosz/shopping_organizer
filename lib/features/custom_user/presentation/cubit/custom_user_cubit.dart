@@ -72,4 +72,31 @@ class CustomUserCubit extends Cubit<CustomUserState> {
       ),
     );
   }
+
+  // TODO TESTY
+  void addShoppingList({required String shoppingListID}) {
+    state.mapOrNull(loaded: (value) async {
+      final shoppingsLists = [
+        ...value.customUser.shoppingLists,
+        shoppingListID
+      ];
+      final failureOrUnit = await customUserRepository.updateShoppingList(
+        shoppingList: shoppingsLists,
+        userId: value.customUser.userId,
+      );
+
+      failureOrUnit.fold(
+        (_) => emit(
+          const CustomUserState.error(message: ''),
+        ),
+        (_) => emit(
+          CustomUserState.loaded(
+            customUser: value.customUser.copyWith(
+              shoppingLists: shoppingsLists,
+            ),
+          ),
+        ),
+      );
+    });
+  }
 }

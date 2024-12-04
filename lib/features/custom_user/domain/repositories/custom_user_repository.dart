@@ -15,4 +15,9 @@ abstract class CustomUserRepository {
   Future<Either<Failure, CustomUser>> getCustomUser({
     required String userId,
   });
+
+  Future<Either<Failure, Unit>> updateShoppingList({
+    required List<String> shoppingList,
+    required String userId,
+  });
 }

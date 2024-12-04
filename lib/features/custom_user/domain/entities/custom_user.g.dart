@@ -12,7 +12,7 @@ _$CustomUserImpl _$$CustomUserImplFromJson(Map<String, dynamic> json) =>
       fcmToken: json['fcmToken'] as String,
       userId: json['userId'] as String,
       shoppingLists: (json['shoppingLists'] as List<dynamic>)
-          .map((e) => CustomUserShopList.fromJson(e as Map<String, dynamic>))
+          .map((e) => e as String)
           .toList(),
     );
 
@@ -21,5 +21,5 @@ Map<String, dynamic> _$$CustomUserImplToJson(_$CustomUserImpl instance) =>
       'nickname': instance.nickname,
       'fcmToken': instance.fcmToken,
       'userId': instance.userId,
-      'shoppingLists': instance.shoppingLists.map((e) => e.toJson()).toList(),
+      'shoppingLists': instance.shoppingLists,
     };
