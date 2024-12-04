@@ -23,11 +23,14 @@ mixin _$CustomUser {
   String get nickname => throw _privateConstructorUsedError;
   String get fcmToken => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
-  List<CustomUserShopList> get shoppingLists =>
-      throw _privateConstructorUsedError;
+  List<String> get shoppingLists => throw _privateConstructorUsedError;
 
+  /// Serializes this CustomUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomUserCopyWith<CustomUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,7 +45,7 @@ abstract class $CustomUserCopyWith<$Res> {
       {String nickname,
       String fcmToken,
       String userId,
-      List<CustomUserShopList> shoppingLists});
+      List<String> shoppingLists});
 }
 
 /// @nodoc
@@ -55,6 +58,8 @@ class _$CustomUserCopyWithImpl<$Res, $Val extends CustomUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -79,7 +84,7 @@ class _$CustomUserCopyWithImpl<$Res, $Val extends CustomUser>
       shoppingLists: null == shoppingLists
           ? _value.shoppingLists
           : shoppingLists // ignore: cast_nullable_to_non_nullable
-              as List<CustomUserShopList>,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -96,7 +101,7 @@ abstract class _$$CustomUserImplCopyWith<$Res>
       {String nickname,
       String fcmToken,
       String userId,
-      List<CustomUserShopList> shoppingLists});
+      List<String> shoppingLists});
 }
 
 /// @nodoc
@@ -107,6 +112,8 @@ class __$$CustomUserImplCopyWithImpl<$Res>
       _$CustomUserImpl _value, $Res Function(_$CustomUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,7 +138,7 @@ class __$$CustomUserImplCopyWithImpl<$Res>
       shoppingLists: null == shoppingLists
           ? _value._shoppingLists
           : shoppingLists // ignore: cast_nullable_to_non_nullable
-              as List<CustomUserShopList>,
+              as List<String>,
     ));
   }
 }
@@ -144,7 +151,7 @@ class _$CustomUserImpl implements _CustomUser {
       {required this.nickname,
       required this.fcmToken,
       required this.userId,
-      required final List<CustomUserShopList> shoppingLists})
+      required final List<String> shoppingLists})
       : _shoppingLists = shoppingLists;
 
   factory _$CustomUserImpl.fromJson(Map<String, dynamic> json) =>
@@ -156,9 +163,9 @@ class _$CustomUserImpl implements _CustomUser {
   final String fcmToken;
   @override
   final String userId;
-  final List<CustomUserShopList> _shoppingLists;
+  final List<String> _shoppingLists;
   @override
-  List<CustomUserShopList> get shoppingLists {
+  List<String> get shoppingLists {
     if (_shoppingLists is EqualUnmodifiableListView) return _shoppingLists;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_shoppingLists);
@@ -183,12 +190,14 @@ class _$CustomUserImpl implements _CustomUser {
                 .equals(other._shoppingLists, _shoppingLists));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, nickname, fcmToken, userId,
       const DeepCollectionEquality().hash(_shoppingLists));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomUserImplCopyWith<_$CustomUserImpl> get copyWith =>
@@ -204,11 +213,10 @@ class _$CustomUserImpl implements _CustomUser {
 
 abstract class _CustomUser implements CustomUser {
   const factory _CustomUser(
-          {required final String nickname,
-          required final String fcmToken,
-          required final String userId,
-          required final List<CustomUserShopList> shoppingLists}) =
-      _$CustomUserImpl;
+      {required final String nickname,
+      required final String fcmToken,
+      required final String userId,
+      required final List<String> shoppingLists}) = _$CustomUserImpl;
 
   factory _CustomUser.fromJson(Map<String, dynamic> json) =
       _$CustomUserImpl.fromJson;
@@ -220,9 +228,12 @@ abstract class _CustomUser implements CustomUser {
   @override
   String get userId;
   @override
-  List<CustomUserShopList> get shoppingLists;
+  List<String> get shoppingLists;
+
+  /// Create a copy of CustomUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomUserImplCopyWith<_$CustomUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

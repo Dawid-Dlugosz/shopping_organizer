@@ -24,8 +24,12 @@ mixin _$ShoppingListItemCollection {
   List<ShoppingListItem> get shoppingListItems =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this ShoppingListItemCollection to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingListItemCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShoppingListItemCollectionCopyWith<ShoppingListItemCollection>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$ShoppingListItemCollectionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShoppingListItemCollection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$ShoppingListItemCollectionImplCopyWithImpl<$Res>
       $Res Function(_$ShoppingListItemCollectionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingListItemCollection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,12 +145,14 @@ class _$ShoppingListItemCollectionImpl extends _ShoppingListItemCollection {
                 .equals(other._shoppingListItems, _shoppingListItems));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_shoppingListItems));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingListItemCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShoppingListItemCollectionImplCopyWith<_$ShoppingListItemCollectionImpl>
@@ -168,8 +178,11 @@ abstract class _ShoppingListItemCollection extends ShoppingListItemCollection {
 
   @override
   List<ShoppingListItem> get shoppingListItems;
+
+  /// Create a copy of ShoppingListItemCollection
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShoppingListItemCollectionImplCopyWith<_$ShoppingListItemCollectionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

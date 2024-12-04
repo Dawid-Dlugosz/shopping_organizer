@@ -25,6 +25,8 @@ class HomePage extends StatelessWidget {
   void _createShoppingList(BuildContext context) {
     context.push<String?>(RouteNames.shoppingListForm).then((value) {
       if (value != null) {
+        context.read<CustomUserCubit>().addShoppingList(shoppingListID: value);
+
         ScaffoldMessenger.of(context).clearSnackBars();
 
         ScaffoldMessenger.of(context).showSnackBar(

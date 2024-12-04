@@ -28,8 +28,12 @@ mixin _$ShoppingListItem {
   @JsonKey(includeFromJson: false)
   String? get localImagePath => throw _privateConstructorUsedError;
 
+  /// Serializes this ShoppingListItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingListItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShoppingListItemCopyWith<ShoppingListItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$ShoppingListItemCopyWithImpl<$Res, $Val extends ShoppingListItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShoppingListItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,6 +129,8 @@ class __$$ShoppingListItemImplCopyWithImpl<$Res>
       $Res Function(_$ShoppingListItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingListItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -214,12 +222,14 @@ class _$ShoppingListItemImpl extends _ShoppingListItem {
                 other.localImagePath == localImagePath));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, quantity, countType,
       networkImagePath, localImagePath);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingListItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShoppingListItemImplCopyWith<_$ShoppingListItemImpl> get copyWith =>
@@ -261,8 +271,11 @@ abstract class _ShoppingListItem extends ShoppingListItem {
   @override
   @JsonKey(includeFromJson: false)
   String? get localImagePath;
+
+  /// Create a copy of ShoppingListItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShoppingListItemImplCopyWith<_$ShoppingListItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

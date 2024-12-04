@@ -23,7 +23,9 @@ mixin _$ShoppingListItemControllers {
   ImagePicker get imagePicker => throw _privateConstructorUsedError;
   String? get imageLocalPath => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingListItemControllers
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShoppingListItemControllersCopyWith<ShoppingListItemControllers>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -54,6 +56,8 @@ class _$ShoppingListItemControllersCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShoppingListItemControllers
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$ShoppingListItemControllersImplCopyWithImpl<$Res>
       $Res Function(_$ShoppingListItemControllersImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingListItemControllers
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -181,7 +187,9 @@ class _$ShoppingListItemControllersImpl
   int get hashCode => Object.hash(runtimeType, nameController,
       quantityController, imagePicker, imageLocalPath);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingListItemControllers
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShoppingListItemControllersImplCopyWith<_$ShoppingListItemControllersImpl>
@@ -205,8 +213,11 @@ abstract class _ShoppingListItemControllers
   ImagePicker get imagePicker;
   @override
   String? get imageLocalPath;
+
+  /// Create a copy of ShoppingListItemControllers
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShoppingListItemControllersImplCopyWith<_$ShoppingListItemControllersImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

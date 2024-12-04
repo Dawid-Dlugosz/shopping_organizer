@@ -33,5 +33,6 @@
     "enterName": "Podaj nazwę",
     "enterQuantity": "Podaj ilość",
     "enterRequiredFields": "Uzupełnij wymagane pola",
-    "addedShoppingList": "Lista zakupów została dodana"
+    "addedShoppingList": "Lista zakupów została dodana",
+    "addShopingListError": "Problem z dodaniem listy zakupów"
 }

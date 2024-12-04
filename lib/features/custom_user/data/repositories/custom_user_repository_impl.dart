@@ -67,8 +67,9 @@ class CustomUserRepositoryImpl implements CustomUserRepository {
   }
 
   @override
-  Future<Either<Failure, CustomUser>> getCustomUser(
-      {required String userId}) async {
+  Future<Either<Failure, CustomUser>> getCustomUser({
+    required String userId,
+  }) async {
     try {
       final documentSnapshot = await firebaseFirestore
           .collection(FirestoreCollectionType.users.type)
@@ -90,6 +91,31 @@ class CustomUserRepositoryImpl implements CustomUserRepository {
       );
 
       return left(const Failure.general());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> updateShoppingList({
+    required List<String> shoppingList,
+    required String userId,
+  }) async {
+    try {
+      await firebaseFirestore
+          .collection(FirestoreCollectionType.users.type)
+          .doc(userId)
+          .update({
+        'shoppingLists': shoppingList,
+      });
+
+      return const Right(unit);
+    } catch (e, s) {
+      _logger.e(
+        'CustomUserRepositoryImpl getCustomUser',
+        error: e,
+        stackTrace: s,
+      );
+
+      return const Left(Failure.general());
     }
   }
 }
