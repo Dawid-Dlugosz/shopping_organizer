@@ -4,14 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
 
-class RegisterContent extends StatefulWidget {
-  const RegisterContent({super.key});
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({super.key});
 
   @override
-  State<RegisterContent> createState() => _RegisterContentState();
+  State<RegisterForm> createState() => RegisterFormState();
 }
 
-class _RegisterContentState extends State<RegisterContent> {
+class RegisterFormState extends State<RegisterForm> {
   late final TextEditingController _emailController;
   late final TextEditingController _nicknameController;
   late final TextEditingController _passwordController;
@@ -62,9 +62,6 @@ class _RegisterContentState extends State<RegisterContent> {
             decoration: InputDecoration(
               label: Text(
                 AppLocalizations.of(context)!.email,
-                style: const TextStyle(
-                  fontSize: 24,
-                ),
               ),
             ),
           ),
@@ -83,9 +80,6 @@ class _RegisterContentState extends State<RegisterContent> {
             decoration: InputDecoration(
               label: Text(
                 AppLocalizations.of(context)!.nickname,
-                style: const TextStyle(
-                  fontSize: 24,
-                ),
               ),
             ),
           ),
@@ -105,11 +99,8 @@ class _RegisterContentState extends State<RegisterContent> {
             decoration: InputDecoration(
               label: Text(
                 AppLocalizations.of(context)!.password,
-                style: const TextStyle(
-                  fontSize: 24,
-                ),
               ),
-              suffix: IconButton(
+              suffixIcon: IconButton(
                 icon: Icon(
                   _isObscureText
                       ? Icons.remove_red_eye_outlined
@@ -119,18 +110,22 @@ class _RegisterContentState extends State<RegisterContent> {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                context.read<AuthCubit>().signOn(
-                      email: _emailController.text,
-                      password: _passwordController.text,
-                      nickname: _nicknameController.text,
-                    );
-              }
-            },
-            child: Text(
-              AppLocalizations.of(context)!.signOn,
+          const SizedBox(height: 20),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  context.read<AuthCubit>().createAccount(
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                        nickname: _nicknameController.text,
+                      );
+                }
+              },
+              child: Text(
+                AppLocalizations.of(context)!.signOn,
+              ),
             ),
           )
         ],

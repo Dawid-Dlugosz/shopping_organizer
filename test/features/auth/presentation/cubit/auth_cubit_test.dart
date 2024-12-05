@@ -62,7 +62,7 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signIn(
+                () => authRepository.login(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -76,7 +76,7 @@ void main() {
                   userId: any(named: 'userId'))).thenAnswer((_) async => {});
             },
             act: (_) {
-              cubit.signIn(
+              cubit.login(
                 email: 'email',
                 password: 'password',
               );
@@ -92,14 +92,14 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signIn(
+                () => authRepository.login(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
               ).thenAnswer((_) async => const Left(Failure.general()));
             },
             act: (_) {
-              cubit.signIn(
+              cubit.login(
                 email: 'email',
                 password: 'password',
               );
@@ -115,7 +115,7 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signIn(
+                () => authRepository.login(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -128,7 +128,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signIn(
+              cubit.login(
                 email: 'email',
                 password: 'password',
               );
@@ -146,7 +146,7 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signIn(
+                () => authRepository.login(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -159,7 +159,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signIn(
+              cubit.login(
                 email: 'email',
                 password: 'password',
               );
@@ -177,7 +177,7 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signIn(
+                () => authRepository.login(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -190,7 +190,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signIn(
+              cubit.login(
                 email: 'email',
                 password: 'password',
               );
@@ -208,7 +208,7 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signIn(
+                () => authRepository.login(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -222,7 +222,7 @@ void main() {
             },
             skip: 1,
             act: (_) {
-              cubit.signIn(
+              cubit.login(
                 email: 'email',
                 password: 'password',
               );
@@ -242,7 +242,7 @@ void main() {
             ),
             setUp: () {
               when(
-                () => authRepository.signIn(
+                () => authRepository.login(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -255,7 +255,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signIn(
+              cubit.login(
                 email: 'email',
                 password: 'password',
               );
@@ -275,7 +275,7 @@ void main() {
             ),
             setUp: () {
               when(
-                () => authRepository.signIn(
+                () => authRepository.login(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -288,7 +288,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signIn(
+              cubit.login(
                 email: 'email',
                 password: 'password',
               );
@@ -311,7 +311,7 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signOn(
+                () => authRepository.createAccount(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -336,7 +336,7 @@ void main() {
               when(() => userCredential.user).thenReturn(user);
             },
             act: (_) {
-              cubit.signOn(
+              cubit.createAccount(
                 email: 'email',
                 password: 'password',
                 nickname: 'nickname',
@@ -353,7 +353,7 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signOn(
+                () => authRepository.createAccount(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -366,7 +366,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signOn(
+              cubit.createAccount(
                 email: 'email',
                 password: 'password',
                 nickname: 'nickname',
@@ -385,7 +385,7 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signOn(
+                () => authRepository.createAccount(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -398,7 +398,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signOn(
+              cubit.createAccount(
                 email: 'email',
                 password: 'password',
                 nickname: 'nickname',
@@ -417,7 +417,7 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signOn(
+                () => authRepository.createAccount(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -430,7 +430,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signOn(
+              cubit.createAccount(
                 email: 'email',
                 password: 'password',
                 nickname: 'nickname',
@@ -452,7 +452,7 @@ void main() {
             ),
             setUp: () {
               when(
-                () => authRepository.signOn(
+                () => authRepository.createAccount(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -463,7 +463,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signOn(
+              cubit.createAccount(
                 email: 'email',
                 password: 'password',
                 nickname: 'nickname',
@@ -485,7 +485,7 @@ void main() {
             ),
             setUp: () {
               when(
-                () => authRepository.signOn(
+                () => authRepository.createAccount(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -496,7 +496,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signOn(
+              cubit.createAccount(
                 email: 'email',
                 password: 'password',
                 nickname: 'nickname',
@@ -515,7 +515,7 @@ void main() {
             build: () => cubit,
             setUp: () {
               when(
-                () => authRepository.signOn(
+                () => authRepository.createAccount(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
@@ -526,7 +526,7 @@ void main() {
               );
             },
             act: (_) {
-              cubit.signOn(
+              cubit.createAccount(
                 email: 'email',
                 password: 'password',
                 nickname: 'nickname',

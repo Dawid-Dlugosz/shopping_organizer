@@ -46,7 +46,7 @@ void main() {
 
               // when(() => userCredential.user).thenReturn(user);
 
-              final failureOrUserCredential = await authRepositoryImpl.signIn(
+              final failureOrUserCredential = await authRepositoryImpl.login(
                 email: 'email',
                 password: 'password',
               );
@@ -69,7 +69,7 @@ void main() {
                 ),
               );
 
-              final failureOrUserCredential = await authRepositoryImpl.signIn(
+              final failureOrUserCredential = await authRepositoryImpl.login(
                 email: 'email',
                 password: 'password',
               );
@@ -99,7 +99,7 @@ void main() {
                 ),
               );
 
-              final failureOrUserCredential = await authRepositoryImpl.signIn(
+              final failureOrUserCredential = await authRepositoryImpl.login(
                 email: 'email',
                 password: 'password',
               );
@@ -129,7 +129,7 @@ void main() {
                 ),
               );
 
-              final failureOrUserCredential = await authRepositoryImpl.signIn(
+              final failureOrUserCredential = await authRepositoryImpl.login(
                 email: 'email',
                 password: 'password',
               );
@@ -159,7 +159,7 @@ void main() {
                 ),
               );
 
-              final failureOrUserCredential = await authRepositoryImpl.signIn(
+              final failureOrUserCredential = await authRepositoryImpl.login(
                 email: 'email',
                 password: 'password',
               );
@@ -185,7 +185,7 @@ void main() {
                 ),
               ).thenThrow(Exception());
 
-              final failureOrUserCredential = await authRepositoryImpl.signIn(
+              final failureOrUserCredential = await authRepositoryImpl.login(
                 email: 'email',
                 password: 'password',
               );
@@ -220,7 +220,8 @@ void main() {
                 (_) async {},
               );
 
-              final failureOrUserCredential = await authRepositoryImpl.signOn(
+              final failureOrUserCredential =
+                  await authRepositoryImpl.createAccount(
                 email: 'email',
                 password: 'password',
               );
@@ -242,7 +243,8 @@ void main() {
                 ),
               ).thenThrow(Exception());
 
-              final failureOrUserCredential = await authRepositoryImpl.signOn(
+              final failureOrUserCredential =
+                  await authRepositoryImpl.createAccount(
                 email: 'email',
                 password: 'password',
               );
@@ -270,7 +272,8 @@ void main() {
                 ),
               );
 
-              final failureOrUserCredential = await authRepositoryImpl.signOn(
+              final failureOrUserCredential =
+                  await authRepositoryImpl.createAccount(
                 email: 'email',
                 password: 'password',
               );
@@ -300,7 +303,8 @@ void main() {
                 ),
               );
 
-              final failureOrUserCredential = await authRepositoryImpl.signOn(
+              final failureOrUserCredential =
+                  await authRepositoryImpl.createAccount(
                 email: 'email',
                 password: 'password',
               );
@@ -330,7 +334,8 @@ void main() {
                 ),
               );
 
-              final failureOrUserCredential = await authRepositoryImpl.signOn(
+              final failureOrUserCredential =
+                  await authRepositoryImpl.createAccount(
                 email: 'email',
                 password: 'password',
               );

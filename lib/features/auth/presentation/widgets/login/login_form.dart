@@ -92,7 +92,7 @@ class _LoginFormState extends State<LoginForm> {
             child: ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  context.read<AuthCubit>().signIn(
+                  context.read<AuthCubit>().login(
                         email: _emailTextEditingController.text,
                         password: _passwordTextEditingController.text,
                       );

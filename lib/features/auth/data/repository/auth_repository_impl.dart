@@ -14,7 +14,7 @@ class AuthRepositoryImpl implements AuthRepository {
   final Logger _logger = Logger();
 
   @override
-  Future<Either<Failure, UserCredential>> signIn({
+  Future<Either<Failure, UserCredential>> login({
     required String email,
     required String password,
   }) async {
@@ -39,15 +39,20 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, UserCredential>> signOn({
+  Future<Either<Failure, UserCredential>> createAccount({
     required String email,
     required String password,
+    required String nickname,
   }) async {
     try {
-      final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
+      final userCredential = await firebaseAuth
+          .createUserWithEmailAndPassword(
         email: email,
         password: password,
-      );
+      )
+          .then((result) {
+        result.user?.updateProfile(displayName: nickname);
+      });
 
       return Right(userCredential);
     } on FirebaseAuthException catch (e) {
