@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>742083963858-h0nhkmemk4nb7hejctaumff4napuhkr3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.742083963858-h0nhkmemk4nb7hejctaumff4napuhkr3</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>742083963858-61jru2u54urhjs03toh30osa215e8sc2.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyClSSHV2CdYx8X4iR9hGcNScne57iMgWJo</string>
 	<key>GCM_SENDER_ID</key>
@@ -26,5 +32,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:742083963858:ios:8a0abb4d4885307345760b</string>
+	<key>DATABASE_URL</key>
+	<string>https://shopping-finanse-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>
