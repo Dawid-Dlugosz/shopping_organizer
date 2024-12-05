@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shopping_organizer/core/custom_theme.dart';
 
 import 'package:shopping_organizer/core/go_router/custom_router_config.dart';
 import 'package:shopping_organizer/core/widgets/custom_multi_bloc_provider.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     return CustomMultiBlocProvider(
       child: MaterialApp.router(
         title: 'Flutter Demo',
-        theme: ThemeData.light(),
+        theme: CustomTheme.themeData,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         routerConfig: CustomRouter.routers,

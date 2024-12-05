@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:shopping_organizer/features/auth/presentation/widgets/header.dart';
+import 'package:shopping_organizer/features/auth/presentation/widgets/header_text.dart';
+import 'package:shopping_organizer/features/auth/presentation/widgets/login/login_form.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/register/register_content.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -28,10 +29,7 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Header(title: AppLocalizations.of(context)!.register),
-              const SizedBox(height: 20),
-              const Divider(),
-              const SizedBox(height: 20),
+              HeaderText(title: AppLocalizations.of(context)!.createAccount),
               const RegisterContent(),
             ],
           ),

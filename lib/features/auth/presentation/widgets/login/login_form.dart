@@ -4,14 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
 
-class LoginContent extends StatefulWidget {
-  const LoginContent({super.key});
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
 
   @override
-  State<LoginContent> createState() => _LoginContentState();
+  State<LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginContentState extends State<LoginContent> {
+class _LoginFormState extends State<LoginForm> {
   late final TextEditingController _emailTextEditingController;
   late final TextEditingController _passwordTextEditingController;
   late final GlobalKey<FormState> _formKey;
@@ -55,16 +55,9 @@ class _LoginContentState extends State<LoginContent> {
               return null;
             },
             controller: _emailTextEditingController,
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-            ),
             decoration: InputDecoration(
               label: Text(
                 AppLocalizations.of(context)!.email,
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Theme.of(context).primaryColor,
-                ),
               ),
             ),
           ),
@@ -78,13 +71,9 @@ class _LoginContentState extends State<LoginContent> {
               return null;
             },
             controller: _passwordTextEditingController,
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-            ),
             obscureText: _isObscureText,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(10),
-              suffix: IconButton(
+              suffixIcon: IconButton(
                 icon: Icon(
                   _isObscureText
                       ? Icons.remove_red_eye_outlined
@@ -94,25 +83,24 @@ class _LoginContentState extends State<LoginContent> {
               ),
               label: Text(
                 AppLocalizations.of(context)!.password,
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Theme.of(context).primaryColor,
-                ),
               ),
             ),
           ),
           const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                context.read<AuthCubit>().signIn(
-                      email: _emailTextEditingController.text,
-                      password: _passwordTextEditingController.text,
-                    );
-              }
-            },
-            child: Text(
-              AppLocalizations.of(context)!.logIn.toUpperCase(),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  context.read<AuthCubit>().signIn(
+                        email: _emailTextEditingController.text,
+                        password: _passwordTextEditingController.text,
+                      );
+                }
+              },
+              child: Text(
+                AppLocalizations.of(context)!.logIn.toUpperCase(),
+              ),
             ),
           )
         ],

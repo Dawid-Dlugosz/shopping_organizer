@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shopping_organizer/core/color_extension.dart';
 
 import 'package:shopping_organizer/core/go_router/route_names.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:shopping_organizer/features/auth/presentation/dialogs/auth_error_dialog.dart';
 import 'package:shopping_organizer/features/auth/presentation/utils/auth_cubit_utils.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/custom_user_listener.dart';
-import 'package:shopping_organizer/features/auth/presentation/widgets/header.dart';
-import 'package:shopping_organizer/features/auth/presentation/widgets/login/login_content.dart';
-import 'package:shopping_organizer/features/auth/presentation/widgets/register/register_button.dart';
+import 'package:shopping_organizer/features/auth/presentation/widgets/header_text.dart';
+import 'package:shopping_organizer/features/auth/presentation/widgets/login/external_login.dart';
+import 'package:shopping_organizer/features/auth/presentation/widgets/login/login_form.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -49,24 +50,37 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 150,
-                    ),
                     Text(
                       'Shopping Organizer',
                       style: TextStyle(
-                        color: Theme.of(context).primaryColor,
+                        color: Theme.of(context)
+                            .extension<ColorExtension>()!
+                            .accentColor,
                         fontSize: 30,
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Header(title: AppLocalizations.of(context)!.logIn),
+                    HeaderText(
+                      title: AppLocalizations.of(context)!.logIn,
+                    ),
                     const SizedBox(height: 20),
-                    const LoginContent(),
-                    const SizedBox(height: 20),
-                    const Divider(),
-                    const SizedBox(height: 20),
-                    const RegisterButtons(),
+                    const LoginForm(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.notAccount,
+                        ),
+                        TextButton(
+                          onPressed: () =>
+                              context.push(RouteNames.registerScreen),
+                          child: Text(
+                            AppLocalizations.of(context)!.createAccount,
+                          ),
+                        )
+                      ],
+                    ),
+                    const ExternalLogin(),
                   ],
                 ),
               ),
