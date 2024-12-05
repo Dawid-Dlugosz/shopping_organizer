@@ -7,7 +7,7 @@ import 'package:shopping_organizer/core/color_extension.dart';
 
 import 'package:shopping_organizer/core/go_router/route_names.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:shopping_organizer/features/auth/presentation/dialogs/auth_error_dialog.dart';
+import 'package:shopping_organizer/features/auth/presentation/dialogs/error_dialog.dart';
 import 'package:shopping_organizer/features/auth/presentation/utils/auth_cubit_utils.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/custom_user_listener.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/header_text.dart';
@@ -36,7 +36,8 @@ class LoginPage extends StatelessWidget {
 
               showDialog(
                 context: context,
-                builder: (_) => AuthErrorDialog(
+                builder: (_) => ErrorDialog(
+                  title: AppLocalizations.of(context)!.errorOcured,
                   message: message,
                 ),
               );
@@ -46,43 +47,41 @@ class LoginPage extends StatelessWidget {
         child: Scaffold(
           body: Center(
             child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    Text(
-                      'Shopping Organizer',
-                      style: TextStyle(
-                        color: Theme.of(context)
-                            .extension<ColorExtension>()!
-                            .accentColor,
-                        fontSize: 30,
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  Text(
+                    'Shopping Organizer',
+                    style: TextStyle(
+                      color: Theme.of(context)
+                          .extension<ColorExtension>()!
+                          .accentColor,
+                      fontSize: 30,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  HeaderText(
+                    title: AppLocalizations.of(context)!.logIn,
+                  ),
+                  const SizedBox(height: 20),
+                  const LoginForm(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.notAccount,
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    HeaderText(
-                      title: AppLocalizations.of(context)!.logIn,
-                    ),
-                    const SizedBox(height: 20),
-                    const LoginForm(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.notAccount,
+                      TextButton(
+                        onPressed: () =>
+                            context.push(RouteNames.registerScreen),
+                        child: Text(
+                          AppLocalizations.of(context)!.createAccount,
                         ),
-                        TextButton(
-                          onPressed: () =>
-                              context.push(RouteNames.registerScreen),
-                          child: Text(
-                            AppLocalizations.of(context)!.createAccount,
-                          ),
-                        )
-                      ],
-                    ),
-                    const ExternalLogin(),
-                  ],
-                ),
+                      )
+                    ],
+                  ),
+                  const ExternalLogin(),
+                ],
               ),
             ),
           ),

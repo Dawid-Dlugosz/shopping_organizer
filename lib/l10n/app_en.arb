@@ -12,7 +12,6 @@
     "wrongPassword": "Wrong password",
     "errorOcured": "An error occurred while logging in:",
     "unexpectedError": "Unexpected Error",
-    "signOn": "Sign on",
     "enterEmail": "Enter login",
     "enterPassword": "Enter password",
     "enterNickname": "Enter nickname",
@@ -35,5 +34,6 @@
     "enterQuantity": "Enter quantity",
     "enterRequiredFields": "Complete all required fields",
     "addedShoppingList": "Shopping list was added",
-    "addShopingListError": "Problem with add shopping list"
+    "addShopingListError": "Problem with add shopping list",
+    "emailInUse": "E-mail alredy exist"
 }

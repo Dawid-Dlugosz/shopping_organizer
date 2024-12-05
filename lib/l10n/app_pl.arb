@@ -12,7 +12,6 @@
     "wrongPassword": "Błędne hasło",
     "errorOcured": "Wystąpił błąd podczas logowania:",
     "unexpectedError": "Nieoczekiwany błąd",
-    "signOn": "Rejestracja",
     "enterEmail": "Podaj e-mail",
     "enterPassword": "Podaj hasło",
     "enterNickname": "Enter nickname",
@@ -35,5 +34,6 @@
     "enterQuantity": "Podaj ilość",
     "enterRequiredFields": "Uzupełnij wymagane pola",
     "addedShoppingList": "Lista zakupów została dodana",
-    "addShopingListError": "Problem z dodaniem listy zakupów"
+    "addShopingListError": "Problem z dodaniem listy zakupów",
+    "emailInUse": "Adres E-mail istnieje"
 }

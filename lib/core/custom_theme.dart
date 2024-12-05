@@ -79,5 +79,13 @@ class CustomTheme {
         foregroundColor: WidgetStatePropertyAll(colorExtension.accentColor),
       ),
     ),
+    dialogTheme: DialogTheme(
+      barrierColor: colorExtension.accentColor.withOpacity(0.1),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      insetPadding: const EdgeInsets.all(10),
+      shadowColor: colorExtension.mainDark,
+    ),
   );
 }

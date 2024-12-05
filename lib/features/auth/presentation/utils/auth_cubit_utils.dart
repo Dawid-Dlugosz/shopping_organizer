@@ -4,18 +4,18 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AuthCubitUtils {
   static String getErrorText(String code, BuildContext context) {
+    print('code: $code');
     if (code == FirebaseAuthError.invalidEmail.code) {
       return AppLocalizations.of(context)!.invalidEmail;
-    }
-    if (code == FirebaseAuthError.userDisabled.code) {
+    } else if (code == FirebaseAuthError.userDisabled.code) {
       // TODO POPRAWIĆ TŁUMACZENIE
       return AppLocalizations.of(context)!.userDisabled;
-    }
-    if (code == FirebaseAuthError.userNotFound.code) {
+    } else if (code == FirebaseAuthError.userNotFound.code) {
       return AppLocalizations.of(context)!.userNotFound;
-    }
-    if (code == FirebaseAuthError.wrongPassword.code) {
+    } else if (code == FirebaseAuthError.wrongPassword.code) {
       return AppLocalizations.of(context)!.wrongPassword;
+    } else if (code == FirebaseAuthError.emailAlreadyInUse.code) {
+      return AppLocalizations.of(context)!.emailInUse;
     }
     return '';
   }
