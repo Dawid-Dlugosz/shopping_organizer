@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_organizer/core/color_extension.dart';
 
-class ErrorDialog extends StatelessWidget {
-  const ErrorDialog({
+class TitleDialog extends StatelessWidget {
+  const TitleDialog({
     required this.title,
     required this.message,
     super.key,

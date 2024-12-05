@@ -23,6 +23,8 @@ mixin _$CustomUser {
   String get nickname => throw _privateConstructorUsedError;
   String get fcmToken => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
+  int get maxListCount => throw _privateConstructorUsedError;
+  bool get isPremium => throw _privateConstructorUsedError;
   List<String> get shoppingLists => throw _privateConstructorUsedError;
 
   /// Serializes this CustomUser to a JSON map.
@@ -45,6 +47,8 @@ abstract class $CustomUserCopyWith<$Res> {
       {String nickname,
       String fcmToken,
       String userId,
+      int maxListCount,
+      bool isPremium,
       List<String> shoppingLists});
 }
 
@@ -66,6 +70,8 @@ class _$CustomUserCopyWithImpl<$Res, $Val extends CustomUser>
     Object? nickname = null,
     Object? fcmToken = null,
     Object? userId = null,
+    Object? maxListCount = null,
+    Object? isPremium = null,
     Object? shoppingLists = null,
   }) {
     return _then(_value.copyWith(
@@ -81,6 +87,14 @@ class _$CustomUserCopyWithImpl<$Res, $Val extends CustomUser>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      maxListCount: null == maxListCount
+          ? _value.maxListCount
+          : maxListCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      isPremium: null == isPremium
+          ? _value.isPremium
+          : isPremium // ignore: cast_nullable_to_non_nullable
+              as bool,
       shoppingLists: null == shoppingLists
           ? _value.shoppingLists
           : shoppingLists // ignore: cast_nullable_to_non_nullable
@@ -101,6 +115,8 @@ abstract class _$$CustomUserImplCopyWith<$Res>
       {String nickname,
       String fcmToken,
       String userId,
+      int maxListCount,
+      bool isPremium,
       List<String> shoppingLists});
 }
 
@@ -120,6 +136,8 @@ class __$$CustomUserImplCopyWithImpl<$Res>
     Object? nickname = null,
     Object? fcmToken = null,
     Object? userId = null,
+    Object? maxListCount = null,
+    Object? isPremium = null,
     Object? shoppingLists = null,
   }) {
     return _then(_$CustomUserImpl(
@@ -135,6 +153,14 @@ class __$$CustomUserImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      maxListCount: null == maxListCount
+          ? _value.maxListCount
+          : maxListCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      isPremium: null == isPremium
+          ? _value.isPremium
+          : isPremium // ignore: cast_nullable_to_non_nullable
+              as bool,
       shoppingLists: null == shoppingLists
           ? _value._shoppingLists
           : shoppingLists // ignore: cast_nullable_to_non_nullable
@@ -151,6 +177,8 @@ class _$CustomUserImpl implements _CustomUser {
       {required this.nickname,
       required this.fcmToken,
       required this.userId,
+      this.maxListCount = 4,
+      this.isPremium = false,
       required final List<String> shoppingLists})
       : _shoppingLists = shoppingLists;
 
@@ -163,6 +191,12 @@ class _$CustomUserImpl implements _CustomUser {
   final String fcmToken;
   @override
   final String userId;
+  @override
+  @JsonKey()
+  final int maxListCount;
+  @override
+  @JsonKey()
+  final bool isPremium;
   final List<String> _shoppingLists;
   @override
   List<String> get shoppingLists {
@@ -173,7 +207,7 @@ class _$CustomUserImpl implements _CustomUser {
 
   @override
   String toString() {
-    return 'CustomUser(nickname: $nickname, fcmToken: $fcmToken, userId: $userId, shoppingLists: $shoppingLists)';
+    return 'CustomUser(nickname: $nickname, fcmToken: $fcmToken, userId: $userId, maxListCount: $maxListCount, isPremium: $isPremium, shoppingLists: $shoppingLists)';
   }
 
   @override
@@ -186,13 +220,23 @@ class _$CustomUserImpl implements _CustomUser {
             (identical(other.fcmToken, fcmToken) ||
                 other.fcmToken == fcmToken) &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.maxListCount, maxListCount) ||
+                other.maxListCount == maxListCount) &&
+            (identical(other.isPremium, isPremium) ||
+                other.isPremium == isPremium) &&
             const DeepCollectionEquality()
                 .equals(other._shoppingLists, _shoppingLists));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, nickname, fcmToken, userId,
+  int get hashCode => Object.hash(
+      runtimeType,
+      nickname,
+      fcmToken,
+      userId,
+      maxListCount,
+      isPremium,
       const DeepCollectionEquality().hash(_shoppingLists));
 
   /// Create a copy of CustomUser
@@ -216,6 +260,8 @@ abstract class _CustomUser implements CustomUser {
       {required final String nickname,
       required final String fcmToken,
       required final String userId,
+      final int maxListCount,
+      final bool isPremium,
       required final List<String> shoppingLists}) = _$CustomUserImpl;
 
   factory _CustomUser.fromJson(Map<String, dynamic> json) =
@@ -227,6 +273,10 @@ abstract class _CustomUser implements CustomUser {
   String get fcmToken;
   @override
   String get userId;
+  @override
+  int get maxListCount;
+  @override
+  bool get isPremium;
   @override
   List<String> get shoppingLists;
 

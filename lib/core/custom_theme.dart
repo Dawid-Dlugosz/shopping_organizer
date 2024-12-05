@@ -4,8 +4,10 @@ import 'package:shopping_organizer/core/color_extension.dart';
 class CustomTheme {
   static final colorExtension = ColorExtension(
     mainDark: const Color.fromARGB(255, 53, 53, 53),
-    textColor: const Color.fromARGB(255, 244, 242, 242),
-    accentColor: const Color.fromARGB(255, 114, 251, 173),
+    textColor: const Color.fromARGB(255, 155, 148, 117),
+    // accentColor: const Color.fromARGB(255, 114, 251, 173),
+    accentColor: Colors.amber,
+
     errorColor: const Color.fromARGB(255, 255, 84, 84),
   );
 

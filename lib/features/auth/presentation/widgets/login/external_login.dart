@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/svg.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:shopping_organizer/core/color_extension.dart';
 import 'package:shopping_organizer/core/custom_images.dart';
+import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
 
 class ExternalLogin extends StatelessWidget {
   const ExternalLogin({super.key});
@@ -17,7 +22,7 @@ class ExternalLogin extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          onPressed: () {},
+          onPressed: null,
           child: SvgPicture.asset(
             width: 30,
             height: 30,
@@ -27,7 +32,7 @@ class ExternalLogin extends StatelessWidget {
         ),
         const SizedBox(width: 20),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: context.read<AuthCubit>().loginViaGoogle,
           child: SvgPicture.asset(
             width: 30,
             height: 30,

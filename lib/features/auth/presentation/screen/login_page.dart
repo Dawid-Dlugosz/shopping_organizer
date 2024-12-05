@@ -7,7 +7,7 @@ import 'package:shopping_organizer/core/color_extension.dart';
 
 import 'package:shopping_organizer/core/go_router/route_names.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:shopping_organizer/features/auth/presentation/dialogs/error_dialog.dart';
+import 'package:shopping_organizer/features/auth/presentation/dialogs/title_dialog.dart';
 import 'package:shopping_organizer/features/auth/presentation/utils/auth_cubit_utils.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/custom_user_listener.dart';
 import 'package:shopping_organizer/features/auth/presentation/widgets/header_text.dart';
@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
 
               showDialog(
                 context: context,
-                builder: (_) => ErrorDialog(
+                builder: (_) => TitleDialog(
                   title: AppLocalizations.of(context)!.errorOcured,
                   message: message,
                 ),

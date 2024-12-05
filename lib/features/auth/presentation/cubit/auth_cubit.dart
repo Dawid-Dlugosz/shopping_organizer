@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shopping_organizer/core/failures/failure.dart';
 import 'package:shopping_organizer/features/auth/domain/repository/auth_repository.dart';
@@ -57,6 +58,22 @@ class AuthCubit extends Cubit<AuthState> {
       ),
     );
   }
+
+  Future<void> loginViaGoogle() async {
+    emit(const AuthState.unAuthorized());
+    final failureOrUserCredential = await authRepository.loginViaGoogle();
+    print('sadfsad');
+    failureOrUserCredential.fold((failure) => _emitError(failure),
+        (userCredential) {
+      if (userCredential != null) {
+        emit(
+          AuthState.authorized(user: userCredential.user!),
+        );
+      }
+    });
+  }
+
+  Future<void> loginViaFacebook() async {}
 
   Future<void> createAccount({
     required String email,

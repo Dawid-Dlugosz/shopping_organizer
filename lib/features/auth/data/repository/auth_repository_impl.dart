@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/web.dart';
 
@@ -78,5 +79,38 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Stream<User?>> sessionListener() async {
     return firebaseAuth.authStateChanges();
+  }
+
+  @override
+  Future<Either<Failure, UserCredential?>> loginViaGoogle() async {
+    try {
+      final googleAccount = await GoogleSignIn().signIn();
+      final googleAuth = await googleAccount?.authentication;
+      if (googleAuth != null) {
+        final credential = GoogleAuthProvider.credential(
+          idToken: googleAuth.idToken,
+          accessToken: googleAuth.accessToken,
+        );
+        final userCredential =
+            await firebaseAuth.signInWithCredential(credential);
+        return Right(userCredential);
+      }
+      return const Right(null);
+    } on FirebaseAuthException catch (e) {
+      return Left(Failure.auth(message: e.code));
+    } catch (e, s) {
+      _logger.e(
+        'AuthRepositoryImpl loginViaGoogle',
+        error: e,
+        stackTrace: s,
+      );
+      return const Left(Failure.general());
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserCredential>> loginViaFacebook() {
+    // TODO: implement loginViaFacebook
+    throw UnimplementedError();
   }
 }
