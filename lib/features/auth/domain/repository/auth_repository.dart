@@ -11,7 +11,7 @@ abstract class AuthRepository {
 
   Future<Either<Failure, UserCredential?>> loginViaGoogle();
 
-  Future<Either<Failure, UserCredential>> loginViaFacebook();
+  Future<Either<Failure, UserCredential?>> loginViaFacebook();
 
   Future<Either<Failure, UserCredential>> createAccount({
     required String email,

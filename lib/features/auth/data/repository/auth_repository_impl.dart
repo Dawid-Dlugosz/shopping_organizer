@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -9,9 +10,15 @@ import 'package:shopping_organizer/features/auth/domain/repository/auth_reposito
 
 @LazySingleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
-  AuthRepositoryImpl(this.firebaseAuth);
+  AuthRepositoryImpl(
+    this.firebaseAuth,
+    this.googleSignIn,
+    this.facebookAuth,
+  );
 
   final FirebaseAuth firebaseAuth;
+  final GoogleSignIn googleSignIn;
+  final FacebookAuth facebookAuth;
   final Logger _logger = Logger();
 
   @override
@@ -84,7 +91,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Either<Failure, UserCredential?>> loginViaGoogle() async {
     try {
-      final googleAccount = await GoogleSignIn().signIn();
+      final googleAccount = await googleSignIn.signIn();
       final googleAuth = await googleAccount?.authentication;
       if (googleAuth != null) {
         final credential = GoogleAuthProvider.credential(
@@ -109,8 +116,28 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, UserCredential>> loginViaFacebook() {
-    // TODO: implement loginViaFacebook
-    throw UnimplementedError();
+  Future<Either<Failure, UserCredential?>> loginViaFacebook() async {
+    try {
+      final LoginResult loginResult = await facebookAuth.login();
+      if (loginResult.accessToken != null) {
+        final facebookAuthCredential =
+            FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+        final credential =
+            await firebaseAuth.signInWithCredential(facebookAuthCredential);
+
+        return Right(credential);
+      }
+      return const Right(null);
+    } on FirebaseAuthException catch (e) {
+      return Left(Failure.auth(message: e.code));
+    } catch (e, s) {
+      _logger.e(
+        'AuthRepositoryImpl loginViaFacebook',
+        error: e,
+        stackTrace: s,
+      );
+      return const Left(Failure.general());
+    }
   }
 }

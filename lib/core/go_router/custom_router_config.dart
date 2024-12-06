@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:shopping_organizer/core/go_router/route_names.dart';
 import 'package:shopping_organizer/core/screens/splash_screen.dart';
+import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:shopping_organizer/features/auth/presentation/screen/login_page.dart';
 import 'package:shopping_organizer/features/auth/presentation/screen/register_page.dart';
 import 'package:shopping_organizer/features/create_shopping_list/presentation/cubits/shopping_list_cubit.dart';
@@ -22,59 +23,70 @@ class CustomRouter {
   static final _shellNavigatorExpansesKey =
       GlobalKey<NavigatorState>(debugLabel: 'expenses');
 
-  static final GoRouter routers = GoRouter(
-    navigatorKey: _rootNavigatorKey,
-    initialLocation: '/',
-    routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const SplashScreen(),
-      ),
-      GoRoute(
-        path: RouteNames.loginScreen,
-        builder: (context, state) => const LoginPage(),
-      ),
-      GoRoute(
-        path: RouteNames.registerScreen,
-        builder: (context, state) => const RegisterPage(),
-      ),
-      StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) => HomePage(
-          navigationShell: navigationShell,
+  GoRouter routers(ValueNotifier<AuthState> notifier) {
+    return GoRouter(
+      navigatorKey: _rootNavigatorKey,
+      initialLocation: '/',
+      routes: [
+        GoRoute(
+          path: '/',
+          builder: (context, state) => const SplashScreen(),
         ),
-        branches: [
-          StatefulShellBranch(
-            navigatorKey: _shellNavigatorShoppingListKey,
-            routes: [
-              GoRoute(
-                path: RouteNames.shoppingList,
-                pageBuilder: (context, state) => const NoTransitionPage(
-                  child: ShopngLists(),
-                ),
-              ),
-            ],
+        GoRoute(
+          path: RouteNames.loginScreen,
+          builder: (context, state) => const LoginPage(),
+        ),
+        GoRoute(
+          path: RouteNames.registerScreen,
+          builder: (context, state) => const RegisterPage(),
+        ),
+        StatefulShellRoute.indexedStack(
+          builder: (context, state, navigationShell) => HomePage(
+            navigationShell: navigationShell,
           ),
-          StatefulShellBranch(
-            navigatorKey: _shellNavigatorExpansesKey,
-            routes: [
-              GoRoute(
-                path: RouteNames.expanses,
-                pageBuilder: (context, state) => const NoTransitionPage(
-                  child: Expanses(),
+          branches: [
+            StatefulShellBranch(
+              navigatorKey: _shellNavigatorShoppingListKey,
+              routes: [
+                GoRoute(
+                  path: RouteNames.shoppingList,
+                  pageBuilder: (context, state) => const NoTransitionPage(
+                    child: ShopngLists(),
+                  ),
                 ),
-              ),
-            ],
-          )
-        ],
-      ),
-      GoRoute(
-        path: RouteNames.shoppingListForm,
-        builder: (context, state) => BlocProvider(
-          create: (context) =>
-              getIt<ShoppingListCubit>()..createNewShoppingList(),
-          child: const ShoppingListForm(),
+              ],
+            ),
+            StatefulShellBranch(
+              navigatorKey: _shellNavigatorExpansesKey,
+              routes: [
+                GoRoute(
+                  path: RouteNames.expanses,
+                  pageBuilder: (context, state) => const NoTransitionPage(
+                    child: Expanses(),
+                  ),
+                ),
+              ],
+            )
+          ],
         ),
-      ),
-    ],
-  );
+        GoRoute(
+          path: RouteNames.shoppingListForm,
+          builder: (context, state) => BlocProvider(
+            create: (context) =>
+                getIt<ShoppingListCubit>()..createNewShoppingList(),
+            child: const ShoppingListForm(),
+          ),
+        ),
+      ],
+      refreshListenable: notifier,
+      redirect: (context, state) {
+        final authState = context.read<AuthCubit>().state;
+
+        return authState.maybeMap(
+          authorized: (_) => null,
+          orElse: () => RouteNames.loginScreen,
+        );
+      },
+    );
+  }
 }

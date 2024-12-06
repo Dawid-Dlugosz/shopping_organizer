@@ -21,10 +21,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (getIt<FirebaseAuth>().currentUser == null) {
-        
         context.go(RouteNames.loginScreen);
       } else {
-        context.read<CustomUserCubit>().getCustomUser(userId: getIt<FirebaseAuth>().currentUser!.uid);
+        context
+            .read<CustomUserCubit>()
+            .getCustomUser(userId: getIt<FirebaseAuth>().currentUser!.uid);
         context.go(RouteNames.shoppingList);
       }
     });
@@ -35,11 +36,16 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
-        state.maybeMap(authorized: (value) {
-          context.go(RouteNames.shoppingList);
-        }, orElse: () {
-          context.go(RouteNames.loginScreen);
-        });
+        print('sadfsaf $state');
+        state.maybeMap(
+          authorized: (value) {
+            context.go(RouteNames.shoppingList);
+          },
+          orElse: () {
+            print('sadfsaf2222');
+            context.go(RouteNames.loginScreen);
+          },
+        );
       },
       child: const Placeholder(),
     );

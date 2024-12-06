@@ -22,7 +22,7 @@ class ExternalLogin extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          onPressed: null,
+          onPressed: context.read<AuthCubit>().loginViaFacebook,
           child: SvgPicture.asset(
             width: 30,
             height: 30,

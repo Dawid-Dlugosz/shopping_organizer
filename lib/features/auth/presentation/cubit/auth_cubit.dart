@@ -62,7 +62,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> loginViaGoogle() async {
     emit(const AuthState.unAuthorized());
     final failureOrUserCredential = await authRepository.loginViaGoogle();
-    print('sadfsad');
+
     failureOrUserCredential.fold((failure) => _emitError(failure),
         (userCredential) {
       if (userCredential != null) {
@@ -73,7 +73,20 @@ class AuthCubit extends Cubit<AuthState> {
     });
   }
 
-  Future<void> loginViaFacebook() async {}
+  Future<void> loginViaFacebook() async {
+    emit(const AuthState.unAuthorized());
+
+    final failureOrUserCredential = await authRepository.loginViaFacebook();
+
+    failureOrUserCredential.fold((failure) => _emitError(failure),
+        (userCredential) {
+      if (userCredential != null) {
+        emit(
+          AuthState.authorized(user: userCredential.user!),
+        );
+      }
+    });
+  }
 
   Future<void> createAccount({
     required String email,
