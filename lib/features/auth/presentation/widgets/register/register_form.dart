@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:shopping_organizer/core/color_extension.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:shopping_organizer/features/auth/presentation/dialogs/title_dialog.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});

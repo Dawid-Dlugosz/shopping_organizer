@@ -89,5 +89,9 @@ class CustomTheme {
       insetPadding: const EdgeInsets.all(10),
       shadowColor: colorExtension.mainDark,
     ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      circularTrackColor: colorExtension.accentColor,
+      color: colorExtension.mainDark.withAlpha(90),
+    ),
   );
 }

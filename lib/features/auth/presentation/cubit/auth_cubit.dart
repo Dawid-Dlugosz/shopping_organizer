@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+
 import 'package:shopping_organizer/core/failures/failure.dart';
 import 'package:shopping_organizer/features/auth/domain/repository/auth_repository.dart';
 
@@ -44,7 +44,7 @@ class AuthCubit extends Cubit<AuthState> {
     required String email,
     required String password,
   }) async {
-    emit(const AuthState.unAuthorized());
+    emit(const AuthState.loading());
 
     final failureOrUserCredential = await authRepository.login(
       email: email,
@@ -60,7 +60,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> loginViaGoogle() async {
-    emit(const AuthState.unAuthorized());
+    emit(const AuthState.loading());
     final failureOrUserCredential = await authRepository.loginViaGoogle();
 
     failureOrUserCredential.fold((failure) => _emitError(failure),
@@ -74,7 +74,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> loginViaFacebook() async {
-    emit(const AuthState.unAuthorized());
+    emit(const AuthState.loading());
 
     final failureOrUserCredential = await authRepository.loginViaFacebook();
 
@@ -93,7 +93,7 @@ class AuthCubit extends Cubit<AuthState> {
     required String password,
     required String nickname,
   }) async {
-    emit(const AuthState.unAuthorized());
+    emit(const AuthState.loading());
 
     final failureOrUserCredential = await authRepository.createAccount(
       email: email,

@@ -80,12 +80,14 @@ class CustomRouter {
       ],
       refreshListenable: notifier,
       redirect: (context, state) {
-        final authState = context.read<AuthCubit>().state;
+        if (state.fullPath != RouteNames.registerScreen) {
+          final authState = context.read<AuthCubit>().state;
 
-        return authState.maybeMap(
-          authorized: (_) => null,
-          orElse: () => RouteNames.loginScreen,
-        );
+          return authState.maybeMap(
+            unAuthorized: (_) => RouteNames.loginScreen,
+            orElse: () => null,
+          );
+        }
       },
     );
   }
