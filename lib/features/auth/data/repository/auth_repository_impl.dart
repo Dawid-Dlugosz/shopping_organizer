@@ -53,14 +53,12 @@ class AuthRepositoryImpl implements AuthRepository {
     required String nickname,
   }) async {
     try {
-      final userCredential = await firebaseAuth
-          .createUserWithEmailAndPassword(
+      final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
-      )
-          .then((result) {
-        result.user?.updateProfile(displayName: nickname);
-      });
+      );
+
+      userCredential.user?.updateProfile(displayName: nickname);
 
       return Right(userCredential);
     } on FirebaseAuthException catch (e) {
@@ -76,13 +74,11 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-  // TODO TESTY
   @override
   Future<void> signOut() async {
     await firebaseAuth.signOut();
   }
 
-  // TODO TESTY
   @override
   Future<Stream<User?>> sessionListener() async {
     return firebaseAuth.authStateChanges();
@@ -93,6 +89,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final googleAccount = await googleSignIn.signIn();
       final googleAuth = await googleAccount?.authentication;
+
       if (googleAuth != null) {
         final credential = GoogleAuthProvider.credential(
           idToken: googleAuth.idToken,

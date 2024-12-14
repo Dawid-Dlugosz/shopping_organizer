@@ -16,7 +16,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(
     this.authRepository,
   ) : super(const AuthState.unAuthorized()) {
-    sessionListener();
+    // sessionListener();
   }
 
   final AuthRepository authRepository;
@@ -103,13 +103,12 @@ class AuthCubit extends Cubit<AuthState> {
 
     failureOrUserCredential.fold(
       (failure) => _emitError(failure),
-      (userCredential) => (userCredential) => emit(
-            AuthState.authorized(user: userCredential.user!),
-          ),
+      (userCredential) => emit(
+        AuthState.authorized(user: userCredential.user!),
+      ),
     );
   }
 
-  // TODO TESTY
   Future<void> signOut() async {
     await authRepository.signOut();
     emit(const AuthState.unAuthorized());
