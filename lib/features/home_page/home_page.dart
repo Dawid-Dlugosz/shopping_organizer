@@ -56,6 +56,7 @@ class HomePage extends StatelessWidget {
       },
       child: BlocBuilder<CustomUserCubit, CustomUserState>(
         builder: (context, state) {
+          print('sadsas2 $state');
           return state.maybeMap(
             orElse: () => const LoadingScreen(),
             loaded: (value) => Scaffold(
@@ -63,6 +64,12 @@ class HomePage extends StatelessWidget {
                 title: Text(
                   'Witaj ${value.customUser.nickname}',
                 ),
+                actions: [
+                  IconButton(
+                    onPressed: context.read<AuthCubit>().signOut,
+                    icon: Icon(Icons.logout),
+                  )
+                ],
               ),
               floatingActionButton: FloatingActionButton(
                 onPressed: () {

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "742083963858",
+    "firebase_url": "https://shopping-finanse-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "shopping-finanse",
     "storage_bucket": "shopping-finanse.appspot.com"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.example.shopping_organizer"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "742083963858-61jru2u54urhjs03toh30osa215e8sc2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shopping_organizer",
+            "certificate_hash": "8b1d93cebd6a14f1bd58007a082e831e83592bd8"
+          }
+        },
+        {
+          "client_id": "742083963858-khc7k3rfgndne0g8v8e2bhn45d1g8dts.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC0sLRJXduvs8qN-0XamfaP12fDPmCVn1I"
@@ -20,7 +34,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742083963858-khc7k3rfgndne0g8v8e2bhn45d1g8dts.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "742083963858-fokqe2b28uocvhaueh6cmbccnd49ih6o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.shoppingOrganizer.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }

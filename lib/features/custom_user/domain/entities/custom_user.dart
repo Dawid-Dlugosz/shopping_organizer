@@ -12,6 +12,8 @@ class CustomUser with _$CustomUser {
     required String nickname,
     required String fcmToken,
     required String userId,
+    @Default(4) int maxListCount,
+    @Default(false) bool isPremium,
     required List<String> shoppingLists,
   }) = _CustomUser;
 

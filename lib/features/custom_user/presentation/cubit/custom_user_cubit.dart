@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -29,7 +31,12 @@ class CustomUserCubit extends Cubit<CustomUserState> {
         CustomUserState.error(message: CustomUserError.emptyUser.code),
       ),
       (customUser) async {
-        final fcmToken = await firebaseMessaging.getToken() ?? '';
+        late String fcmToken;
+        if (Platform.isIOS) {
+          fcmToken = await firebaseMessaging.getAPNSToken() ?? '';
+        } else {
+          fcmToken = await firebaseMessaging.getToken() ?? '';
+        }
 
         if (fcmToken != customUser.fcmToken) {
           final failureOrUnit = await customUserRepository.updateFCMToken(

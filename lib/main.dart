@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:shopping_organizer/core/custom_theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_organizer/core/go_router/custom_router_config.dart';
 import 'package:shopping_organizer/core/widgets/custom_multi_bloc_provider.dart';
+import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:shopping_organizer/firebase_options.dart';
 import 'package:shopping_organizer/injectable_configure.dart';
 
@@ -23,12 +25,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomMultiBlocProvider(
-      child: MaterialApp.router(
-        title: 'Flutter Demo',
-        theme: ThemeData.light(),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        routerConfig: CustomRouter.routers,
+      child: Builder(
+        builder: (context) {
+          final authCubit = context.read<AuthCubit>();
+
+          final notifier = ValueNotifier<AuthState>(authCubit.state);
+
+          authCubit.stream.listen((state) {
+            notifier.value = state;
+          });
+
+          return MaterialApp.router(
+            title: 'Flutter Demo',
+            theme: CustomTheme.themeData,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            routerConfig: CustomRouter().routers(notifier),
+          );
+        },
       ),
     );
   }

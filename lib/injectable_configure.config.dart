@@ -12,7 +12,9 @@ import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:firebase_messaging/firebase_messaging.dart' as _i892;
 import 'package:firebase_storage/firebase_storage.dart' as _i457;
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart' as _i806;
 import 'package:get_it/get_it.dart' as _i174;
+import 'package:google_sign_in/google_sign_in.dart' as _i116;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:uuid/uuid.dart' as _i706;
 
@@ -49,28 +51,29 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i974.FirebaseFirestore>(() => registerModule.firebaseFirestore);
     gh.factory<_i892.FirebaseMessaging>(() => registerModule.firebaseMessaging);
     gh.factory<_i457.FirebaseStorage>(() => registerModule.firebaseStorage);
+    gh.factory<_i116.GoogleSignIn>(() => registerModule.googleSignIn);
+    gh.factory<_i806.FacebookAuth>(() => registerModule.facebookAuth);
     gh.factory<_i706.Uuid>(() => registerModule.uuid);
     gh.lazySingleton<_i106.CustomUserRepository>(
         () => _i961.CustomUserRepositoryImpl(gh<_i974.FirebaseFirestore>()));
-    gh.lazySingleton<_i279.AuthRepository>(
-        () => _i814.AuthRepositoryImpl(gh<_i59.FirebaseAuth>()));
     gh.lazySingleton<_i262.ShoppingListRepository>(
         () => _i692.ShoppingListRepositoryImpl(
               gh<_i974.FirebaseFirestore>(),
               gh<_i457.FirebaseStorage>(),
             ));
+    gh.lazySingleton<_i279.AuthRepository>(() => _i814.AuthRepositoryImpl(
+          gh<_i59.FirebaseAuth>(),
+          gh<_i116.GoogleSignIn>(),
+          gh<_i806.FacebookAuth>(),
+        ));
+    gh.lazySingleton<_i945.AuthCubit>(
+      () => _i945.AuthCubit(gh<_i279.AuthRepository>()),
+      dispose: (i) => i.close(),
+    );
     gh.lazySingleton<_i1069.CustomUserCubit>(() => _i1069.CustomUserCubit(
           gh<_i106.CustomUserRepository>(),
           gh<_i892.FirebaseMessaging>(),
         ));
-    gh.lazySingleton<_i945.AuthCubit>(
-      () => _i945.AuthCubit(
-        gh<_i279.AuthRepository>(),
-        gh<_i1069.CustomUserCubit>(),
-        gh<_i892.FirebaseMessaging>(),
-      ),
-      dispose: (i) => i.close(),
-    );
     gh.factory<_i311.ShoppingListCubit>(() => _i311.ShoppingListCubit(
           gh<_i262.ShoppingListRepository>(),
           gh<_i1069.CustomUserCubit>(),
