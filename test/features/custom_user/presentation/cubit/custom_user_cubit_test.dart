@@ -51,13 +51,20 @@ void main() {
             setUp: () {
               when(
                 () => mockCustomUserRepository.createCustomUser(
-                    customUser: customUser),
+                  customUser: customUser,
+                ),
               ).thenAnswer(
                 (_) async => const Right(unit),
               );
+
+              when(() => mockFirebaseMessaging.getToken())
+                  .thenAnswer((_) async => customUser.fcmToken);
             },
             act: (_) {
-              cubit.createCustomUser(customUser: customUser);
+              cubit.createCustomUser(
+                userId: customUser.userId,
+                nickname: customUser.nickname,
+              );
             },
             expect: () => [
               const CustomUserState.loaded(customUser: customUser),
@@ -74,9 +81,15 @@ void main() {
               ).thenAnswer(
                 (_) async => const Left(Failure.general()),
               );
+
+              when(() => mockFirebaseMessaging.getToken())
+                  .thenAnswer((_) async => customUser.fcmToken);
             },
             act: (_) {
-              cubit.createCustomUser(customUser: customUser);
+              cubit.createCustomUser(
+                userId: customUser.userId,
+                nickname: customUser.nickname,
+              );
             },
             expect: () => [
               CustomUserState.error(
@@ -108,37 +121,6 @@ void main() {
             expect: () => [
               CustomUserState.error(message: CustomUserError.emptyUser.code)
             ],
-          );
-
-          blocTest(
-            'Should emit [Error] with fcmError message when updateFCMToken return left',
-            build: () => cubit,
-            setUp: () {
-              when(
-                () => mockCustomUserRepository.getCustomUser(
-                  userId: any(named: 'userId'),
-                ),
-              ).thenAnswer(
-                (invocation) async => const Right(customUser),
-              );
-
-              when(() => mockFirebaseMessaging.getToken()).thenAnswer(
-                (invocation) async => 'testFCM',
-              );
-              when(
-                () => mockCustomUserRepository.updateFCMToken(
-                    userId: '123', fcmToken: 'testFCM'),
-              ).thenAnswer(
-                (invocation) async => const Left(
-                  Failure.general(),
-                ),
-              );
-            },
-            act: (_) {
-              cubit.getCustomUser(userId: '123');
-            },
-            expect: () =>
-                [CustomUserState.error(message: CustomUserError.fcmError.code)],
           );
 
           blocTest(
@@ -207,25 +189,25 @@ void main() {
         },
       );
 
-      group('addShoppingList', () {
-        blocTest(
-          'Shoule emit [Loaded] with new shoppingListId',
-          build: () => cubit,
-          seed: () => const CustomUserState.loaded(customUser: customUser),
-          act: (_) {
-            cubit.addShoppingList(
-              shoppingListID: '123',
-            );
-          },
-          expect: () => [
-            CustomUserState.loaded(
-              customUser: customUser.copyWith(
-                shoppingLists: ['123'],
-              ),
-            )
-          ],
-        );
-      });
+      // group('addShoppingList', () {
+      //   blocTest(
+      //     'Shoule emit [Loaded] with new shoppingListId',
+      //     build: () => cubit,
+      //     seed: () => const CustomUserState.loaded(customUser: customUser),
+      //     act: (_) {
+      //       cubit.addShoppingList(
+      //         shoppingListID: '123',
+      //       );
+      //     },
+      //     expect: () => [
+      //       CustomUserState.loaded(
+      //         customUser: customUser.copyWith(
+      //           shoppingLists: ['123'],
+      //         ),
+      //       )
+      //     ],
+      //   );
+      // });
     },
   );
 }

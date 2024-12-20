@@ -13,9 +13,10 @@ _$CustomUserImpl _$$CustomUserImplFromJson(Map<String, dynamic> json) =>
       userId: json['userId'] as String,
       maxListCount: (json['maxListCount'] as num?)?.toInt() ?? 4,
       isPremium: json['isPremium'] as bool? ?? false,
-      shoppingLists: (json['shoppingLists'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
+      shoppingLists: (json['shoppingLists'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$CustomUserImplToJson(_$CustomUserImpl instance) =>

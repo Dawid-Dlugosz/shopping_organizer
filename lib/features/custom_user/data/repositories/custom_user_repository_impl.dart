@@ -110,7 +110,27 @@ class CustomUserRepositoryImpl implements CustomUserRepository {
       return const Right(unit);
     } catch (e, s) {
       _logger.e(
-        'CustomUserRepositoryImpl getCustomUser',
+        'CustomUserRepositoryImpl updateShoppingList',
+        error: e,
+        stackTrace: s,
+      );
+
+      return const Left(Failure.general());
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> isUserExist({required String userId}) async {
+    try {
+      final doc = await firebaseFirestore
+          .collection(FirestoreCollectionType.users.type)
+          .doc(userId)
+          .get();
+
+      return Right(doc.exists);
+    } catch (e, s) {
+      _logger.e(
+        'CustomUserRepositoryImpl isUserExist',
         error: e,
         stackTrace: s,
       );

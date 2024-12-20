@@ -13,7 +13,7 @@ abstract class AuthRepository {
 
   Future<Either<Failure, UserCredential?>> loginViaFacebook();
 
-  Future<Either<Failure, UserCredential>> createAccount({
+  Future<Either<Failure, User>> createAccount({
     required String email,
     required String password,
     required String nickname,

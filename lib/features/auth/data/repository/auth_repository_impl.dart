@@ -47,7 +47,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, UserCredential>> createAccount({
+  Future<Either<Failure, User>> createAccount({
     required String email,
     required String password,
     required String nickname,
@@ -58,9 +58,10 @@ class AuthRepositoryImpl implements AuthRepository {
         password: password,
       );
 
-      userCredential.user?.updateProfile(displayName: nickname);
+      await userCredential.user?.updateProfile(displayName: nickname);
+      await userCredential.user?.reload();
 
-      return Right(userCredential);
+      return Right(firebaseAuth.currentUser!);
     } on FirebaseAuthException catch (e) {
       return Left(Failure.auth(message: e.code));
     } catch (e, s) {

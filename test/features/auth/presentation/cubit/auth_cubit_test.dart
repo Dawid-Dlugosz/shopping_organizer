@@ -301,23 +301,9 @@ void main() {
                   password: any(named: 'password'),
                   nickname: any(named: 'nickname'),
                 ),
-              ).thenAnswer((_) async => Right(userCredential));
-
-              // when(() => mockFirebaseMessaging.getToken())
-              //     .thenAnswer((_) async => 'sasds');
+              ).thenAnswer((_) async => Right(userCredential.user!));
 
               when(() => user.uid).thenReturn('asdsdasd');
-
-              // when(() => mockCustomUserCubit.createCustomUser(
-              //       customUser: const CustomUser(
-              //         nickname: 'nickname',
-              //         fcmToken: 'sasds',
-              //         userId: 'asdsdasd',
-              //         shoppingLists: [],
-              //       ),
-              //     )).thenAnswer(
-              //   (_) async => {},
-              // );
 
               when(() => userCredential.user).thenReturn(user);
             },

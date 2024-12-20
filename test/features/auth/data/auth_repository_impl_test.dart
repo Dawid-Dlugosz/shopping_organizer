@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
 import 'package:google_sign_in_mocks/google_sign_in_mocks.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -222,17 +222,23 @@ void main() {
           test(
             'Should return UserCredential from firebase',
             () async {
-              when(() => user.updateProfile(
-                  displayName: any(named: 'displayName'))).thenAnswer(
-                (_) async {},
-              );
-
               when(
                 () => firebaseAuth.createUserWithEmailAndPassword(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ),
               ).thenAnswer((_) async => userCredential);
+
+              when(() => firebaseAuth.currentUser).thenReturn(user);
+
+              when(() => user.updateProfile(
+                  displayName: any(named: 'displayName'))).thenAnswer(
+                (_) async {},
+              );
+
+              when(() => user.reload()).thenAnswer((_) async {});
+
+              when(() => userCredential.user).thenReturn(user);
 
               final failureOrUserCredential =
                   await authRepositoryImpl.createAccount(
@@ -243,7 +249,7 @@ void main() {
 
               expect(
                 failureOrUserCredential,
-                Right(userCredential),
+                Right(user),
               );
             },
           );
