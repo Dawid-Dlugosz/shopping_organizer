@@ -65,8 +65,11 @@ class CustomUserCubit extends Cubit<CustomUserState> {
     final fcmToken =
         await UserHelper.getFCMToken(firebaseMessaging: firebaseMessaging);
 
-    final customUser =
-        CustomUser(nickname: nickname, fcmToken: fcmToken, userId: userId);
+    final customUser = CustomUser(
+      nickname: nickname,
+      fcmToken: fcmToken,
+      userId: userId,
+    );
 
     final failureOrUnit = await customUserRepository.createCustomUser(
       customUser: customUser,
