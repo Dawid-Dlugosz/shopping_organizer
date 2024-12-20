@@ -1,11 +1,10 @@
-import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shopping_organizer/core/enums/custom_user_error.dart';
 
+import 'package:shopping_organizer/core/enums/custom_user_error.dart';
+import 'package:shopping_organizer/core/helpers/user_helper.dart';
 import 'package:shopping_organizer/features/custom_user/domain/entities/custom_user.dart';
 import 'package:shopping_organizer/features/custom_user/domain/repositories/custom_user_repository.dart';
 
@@ -31,12 +30,8 @@ class CustomUserCubit extends Cubit<CustomUserState> {
         CustomUserState.error(message: CustomUserError.emptyUser.code),
       ),
       (customUser) async {
-        late String fcmToken;
-        if (Platform.isIOS) {
-          fcmToken = await firebaseMessaging.getAPNSToken() ?? '';
-        } else {
-          fcmToken = await firebaseMessaging.getToken() ?? '';
-        }
+        final fcmToken =
+            await UserHelper.getFCMToken(firebaseMessaging: firebaseMessaging);
 
         if (fcmToken != customUser.fcmToken) {
           final failureOrUnit = await customUserRepository.updateFCMToken(
@@ -46,7 +41,7 @@ class CustomUserCubit extends Cubit<CustomUserState> {
 
           failureOrUnit.fold(
             (_) => emit(
-              CustomUserState.error(message: CustomUserError.fcmError.code),
+              CustomUserState.loaded(customUser: customUser),
             ),
             (_) => emit(
               CustomUserState.loaded(
@@ -63,7 +58,16 @@ class CustomUserCubit extends Cubit<CustomUserState> {
     );
   }
 
-  Future<void> createCustomUser({required CustomUser customUser}) async {
+  Future<void> createCustomUser({
+    required String nickname,
+    required String userId,
+  }) async {
+    final fcmToken =
+        await UserHelper.getFCMToken(firebaseMessaging: firebaseMessaging);
+
+    final customUser =
+        CustomUser(nickname: nickname, fcmToken: fcmToken, userId: userId);
+
     final failureOrUnit = await customUserRepository.createCustomUser(
       customUser: customUser,
     );

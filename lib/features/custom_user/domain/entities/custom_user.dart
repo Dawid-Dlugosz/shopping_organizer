@@ -14,7 +14,7 @@ class CustomUser with _$CustomUser {
     required String userId,
     @Default(4) int maxListCount,
     @Default(false) bool isPremium,
-    required List<String> shoppingLists,
+    @Default([]) List<String> shoppingLists,
   }) = _CustomUser;
 
   factory CustomUser.fromJson(Map<String, dynamic> json) =>

@@ -15,9 +15,7 @@ part 'auth_cubit.freezed.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit(
     this.authRepository,
-  ) : super(const AuthState.unAuthorized()) {
-    // sessionListener();
-  }
+  ) : super(const AuthState.unAuthorized());
 
   final AuthRepository authRepository;
 
@@ -95,16 +93,16 @@ class AuthCubit extends Cubit<AuthState> {
   }) async {
     emit(const AuthState.loading());
 
-    final failureOrUserCredential = await authRepository.createAccount(
+    final failureOrUser = await authRepository.createAccount(
       email: email,
       password: password,
       nickname: nickname,
     );
 
-    failureOrUserCredential.fold(
+    failureOrUser.fold(
       (failure) => _emitError(failure),
-      (userCredential) => emit(
-        AuthState.authorized(user: userCredential.user!),
+      (user) => emit(
+        AuthState.authorized(user: user),
       ),
     );
   }

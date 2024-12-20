@@ -76,55 +76,120 @@ void main() {
         },
       );
 
-      group('getCustomUser', () {
-        test('Should return Failre ', () async {
-          final repository = CustomUserRepositoryImpl(mockFirebaseFirestore);
+      group(
+        'getCustomUser',
+        () {
+          test('Should return Failre ', () async {
+            final repository = CustomUserRepositoryImpl(mockFirebaseFirestore);
 
-          when(() => mockFirebaseFirestore
-              .collection(FirestoreCollectionType.users.type)
-              .doc(customUser.userId)).thenThrow(
-            Exception('firebase exception'),
-          );
-
-          final finalFailureOrCustomUser =
-              await repository.getCustomUser(userId: customUser.userId);
-
-          expect(finalFailureOrCustomUser, const Left(Failure.general()));
-        });
-
-        test(
-          'Should return failure when document body is null',
-          () async {
-            when(
-              () => fakeFirebaseFirestore
-                  .collection(FirestoreCollectionType.users.type)
-                  .doc(),
+            when(() => mockFirebaseFirestore
+                .collection(FirestoreCollectionType.users.type)
+                .doc(customUser.userId)).thenThrow(
+              Exception('firebase exception'),
             );
 
-            final finalFailureOrCustomUser = await customUserRepository
-                .getCustomUser(userId: customUser.userId);
+            final finalFailureOrCustomUser =
+                await repository.getCustomUser(userId: customUser.userId);
 
             expect(finalFailureOrCustomUser, const Left(Failure.general()));
-          },
-        );
+          });
 
-        test(
-          'Should return object',
-          () async {
-            when(
-              () => fakeFirebaseFirestore
+          test(
+            'Should return failure when document body is null',
+            () async {
+              when(
+                () => fakeFirebaseFirestore
+                    .collection(FirestoreCollectionType.users.type)
+                    .doc(),
+              );
+
+              final finalFailureOrCustomUser = await customUserRepository
+                  .getCustomUser(userId: customUser.userId);
+
+              expect(finalFailureOrCustomUser, const Left(Failure.general()));
+            },
+          );
+
+          test(
+            'Should return object',
+            () async {
+              when(
+                () => fakeFirebaseFirestore
+                    .collection(FirestoreCollectionType.users.type)
+                    .doc(customUser.userId)
+                    .set(customUser.toJson()),
+              );
+
+              final finalFailureOrCustomUser = await customUserRepository
+                  .getCustomUser(userId: customUser.userId);
+
+              expect(finalFailureOrCustomUser, const Right(customUser));
+            },
+          );
+        },
+      );
+      group(
+        'isUserExist',
+        () {
+          test(
+            'Shoule return true when user exist in database',
+            () async {
+              when(
+                () => fakeFirebaseFirestore
+                    .collection(FirestoreCollectionType.users.type)
+                    .doc(customUser.userId)
+                    .set(customUser.toJson()),
+              );
+
+              final failureOrResult = await customUserRepository.isUserExist(
+                userId: customUser.userId,
+              );
+
+              expect(
+                failureOrResult,
+                const Right(true),
+              );
+            },
+          );
+
+          test(
+            'Shoule return false when user dont exist in database',
+            () async {
+              final failureOrResult = await customUserRepository.isUserExist(
+                userId: customUser.userId,
+              );
+
+              expect(
+                failureOrResult,
+                const Right(false),
+              );
+            },
+          );
+
+          test(
+            'Shoule return failure when database throw error',
+            () async {
+              final repository =
+                  CustomUserRepositoryImpl(mockFirebaseFirestore);
+
+              when(() => mockFirebaseFirestore
                   .collection(FirestoreCollectionType.users.type)
-                  .doc(customUser.userId)
-                  .set(customUser.toJson()),
-            );
+                  .doc(customUser.userId)).thenThrow(
+                Exception('firebase exception'),
+              );
 
-            final finalFailureOrCustomUser = await customUserRepository
-                .getCustomUser(userId: customUser.userId);
+              final failureOrResult = await repository.isUserExist(
+                userId: customUser.userId,
+              );
 
-            expect(finalFailureOrCustomUser, const Right(customUser));
-          },
-        );
-      });
+              expect(
+                failureOrResult,
+                const Left(Failure.general()),
+              );
+            },
+          );
+        },
+      );
     },
   );
 }

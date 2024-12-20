@@ -179,7 +179,7 @@ class _$CustomUserImpl implements _CustomUser {
       required this.userId,
       this.maxListCount = 4,
       this.isPremium = false,
-      required final List<String> shoppingLists})
+      final List<String> shoppingLists = const []})
       : _shoppingLists = shoppingLists;
 
   factory _$CustomUserImpl.fromJson(Map<String, dynamic> json) =>
@@ -199,6 +199,7 @@ class _$CustomUserImpl implements _CustomUser {
   final bool isPremium;
   final List<String> _shoppingLists;
   @override
+  @JsonKey()
   List<String> get shoppingLists {
     if (_shoppingLists is EqualUnmodifiableListView) return _shoppingLists;
     // ignore: implicit_dynamic_type
@@ -262,7 +263,7 @@ abstract class _CustomUser implements CustomUser {
       required final String userId,
       final int maxListCount,
       final bool isPremium,
-      required final List<String> shoppingLists}) = _$CustomUserImpl;
+      final List<String> shoppingLists}) = _$CustomUserImpl;
 
   factory _CustomUser.fromJson(Map<String, dynamic> json) =
       _$CustomUserImpl.fromJson;

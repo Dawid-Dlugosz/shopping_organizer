@@ -20,4 +20,8 @@ abstract class CustomUserRepository {
     required List<String> shoppingList,
     required String userId,
   });
+
+  Future<Either<Failure, bool>> isUserExist({
+    required String userId,
+  });
 }
