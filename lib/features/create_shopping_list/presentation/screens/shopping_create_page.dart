@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shopping_organizer/core/entities%20/shopping_list_item_controllers.dart';
+import 'package:shopping_organizer/core/entities%20/shopping_item_controllers.dart';
 import 'package:uuid/uuid.dart';
 
 import 'package:shopping_organizer/core/screens/loading_screen.dart';
@@ -12,33 +12,34 @@ import 'package:shopping_organizer/features/create_shopping_list/presentation/cu
 import 'package:shopping_organizer/features/create_shopping_list/presentation/widgets/shopping_form.dart';
 import 'package:shopping_organizer/injectable_configure.dart';
 
-class ShoppingListForm extends StatefulWidget {
-  const ShoppingListForm({super.key});
+class ShoppingCreatePage extends StatefulWidget {
+  const ShoppingCreatePage({super.key});
 
   @override
-  State<ShoppingListForm> createState() => _ShoppingListFormState();
+  State<ShoppingCreatePage> createState() => _ShoppingCreatePageState();
 }
 
-class _ShoppingListFormState extends State<ShoppingListForm> {
-  late final List<ShoppingListItemControllers> _shoppingListItemControllers;
+class _ShoppingCreatePageState extends State<ShoppingCreatePage> {
+  late final List<ShoppingItemControllers> _shoppingItemControllers;
+  late final Uuid _uuid;
 
   @override
   void initState() {
-    _shoppingListItemControllers = <ShoppingListItemControllers>[];
-    _shoppingListItemControllers.add(
-      ShoppingListItemControllers(
+    _shoppingItemControllers = <ShoppingItemControllers>[];
+    _shoppingItemControllers.add(
+      ShoppingItemControllers(
         imagePicker: ImagePicker(),
         nameController: TextEditingController(),
         quantityController: TextEditingController(),
       ),
     );
+    _uuid = getIt<Uuid>();
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final uuid = getIt<Uuid>();
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -47,15 +48,15 @@ class _ShoppingListFormState extends State<ShoppingListForm> {
         actions: [
           IconButton(
             onPressed: () {
-              _shoppingListItemControllers.add(
-                ShoppingListItemControllers(
+              _shoppingItemControllers.add(
+                ShoppingItemControllers(
                   imagePicker: ImagePicker(),
                   nameController: TextEditingController(),
                   quantityController: TextEditingController(),
                 ),
               );
               final shoppingListItem = ShoppingListItem(
-                id: uuid.v4(),
+                id: _uuid.v4(),
               );
 
               context
@@ -90,7 +91,7 @@ class _ShoppingListFormState extends State<ShoppingListForm> {
           return state.maybeMap(
             orElse: () => const LoadingScreen(),
             loaded: (_) => ShoppingForm(
-              shoppingListItemControllers: _shoppingListItemControllers,
+              shoppingItemControllers: _shoppingItemControllers,
             ),
           );
         },

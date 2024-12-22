@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:image_picker/image_picker.dart';
 
 part 'shopping_list_item.freezed.dart';
 part 'shopping_list_item.g.dart';
@@ -30,6 +29,7 @@ class ShoppingListItem with _$ShoppingListItem {
     @Default(CountType.piece) CountType countType,
     String? networkImagePath,
     @JsonKey(includeFromJson: false) String? localImagePath,
+    @Default(false) bool isBought,
   }) = _ShoppingListItem;
 
   ShoppingListItem updateImagePaths({

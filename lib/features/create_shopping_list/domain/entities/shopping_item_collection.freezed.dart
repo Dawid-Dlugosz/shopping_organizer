@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'shopping_list_item_collection.dart';
+part of 'shopping_item_collection.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,48 +14,47 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ShoppingListItemCollection _$ShoppingListItemCollectionFromJson(
+ShoppingItemCollection _$ShoppingItemCollectionFromJson(
     Map<String, dynamic> json) {
-  return _ShoppingListItemCollection.fromJson(json);
+  return _ShoppingItemCollection.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ShoppingListItemCollection {
+mixin _$ShoppingItemCollection {
   List<ShoppingListItem> get shoppingListItems =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this ShoppingListItemCollection to a JSON map.
+  /// Serializes this ShoppingItemCollection to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ShoppingListItemCollection
+  /// Create a copy of ShoppingItemCollection
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ShoppingListItemCollectionCopyWith<ShoppingListItemCollection>
-      get copyWith => throw _privateConstructorUsedError;
+  $ShoppingItemCollectionCopyWith<ShoppingItemCollection> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShoppingListItemCollectionCopyWith<$Res> {
-  factory $ShoppingListItemCollectionCopyWith(ShoppingListItemCollection value,
-          $Res Function(ShoppingListItemCollection) then) =
-      _$ShoppingListItemCollectionCopyWithImpl<$Res,
-          ShoppingListItemCollection>;
+abstract class $ShoppingItemCollectionCopyWith<$Res> {
+  factory $ShoppingItemCollectionCopyWith(ShoppingItemCollection value,
+          $Res Function(ShoppingItemCollection) then) =
+      _$ShoppingItemCollectionCopyWithImpl<$Res, ShoppingItemCollection>;
   @useResult
   $Res call({List<ShoppingListItem> shoppingListItems});
 }
 
 /// @nodoc
-class _$ShoppingListItemCollectionCopyWithImpl<$Res,
-        $Val extends ShoppingListItemCollection>
-    implements $ShoppingListItemCollectionCopyWith<$Res> {
-  _$ShoppingListItemCollectionCopyWithImpl(this._value, this._then);
+class _$ShoppingItemCollectionCopyWithImpl<$Res,
+        $Val extends ShoppingItemCollection>
+    implements $ShoppingItemCollectionCopyWith<$Res> {
+  _$ShoppingItemCollectionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ShoppingListItemCollection
+  /// Create a copy of ShoppingItemCollection
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -72,35 +71,35 @@ class _$ShoppingListItemCollectionCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ShoppingListItemCollectionImplCopyWith<$Res>
-    implements $ShoppingListItemCollectionCopyWith<$Res> {
-  factory _$$ShoppingListItemCollectionImplCopyWith(
-          _$ShoppingListItemCollectionImpl value,
-          $Res Function(_$ShoppingListItemCollectionImpl) then) =
-      __$$ShoppingListItemCollectionImplCopyWithImpl<$Res>;
+abstract class _$$ShoppingItemCollectionImplCopyWith<$Res>
+    implements $ShoppingItemCollectionCopyWith<$Res> {
+  factory _$$ShoppingItemCollectionImplCopyWith(
+          _$ShoppingItemCollectionImpl value,
+          $Res Function(_$ShoppingItemCollectionImpl) then) =
+      __$$ShoppingItemCollectionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<ShoppingListItem> shoppingListItems});
 }
 
 /// @nodoc
-class __$$ShoppingListItemCollectionImplCopyWithImpl<$Res>
-    extends _$ShoppingListItemCollectionCopyWithImpl<$Res,
-        _$ShoppingListItemCollectionImpl>
-    implements _$$ShoppingListItemCollectionImplCopyWith<$Res> {
-  __$$ShoppingListItemCollectionImplCopyWithImpl(
-      _$ShoppingListItemCollectionImpl _value,
-      $Res Function(_$ShoppingListItemCollectionImpl) _then)
+class __$$ShoppingItemCollectionImplCopyWithImpl<$Res>
+    extends _$ShoppingItemCollectionCopyWithImpl<$Res,
+        _$ShoppingItemCollectionImpl>
+    implements _$$ShoppingItemCollectionImplCopyWith<$Res> {
+  __$$ShoppingItemCollectionImplCopyWithImpl(
+      _$ShoppingItemCollectionImpl _value,
+      $Res Function(_$ShoppingItemCollectionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ShoppingListItemCollection
+  /// Create a copy of ShoppingItemCollection
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? shoppingListItems = null,
   }) {
-    return _then(_$ShoppingListItemCollectionImpl(
+    return _then(_$ShoppingItemCollectionImpl(
       shoppingListItems: null == shoppingListItems
           ? _value._shoppingListItems
           : shoppingListItems // ignore: cast_nullable_to_non_nullable
@@ -112,15 +111,14 @@ class __$$ShoppingListItemCollectionImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ShoppingListItemCollectionImpl extends _ShoppingListItemCollection {
-  const _$ShoppingListItemCollectionImpl(
+class _$ShoppingItemCollectionImpl extends _ShoppingItemCollection {
+  const _$ShoppingItemCollectionImpl(
       {required final List<ShoppingListItem> shoppingListItems})
       : _shoppingListItems = shoppingListItems,
         super._();
 
-  factory _$ShoppingListItemCollectionImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$ShoppingListItemCollectionImplFromJson(json);
+  factory _$ShoppingItemCollectionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShoppingItemCollectionImplFromJson(json);
 
   final List<ShoppingListItem> _shoppingListItems;
   @override
@@ -133,14 +131,14 @@ class _$ShoppingListItemCollectionImpl extends _ShoppingListItemCollection {
 
   @override
   String toString() {
-    return 'ShoppingListItemCollection(shoppingListItems: $shoppingListItems)';
+    return 'ShoppingItemCollection(shoppingListItems: $shoppingListItems)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShoppingListItemCollectionImpl &&
+            other is _$ShoppingItemCollectionImpl &&
             const DeepCollectionEquality()
                 .equals(other._shoppingListItems, _shoppingListItems));
   }
@@ -150,39 +148,39 @@ class _$ShoppingListItemCollectionImpl extends _ShoppingListItemCollection {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_shoppingListItems));
 
-  /// Create a copy of ShoppingListItemCollection
+  /// Create a copy of ShoppingItemCollection
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShoppingListItemCollectionImplCopyWith<_$ShoppingListItemCollectionImpl>
-      get copyWith => __$$ShoppingListItemCollectionImplCopyWithImpl<
-          _$ShoppingListItemCollectionImpl>(this, _$identity);
+  _$$ShoppingItemCollectionImplCopyWith<_$ShoppingItemCollectionImpl>
+      get copyWith => __$$ShoppingItemCollectionImplCopyWithImpl<
+          _$ShoppingItemCollectionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ShoppingListItemCollectionImplToJson(
+    return _$$ShoppingItemCollectionImplToJson(
       this,
     );
   }
 }
 
-abstract class _ShoppingListItemCollection extends ShoppingListItemCollection {
-  const factory _ShoppingListItemCollection(
+abstract class _ShoppingItemCollection extends ShoppingItemCollection {
+  const factory _ShoppingItemCollection(
           {required final List<ShoppingListItem> shoppingListItems}) =
-      _$ShoppingListItemCollectionImpl;
-  const _ShoppingListItemCollection._() : super._();
+      _$ShoppingItemCollectionImpl;
+  const _ShoppingItemCollection._() : super._();
 
-  factory _ShoppingListItemCollection.fromJson(Map<String, dynamic> json) =
-      _$ShoppingListItemCollectionImpl.fromJson;
+  factory _ShoppingItemCollection.fromJson(Map<String, dynamic> json) =
+      _$ShoppingItemCollectionImpl.fromJson;
 
   @override
   List<ShoppingListItem> get shoppingListItems;
 
-  /// Create a copy of ShoppingListItemCollection
+  /// Create a copy of ShoppingItemCollection
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShoppingListItemCollectionImplCopyWith<_$ShoppingListItemCollectionImpl>
+  _$$ShoppingItemCollectionImplCopyWith<_$ShoppingItemCollectionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -11,7 +11,7 @@ import 'package:shopping_organizer/core/failures/failure.dart';
 import 'package:shopping_organizer/features/create_shopping_list/data/repositories/shopping_list_repository_impl.dart';
 import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_container.dart';
 import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_item.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_item_collection.dart';
+import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_item_collection.dart';
 
 import 'package:shopping_organizer/features/create_shopping_list/domain/repositories/shopping_list_repository.dart';
 

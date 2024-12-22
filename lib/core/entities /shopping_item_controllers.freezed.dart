@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'shopping_list_item_controllers.dart';
+part of 'shopping_item_controllers.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ShoppingListItemControllers {
+mixin _$ShoppingItemControllers {
   TextEditingController get nameController =>
       throw _privateConstructorUsedError;
   TextEditingController get quantityController =>
@@ -23,20 +23,18 @@ mixin _$ShoppingListItemControllers {
   ImagePicker get imagePicker => throw _privateConstructorUsedError;
   String? get imageLocalPath => throw _privateConstructorUsedError;
 
-  /// Create a copy of ShoppingListItemControllers
+  /// Create a copy of ShoppingItemControllers
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ShoppingListItemControllersCopyWith<ShoppingListItemControllers>
-      get copyWith => throw _privateConstructorUsedError;
+  $ShoppingItemControllersCopyWith<ShoppingItemControllers> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShoppingListItemControllersCopyWith<$Res> {
-  factory $ShoppingListItemControllersCopyWith(
-          ShoppingListItemControllers value,
-          $Res Function(ShoppingListItemControllers) then) =
-      _$ShoppingListItemControllersCopyWithImpl<$Res,
-          ShoppingListItemControllers>;
+abstract class $ShoppingItemControllersCopyWith<$Res> {
+  factory $ShoppingItemControllersCopyWith(ShoppingItemControllers value,
+          $Res Function(ShoppingItemControllers) then) =
+      _$ShoppingItemControllersCopyWithImpl<$Res, ShoppingItemControllers>;
   @useResult
   $Res call(
       {TextEditingController nameController,
@@ -46,17 +44,17 @@ abstract class $ShoppingListItemControllersCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ShoppingListItemControllersCopyWithImpl<$Res,
-        $Val extends ShoppingListItemControllers>
-    implements $ShoppingListItemControllersCopyWith<$Res> {
-  _$ShoppingListItemControllersCopyWithImpl(this._value, this._then);
+class _$ShoppingItemControllersCopyWithImpl<$Res,
+        $Val extends ShoppingItemControllers>
+    implements $ShoppingItemControllersCopyWith<$Res> {
+  _$ShoppingItemControllersCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ShoppingListItemControllers
+  /// Create a copy of ShoppingItemControllers
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -88,12 +86,12 @@ class _$ShoppingListItemControllersCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ShoppingListItemControllersImplCopyWith<$Res>
-    implements $ShoppingListItemControllersCopyWith<$Res> {
-  factory _$$ShoppingListItemControllersImplCopyWith(
-          _$ShoppingListItemControllersImpl value,
-          $Res Function(_$ShoppingListItemControllersImpl) then) =
-      __$$ShoppingListItemControllersImplCopyWithImpl<$Res>;
+abstract class _$$ShoppingItemControllersImplCopyWith<$Res>
+    implements $ShoppingItemControllersCopyWith<$Res> {
+  factory _$$ShoppingItemControllersImplCopyWith(
+          _$ShoppingItemControllersImpl value,
+          $Res Function(_$ShoppingItemControllersImpl) then) =
+      __$$ShoppingItemControllersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -104,16 +102,16 @@ abstract class _$$ShoppingListItemControllersImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ShoppingListItemControllersImplCopyWithImpl<$Res>
-    extends _$ShoppingListItemControllersCopyWithImpl<$Res,
-        _$ShoppingListItemControllersImpl>
-    implements _$$ShoppingListItemControllersImplCopyWith<$Res> {
-  __$$ShoppingListItemControllersImplCopyWithImpl(
-      _$ShoppingListItemControllersImpl _value,
-      $Res Function(_$ShoppingListItemControllersImpl) _then)
+class __$$ShoppingItemControllersImplCopyWithImpl<$Res>
+    extends _$ShoppingItemControllersCopyWithImpl<$Res,
+        _$ShoppingItemControllersImpl>
+    implements _$$ShoppingItemControllersImplCopyWith<$Res> {
+  __$$ShoppingItemControllersImplCopyWithImpl(
+      _$ShoppingItemControllersImpl _value,
+      $Res Function(_$ShoppingItemControllersImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ShoppingListItemControllers
+  /// Create a copy of ShoppingItemControllers
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -123,7 +121,7 @@ class __$$ShoppingListItemControllersImplCopyWithImpl<$Res>
     Object? imagePicker = null,
     Object? imageLocalPath = freezed,
   }) {
-    return _then(_$ShoppingListItemControllersImpl(
+    return _then(_$ShoppingItemControllersImpl(
       nameController: null == nameController
           ? _value.nameController
           : nameController // ignore: cast_nullable_to_non_nullable
@@ -146,9 +144,8 @@ class __$$ShoppingListItemControllersImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ShoppingListItemControllersImpl
-    implements _ShoppingListItemControllers {
-  const _$ShoppingListItemControllersImpl(
+class _$ShoppingItemControllersImpl implements _ShoppingItemControllers {
+  const _$ShoppingItemControllersImpl(
       {required this.nameController,
       required this.quantityController,
       required this.imagePicker,
@@ -165,14 +162,14 @@ class _$ShoppingListItemControllersImpl
 
   @override
   String toString() {
-    return 'ShoppingListItemControllers(nameController: $nameController, quantityController: $quantityController, imagePicker: $imagePicker, imageLocalPath: $imageLocalPath)';
+    return 'ShoppingItemControllers(nameController: $nameController, quantityController: $quantityController, imagePicker: $imagePicker, imageLocalPath: $imageLocalPath)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShoppingListItemControllersImpl &&
+            other is _$ShoppingItemControllersImpl &&
             (identical(other.nameController, nameController) ||
                 other.nameController == nameController) &&
             (identical(other.quantityController, quantityController) ||
@@ -187,23 +184,22 @@ class _$ShoppingListItemControllersImpl
   int get hashCode => Object.hash(runtimeType, nameController,
       quantityController, imagePicker, imageLocalPath);
 
-  /// Create a copy of ShoppingListItemControllers
+  /// Create a copy of ShoppingItemControllers
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ShoppingListItemControllersImplCopyWith<_$ShoppingListItemControllersImpl>
-      get copyWith => __$$ShoppingListItemControllersImplCopyWithImpl<
-          _$ShoppingListItemControllersImpl>(this, _$identity);
+  _$$ShoppingItemControllersImplCopyWith<_$ShoppingItemControllersImpl>
+      get copyWith => __$$ShoppingItemControllersImplCopyWithImpl<
+          _$ShoppingItemControllersImpl>(this, _$identity);
 }
 
-abstract class _ShoppingListItemControllers
-    implements ShoppingListItemControllers {
-  const factory _ShoppingListItemControllers(
+abstract class _ShoppingItemControllers implements ShoppingItemControllers {
+  const factory _ShoppingItemControllers(
       {required final TextEditingController nameController,
       required final TextEditingController quantityController,
       required final ImagePicker imagePicker,
-      final String? imageLocalPath}) = _$ShoppingListItemControllersImpl;
+      final String? imageLocalPath}) = _$ShoppingItemControllersImpl;
 
   @override
   TextEditingController get nameController;
@@ -214,10 +210,10 @@ abstract class _ShoppingListItemControllers
   @override
   String? get imageLocalPath;
 
-  /// Create a copy of ShoppingListItemControllers
+  /// Create a copy of ShoppingItemControllers
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ShoppingListItemControllersImplCopyWith<_$ShoppingListItemControllersImpl>
+  _$$ShoppingItemControllersImplCopyWith<_$ShoppingItemControllersImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

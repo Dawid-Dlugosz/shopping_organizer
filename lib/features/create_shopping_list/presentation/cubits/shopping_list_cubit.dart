@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
+import 'package:shopping_organizer/core/entities%20/shopping_item_controllers.dart';
 import 'package:uuid/uuid.dart';
 
-import 'package:shopping_organizer/core/entities%20/shopping_list_item_controllers.dart';
 import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_container.dart';
 import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_item.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_item_collection.dart';
+import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_item_collection.dart';
 import 'package:shopping_organizer/features/create_shopping_list/domain/repositories/shopping_list_repository.dart';
+import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
 
 part 'shopping_list_state.dart';
 part 'shopping_list_cubit.freezed.dart';
@@ -31,13 +31,14 @@ class ShoppingListCubit extends Cubit<ShoppingListState> {
     final shoppingItem = ShoppingListItem(
       id: uuid.v4(),
     );
+
     emit(
       ShoppingListState.loaded(
         shoppingListContainer: ShoppingListContainer(
           ownerId: customUserCubit.state.customUser!.userId,
           ownerNickname: customUserCubit.state.customUser!.nickname,
           id: uuid.v4(),
-          shoppingListItemCollection: ShoppingListItemCollection(
+          shoppingListItemCollection: ShoppingItemCollection(
             shoppingListItems: [
               shoppingItem,
             ],
@@ -107,7 +108,7 @@ class ShoppingListCubit extends Cubit<ShoppingListState> {
   }
 
   Future<void> createShopList({
-    required List<ShoppingListItemControllers> shoppingListItemControllers,
+    required List<ShoppingItemControllers> shoppingItemControllers,
     required String name,
   }) async {
     final shoppingListItemCollection = state.shoppingListItemCollection;
@@ -116,16 +117,17 @@ class ShoppingListCubit extends Cubit<ShoppingListState> {
     emit(const ShoppingListState.loading());
     final shopingListItems = <ShoppingListItem>[];
 
-    for (var i = 0; i < shoppingListItemControllers.length; i++) {
+    for (var i = 0; i < shoppingItemControllers.length; i++) {
       final shoppingListItem =
           shoppingListItemCollection!.shoppingListItems[i].copyWith(
-        name: shoppingListItemControllers[i].nameController.text,
-        quantity: shoppingListItemControllers[i].quantityController.text,
+        name: shoppingItemControllers[i].nameController.text,
+        quantity: shoppingItemControllers[i].quantityController.text,
       );
       shopingListItems.add(shoppingListItem);
     }
 
     shoppingListContainer = shoppingListContainer.copyWith(
+        name: name,
         shoppingListItemCollection: shoppingListContainer
             .shoppingListItemCollection
             .updateCollection(shopingListItems));

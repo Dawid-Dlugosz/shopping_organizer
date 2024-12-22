@@ -27,7 +27,6 @@ class AuthListenerWidget extends StatelessWidget {
         BlocListener<AuthCubit, AuthState>(
           bloc: context.read<AuthCubit>(),
           listener: (context, state) {
-            print('sdsdaas $state');
             state.mapOrNull(
               authorized: (value) async {
                 final user = value.user;

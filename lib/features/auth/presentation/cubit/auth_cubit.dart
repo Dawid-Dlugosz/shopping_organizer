@@ -25,6 +25,7 @@ class AuthCubit extends Cubit<AuthState> {
     final stream = await authRepository.sessionListener();
     _streamSubscription = stream.listen(
       (user) {
+        print('sdfsdfsa $user');
         if (user != null) {
           emit(
             AuthState.authorized(

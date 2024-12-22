@@ -36,6 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
+        print('asdfasd $state');
         state.maybeMap(
           authorized: (value) {
             context.go(RouteNames.shoppingList);

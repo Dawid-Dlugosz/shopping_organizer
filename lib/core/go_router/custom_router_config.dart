@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:shopping_organizer/core/go_router/route_names.dart';
@@ -10,7 +10,7 @@ import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.d
 import 'package:shopping_organizer/features/auth/presentation/screen/login_page.dart';
 import 'package:shopping_organizer/features/auth/presentation/screen/register_page.dart';
 import 'package:shopping_organizer/features/create_shopping_list/presentation/cubits/shopping_list_cubit.dart';
-import 'package:shopping_organizer/features/create_shopping_list/presentation/screens/shoppig_list_form.dart';
+import 'package:shopping_organizer/features/create_shopping_list/presentation/screens/shopping_create_page.dart';
 import 'package:shopping_organizer/features/custom_user/presentation/widgets/custom_user_builder.dart';
 import 'package:shopping_organizer/features/home_page/home_page.dart';
 import 'package:shopping_organizer/features/home_page/widgets/expanses.dart';
@@ -24,7 +24,7 @@ class CustomRouter {
   static final _shellNavigatorExpansesKey =
       GlobalKey<NavigatorState>(debugLabel: 'expenses');
 
-  GoRouter routers(ValueNotifier<AuthState> notifier) {
+  static GoRouter routers(ValueNotifier<AuthState> notifier) {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
       initialLocation: '/',
@@ -77,7 +77,7 @@ class CustomRouter {
           builder: (context, state) => BlocProvider(
             create: (context) =>
                 getIt<ShoppingListCubit>()..createNewShoppingList(),
-            child: const ShoppingListForm(),
+            child: const ShoppingCreatePage(),
           ),
         ),
       ],
@@ -85,7 +85,6 @@ class CustomRouter {
       redirect: (context, state) {
         if (state.fullPath != RouteNames.registerScreen) {
           final authState = context.read<AuthCubit>().state;
-
           return authState.maybeMap(
             unAuthorized: (_) => RouteNames.loginScreen,
             orElse: () => null,

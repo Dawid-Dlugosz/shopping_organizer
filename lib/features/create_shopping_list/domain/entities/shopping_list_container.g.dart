@@ -12,7 +12,7 @@ _$ShoppingListContainerImpl _$$ShoppingListContainerImplFromJson(
       ownerId: json['ownerId'] as String,
       ownerNickname: json['ownerNickname'] as String,
       id: json['id'] as String,
-      shoppingListItemCollection: ShoppingListItemCollection.fromJson(
+      shoppingListItemCollection: ShoppingItemCollection.fromJson(
           json['shoppingListItemCollection'] as Map<String, dynamic>),
       name: json['name'] as String?,
     );

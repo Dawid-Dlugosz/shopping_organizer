@@ -27,6 +27,7 @@ mixin _$ShoppingListItem {
   String? get networkImagePath => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false)
   String? get localImagePath => throw _privateConstructorUsedError;
+  bool get isBought => throw _privateConstructorUsedError;
 
   /// Serializes this ShoppingListItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +51,8 @@ abstract class $ShoppingListItemCopyWith<$Res> {
       String? quantity,
       CountType countType,
       String? networkImagePath,
-      @JsonKey(includeFromJson: false) String? localImagePath});
+      @JsonKey(includeFromJson: false) String? localImagePath,
+      bool isBought});
 }
 
 /// @nodoc
@@ -74,6 +76,7 @@ class _$ShoppingListItemCopyWithImpl<$Res, $Val extends ShoppingListItem>
     Object? countType = null,
     Object? networkImagePath = freezed,
     Object? localImagePath = freezed,
+    Object? isBought = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -100,6 +103,10 @@ class _$ShoppingListItemCopyWithImpl<$Res, $Val extends ShoppingListItem>
           ? _value.localImagePath
           : localImagePath // ignore: cast_nullable_to_non_nullable
               as String?,
+      isBought: null == isBought
+          ? _value.isBought
+          : isBought // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -118,7 +125,8 @@ abstract class _$$ShoppingListItemImplCopyWith<$Res>
       String? quantity,
       CountType countType,
       String? networkImagePath,
-      @JsonKey(includeFromJson: false) String? localImagePath});
+      @JsonKey(includeFromJson: false) String? localImagePath,
+      bool isBought});
 }
 
 /// @nodoc
@@ -140,6 +148,7 @@ class __$$ShoppingListItemImplCopyWithImpl<$Res>
     Object? countType = null,
     Object? networkImagePath = freezed,
     Object? localImagePath = freezed,
+    Object? isBought = null,
   }) {
     return _then(_$ShoppingListItemImpl(
       id: null == id
@@ -166,6 +175,10 @@ class __$$ShoppingListItemImplCopyWithImpl<$Res>
           ? _value.localImagePath
           : localImagePath // ignore: cast_nullable_to_non_nullable
               as String?,
+      isBought: null == isBought
+          ? _value.isBought
+          : isBought // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -179,7 +192,8 @@ class _$ShoppingListItemImpl extends _ShoppingListItem {
       this.quantity,
       this.countType = CountType.piece,
       this.networkImagePath,
-      @JsonKey(includeFromJson: false) this.localImagePath})
+      @JsonKey(includeFromJson: false) this.localImagePath,
+      this.isBought = false})
       : super._();
 
   factory _$ShoppingListItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -199,10 +213,13 @@ class _$ShoppingListItemImpl extends _ShoppingListItem {
   @override
   @JsonKey(includeFromJson: false)
   final String? localImagePath;
+  @override
+  @JsonKey()
+  final bool isBought;
 
   @override
   String toString() {
-    return 'ShoppingListItem(id: $id, name: $name, quantity: $quantity, countType: $countType, networkImagePath: $networkImagePath, localImagePath: $localImagePath)';
+    return 'ShoppingListItem(id: $id, name: $name, quantity: $quantity, countType: $countType, networkImagePath: $networkImagePath, localImagePath: $localImagePath, isBought: $isBought)';
   }
 
   @override
@@ -219,13 +236,15 @@ class _$ShoppingListItemImpl extends _ShoppingListItem {
             (identical(other.networkImagePath, networkImagePath) ||
                 other.networkImagePath == networkImagePath) &&
             (identical(other.localImagePath, localImagePath) ||
-                other.localImagePath == localImagePath));
+                other.localImagePath == localImagePath) &&
+            (identical(other.isBought, isBought) ||
+                other.isBought == isBought));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, quantity, countType,
-      networkImagePath, localImagePath);
+      networkImagePath, localImagePath, isBought);
 
   /// Create a copy of ShoppingListItem
   /// with the given fields replaced by the non-null parameter values.
@@ -246,13 +265,13 @@ class _$ShoppingListItemImpl extends _ShoppingListItem {
 
 abstract class _ShoppingListItem extends ShoppingListItem {
   const factory _ShoppingListItem(
-          {required final String id,
-          final String? name,
-          final String? quantity,
-          final CountType countType,
-          final String? networkImagePath,
-          @JsonKey(includeFromJson: false) final String? localImagePath}) =
-      _$ShoppingListItemImpl;
+      {required final String id,
+      final String? name,
+      final String? quantity,
+      final CountType countType,
+      final String? networkImagePath,
+      @JsonKey(includeFromJson: false) final String? localImagePath,
+      final bool isBought}) = _$ShoppingListItemImpl;
   const _ShoppingListItem._() : super._();
 
   factory _ShoppingListItem.fromJson(Map<String, dynamic> json) =
@@ -271,6 +290,8 @@ abstract class _ShoppingListItem extends ShoppingListItem {
   @override
   @JsonKey(includeFromJson: false)
   String? get localImagePath;
+  @override
+  bool get isBought;
 
   /// Create a copy of ShoppingListItem
   /// with the given fields replaced by the non-null parameter values.

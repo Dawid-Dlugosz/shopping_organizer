@@ -15,6 +15,7 @@ _$ShoppingListItemImpl _$$ShoppingListItemImplFromJson(
       countType: $enumDecodeNullable(_$CountTypeEnumMap, json['countType']) ??
           CountType.piece,
       networkImagePath: json['networkImagePath'] as String?,
+      isBought: json['isBought'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$ShoppingListItemImplToJson(
@@ -25,6 +26,7 @@ Map<String, dynamic> _$$ShoppingListItemImplToJson(
       'quantity': instance.quantity,
       'countType': _$CountTypeEnumMap[instance.countType]!,
       'networkImagePath': instance.networkImagePath,
+      'isBought': instance.isBought,
     };
 
 const _$CountTypeEnumMap = {
