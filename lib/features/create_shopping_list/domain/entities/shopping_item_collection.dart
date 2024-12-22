@@ -1,35 +1,35 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_item.dart';
 
-part 'shopping_list_item_collection.freezed.dart';
-part 'shopping_list_item_collection.g.dart';
+part 'shopping_item_collection.freezed.dart';
+part 'shopping_item_collection.g.dart';
 
 @freezed
-class ShoppingListItemCollection with _$ShoppingListItemCollection {
-  const ShoppingListItemCollection._();
+class ShoppingItemCollection with _$ShoppingItemCollection {
+  const ShoppingItemCollection._();
 
   @JsonSerializable(explicitToJson: true)
-  const factory ShoppingListItemCollection({
+  const factory ShoppingItemCollection({
     required List<ShoppingListItem> shoppingListItems,
-  }) = _ShoppingListItemCollection;
+  }) = _ShoppingItemCollection;
 
-  factory ShoppingListItemCollection.fromJson(Map<String, dynamic> json) =>
-      _$ShoppingListItemCollectionFromJson(json);
+  factory ShoppingItemCollection.fromJson(Map<String, dynamic> json) =>
+      _$ShoppingItemCollectionFromJson(json);
 
-  ShoppingListItemCollection add(ShoppingListItem shoppingListItem) {
+  ShoppingItemCollection add(ShoppingListItem shoppingListItem) {
     return (copyWith(
       shoppingListItems: [...shoppingListItems, shoppingListItem],
     ));
   }
 
-  ShoppingListItemCollection remove(int index) {
+  ShoppingItemCollection remove(int index) {
     return copyWith(
         shoppingListItems: List.unmodifiable(
             shoppingListItems.sublist(0, index) +
                 shoppingListItems.sublist(index + 1)));
   }
 
-  ShoppingListItemCollection updateItem({
+  ShoppingItemCollection updateItem({
     required ShoppingListItem shoppingListItem,
     required int index,
   }) {
@@ -39,7 +39,7 @@ class ShoppingListItemCollection with _$ShoppingListItemCollection {
           ..addAll(shoppingListItems.sublist(index + 1))));
   }
 
-  ShoppingListItemCollection updateCollection(
+  ShoppingItemCollection updateCollection(
     List<ShoppingListItem> shoppingListItemss,
   ) {
     return copyWith(

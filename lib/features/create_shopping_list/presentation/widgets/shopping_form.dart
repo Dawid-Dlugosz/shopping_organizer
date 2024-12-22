@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:shopping_organizer/core/entities%20/shopping_list_item_controllers.dart';
 
+import 'package:shopping_organizer/core/entities%20/shopping_item_controllers.dart';
 import 'package:shopping_organizer/features/create_shopping_list/presentation/cubits/shopping_list_cubit.dart';
 import 'package:shopping_organizer/features/create_shopping_list/presentation/widgets/shopping_card.dart';
 
 class ShoppingForm extends StatefulWidget {
   const ShoppingForm({
-    required List<ShoppingListItemControllers> shoppingListItemControllers,
+    required List<ShoppingItemControllers> shoppingItemControllers,
     super.key,
-  }) : _shoppingListItemControllers = shoppingListItemControllers;
+  }) : _shoppingItemControllers = shoppingItemControllers;
 
-  final List<ShoppingListItemControllers> _shoppingListItemControllers;
+  final List<ShoppingItemControllers> _shoppingItemControllers;
 
   @override
   State<ShoppingForm> createState() => _ShoppingFormState();
@@ -32,13 +32,19 @@ class _ShoppingFormState extends State<ShoppingForm> {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.only(
+                top: 10,
+                left: 10,
+                right: 10,
+              ),
               child: Column(
                 children: [
                   TextFormField(
                     controller: _nameController,
                     decoration: InputDecoration(
-                      label: Text(AppLocalizations.of(context)!.name),
+                      label: Text(
+                        AppLocalizations.of(context)!.shoppingListName,
+                      ),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -46,6 +52,9 @@ class _ShoppingFormState extends State<ShoppingForm> {
                       }
                       return null;
                     },
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   Expanded(
                     child: ListView.builder(
@@ -57,8 +66,12 @@ class _ShoppingFormState extends State<ShoppingForm> {
                       itemBuilder: (ctx, index) {
                         return ShoppingCard(
                           index: index,
-                          shoppingListItemControllers:
-                              widget._shoppingListItemControllers[index],
+                          shoppingItemControllers:
+                              widget._shoppingItemControllers[index],
+                          shoppingListItem: context
+                              .watch<ShoppingListCubit>()
+                              .state
+                              .shoppingListItems[index],
                         );
                       },
                     ),
@@ -68,7 +81,10 @@ class _ShoppingFormState extends State<ShoppingForm> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+            padding: const EdgeInsets.symmetric(
+              vertical: 7,
+              horizontal: 10,
+            ),
             child: Row(
               children: [
                 Expanded(
@@ -84,8 +100,8 @@ class _ShoppingFormState extends State<ShoppingForm> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       context.read<ShoppingListCubit>().createShopList(
-                            shoppingListItemControllers:
-                                widget._shoppingListItemControllers,
+                            shoppingItemControllers:
+                                widget._shoppingItemControllers,
                             name: _nameController.text,
                           );
                     } else {

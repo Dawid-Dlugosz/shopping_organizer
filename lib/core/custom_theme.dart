@@ -17,6 +17,7 @@ class CustomTheme {
       colorExtension,
     ],
     inputDecorationTheme: InputDecorationTheme(
+      isDense: true,
       focusedErrorBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: colorExtension.errorColor,

@@ -35,5 +35,7 @@
     "enterRequiredFields": "Complete all required fields",
     "addedShoppingList": "Shopping list was added",
     "addShopingListError": "Problem with add shopping list",
-    "emailInUse": "E-mail alredy exist"
+    "emailInUse": "E-mail alredy exist",
+    "shoppingListName": "Shopping list name",
+    "delete": "Delete"
 }

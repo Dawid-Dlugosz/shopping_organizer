@@ -35,5 +35,7 @@
     "enterRequiredFields": "Uzupełnij wymagane pola",
     "addedShoppingList": "Lista zakupów została dodana",
     "addShopingListError": "Problem z dodaniem listy zakupów",
-    "emailInUse": "Adres E-mail istnieje"
+    "emailInUse": "Adres E-mail istnieje",
+    "shoppingListName": "Nazwa listy zakupów",
+    "delete": "Usuń"
 }

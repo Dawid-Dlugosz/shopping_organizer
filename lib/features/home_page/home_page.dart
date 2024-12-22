@@ -56,7 +56,6 @@ class HomePage extends StatelessWidget {
       },
       child: BlocBuilder<CustomUserCubit, CustomUserState>(
         builder: (context, state) {
-          print('sadsas2 $state');
           return state.maybeMap(
             orElse: () => const LoadingScreen(),
             loaded: (value) => Scaffold(

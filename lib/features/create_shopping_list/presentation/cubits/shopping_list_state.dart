@@ -18,7 +18,7 @@ class ShoppingListState with _$ShoppingListState {
         orElse: () => [],
       );
 
-  ShoppingListItemCollection? get shoppingListItemCollection => maybeMap(
+  ShoppingItemCollection? get shoppingListItemCollection => maybeMap(
         loaded: (value) =>
             value.shoppingListContainer.shoppingListItemCollection,
         orElse: () => null,

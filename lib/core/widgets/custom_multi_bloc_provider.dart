@@ -14,7 +14,7 @@ class CustomMultiBlocProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => getIt<AuthCubit>(),
+          create: (_) => getIt<AuthCubit>()..sessionListener(),
         ),
         BlocProvider(
           create: (_) => getIt<CustomUserCubit>(),
