@@ -1,11 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_container.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_item.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_item_collection.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/repositories/shopping_list_repository.dart';
-import 'package:shopping_organizer/features/create_shopping_list/presentation/cubits/shopping_list_cubit.dart';
+import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_list_container.dart';
+import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_list_item.dart';
+import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_item_collection.dart';
+import 'package:shopping_organizer/features/shopping_list/domain/repositories/shopping_list_repository.dart';
+import 'package:shopping_organizer/features/shopping_list/create_shopping_list/presentation/cubits/shopping_create_list_cubit.dart';
 import 'package:shopping_organizer/features/custom_user/domain/entities/custom_user.dart';
 import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
 import 'package:uuid/uuid.dart';
@@ -18,7 +18,7 @@ class MockShoppingListRepository extends Mock
 class MockCustomUserCubit extends Mock implements CustomUserCubit {}
 
 void main() {
-  late ShoppingListCubit shoppingListCubit;
+  late ShoppingCreateListCubit shoppingListCubit;
   late MockUuid mockUuid;
   late MockCustomUserCubit mockCustomUserCubit;
   late MockShoppingListRepository mockShoppingListRepository;
@@ -28,7 +28,7 @@ void main() {
     mockShoppingListRepository = MockShoppingListRepository();
     mockCustomUserCubit = MockCustomUserCubit();
 
-    shoppingListCubit = ShoppingListCubit(
+    shoppingListCubit = ShoppingCreateListCubit(
       mockShoppingListRepository,
       mockCustomUserCubit,
       mockUuid,

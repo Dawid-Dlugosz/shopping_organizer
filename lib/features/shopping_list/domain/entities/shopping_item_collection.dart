@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_item.dart';
+import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_list_item.dart';
 
 part 'shopping_item_collection.freezed.dart';
 part 'shopping_item_collection.g.dart';

@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:shopping_organizer/core/entities%20/shopping_item_controllers.dart';
-import 'package:shopping_organizer/features/create_shopping_list/presentation/cubits/shopping_list_cubit.dart';
-import 'package:shopping_organizer/features/create_shopping_list/presentation/widgets/image_select_widget.dart';
+import 'package:shopping_organizer/features/shopping_list/create_shopping_list/presentation/cubits/shopping_create_list_cubit.dart';
+import 'package:shopping_organizer/features/shopping_list/create_shopping_list/presentation/widgets/image_select_widget.dart';
 
 class SelectMethod extends StatelessWidget {
   const SelectMethod({
@@ -25,7 +25,7 @@ class SelectMethod extends StatelessWidget {
           child: ImageSelect(
             iconData: Icons.image,
             onTap: () async {
-              final shoppingListCubit = context.read<ShoppingListCubit>();
+              final shoppingListCubit = context.read<ShoppingCreateListCubit>();
               final image = await shoppingItemControllers.imagePicker.pickImage(
                 source: ImageSource.gallery,
               );
@@ -44,7 +44,7 @@ class SelectMethod extends StatelessWidget {
           child: ImageSelect(
             iconData: Icons.camera,
             onTap: () async {
-              final shoppingListCubit = context.read<ShoppingListCubit>();
+              final shoppingListCubit = context.read<ShoppingCreateListCubit>();
               final image = await shoppingItemControllers.imagePicker.pickImage(
                 source: ImageSource.camera,
               );

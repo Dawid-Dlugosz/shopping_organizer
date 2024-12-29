@@ -8,8 +8,8 @@ import 'package:logger/web.dart';
 import 'package:shopping_organizer/core/enums/firestore_collection_type.dart';
 
 import 'package:shopping_organizer/core/failures/failure.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_container.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/repositories/shopping_list_repository.dart';
+import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_list_container.dart';
+import 'package:shopping_organizer/features/shopping_list/domain/repositories/shopping_list_repository.dart';
 
 @LazySingleton(as: ShoppingListRepository)
 class ShoppingListRepositoryImpl implements ShoppingListRepository {
@@ -63,8 +63,34 @@ class ShoppingListRepositoryImpl implements ShoppingListRepository {
   }
 
   @override
-  Future<Either<Failure, ShoppingListContainer>> getShoppingList() {
-    // TODO: implement getShoppingList
-    throw UnimplementedError();
+  Future<Either<Failure, List<ShoppingListContainer>>> getShoppingListStream(
+    List<String> idLists,
+  ) async {
+    try {
+      final querySnapshot = await firebaseFirestore
+          .collection(FirestoreCollectionType.shoppingList.type)
+          .where(
+            'id',
+            whereIn: idLists,
+          )
+          .get();
+
+      final docs = querySnapshot.docs;
+      final shoppingListContainers = <ShoppingListContainer>[];
+
+      for (var element in docs) {
+        final body = element.data();
+        shoppingListContainers.add(ShoppingListContainer.fromJson(body));
+      }
+      return Right(shoppingListContainers);
+    } catch (e, s) {
+      logger.e(
+        e.toString(),
+        error: e,
+        stackTrace: s,
+      );
+
+      return const Left(Failure.general());
+    }
   }
 }

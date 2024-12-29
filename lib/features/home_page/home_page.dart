@@ -66,7 +66,9 @@ class HomePage extends StatelessWidget {
                 actions: [
                   IconButton(
                     onPressed: context.read<AuthCubit>().signOut,
-                    icon: Icon(Icons.logout),
+                    icon: const Icon(
+                      Icons.logout,
+                    ),
                   )
                 ],
               ),
@@ -94,11 +96,7 @@ class HomePage extends StatelessWidget {
                 currentIndex: navigationShell.currentIndex,
                 onTap: _goBranch,
               ),
-              body: Column(
-                children: [
-                  navigationShell,
-                ],
-              ),
+              body: navigationShell,
             ),
           );
         },
