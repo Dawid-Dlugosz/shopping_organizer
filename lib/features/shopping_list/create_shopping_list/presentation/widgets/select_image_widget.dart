@@ -7,8 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:shopping_organizer/core/color_extension.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_item.dart';
-import 'package:shopping_organizer/features/create_shopping_list/presentation/cubits/shopping_list_cubit.dart';
+import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_list_item.dart';
+import 'package:shopping_organizer/features/shopping_list/create_shopping_list/presentation/cubits/shopping_create_list_cubit.dart';
 
 class SelectedImage extends StatelessWidget {
   const SelectedImage({
@@ -53,7 +53,7 @@ class SelectedImage extends StatelessWidget {
                   child: InkWell(
                     onTap: () {
                       final shoppingListCubit =
-                          context.read<ShoppingListCubit>();
+                          context.read<ShoppingCreateListCubit>();
                       shoppingListCubit.addImageToItem(
                         index: index,
                         path: null,

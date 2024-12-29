@@ -9,12 +9,13 @@ import 'package:shopping_organizer/core/screens/splash_screen.dart';
 import 'package:shopping_organizer/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:shopping_organizer/features/auth/presentation/screen/login_page.dart';
 import 'package:shopping_organizer/features/auth/presentation/screen/register_page.dart';
-import 'package:shopping_organizer/features/create_shopping_list/presentation/cubits/shopping_list_cubit.dart';
-import 'package:shopping_organizer/features/create_shopping_list/presentation/screens/shopping_create_page.dart';
+import 'package:shopping_organizer/features/shopping_list/create_shopping_list/presentation/cubits/shopping_create_list_cubit.dart';
+import 'package:shopping_organizer/features/shopping_list/create_shopping_list/presentation/screens/shopping_create_page.dart';
 import 'package:shopping_organizer/features/custom_user/presentation/widgets/custom_user_builder.dart';
 import 'package:shopping_organizer/features/home_page/home_page.dart';
-import 'package:shopping_organizer/features/home_page/widgets/expanses.dart';
-import 'package:shopping_organizer/features/home_page/widgets/shopping_lists.dart';
+import 'package:shopping_organizer/features/home_page/pages/expanses.dart';
+import 'package:shopping_organizer/features/home_page/pages/shopping_lists_page.dart';
+import 'package:shopping_organizer/features/shopping_list/get_shopping_lists/presentation/cubit/shopping_list_cubit.dart';
 import 'package:shopping_organizer/injectable_configure.dart';
 
 class CustomRouter {
@@ -51,9 +52,20 @@ class CustomRouter {
               routes: [
                 GoRoute(
                   path: RouteNames.shoppingList,
-                  pageBuilder: (context, state) => const NoTransitionPage(
-                    child: CustomUserBuilder(
-                      child: ShopngLists(),
+                  pageBuilder: (context, state) => NoTransitionPage(
+                    child: MultiBlocProvider(
+                      providers: [
+                        BlocProvider(
+                          create: (_) => getIt<ShoppingCreateListCubit>(),
+                        ),
+                        BlocProvider(
+                          create: (_) =>
+                              getIt<ShoppingListCubit>()..listListener(),
+                        ),
+                      ],
+                      child: const CustomUserBuilder(
+                        child: ShopngListsPage(),
+                      ),
                     ),
                   ),
                 ),
@@ -76,7 +88,7 @@ class CustomRouter {
           path: RouteNames.shoppingListForm,
           builder: (context, state) => BlocProvider(
             create: (context) =>
-                getIt<ShoppingListCubit>()..createNewShoppingList(),
+                getIt<ShoppingCreateListCubit>()..createNewShoppingList(),
             child: const ShoppingCreatePage(),
           ),
         ),

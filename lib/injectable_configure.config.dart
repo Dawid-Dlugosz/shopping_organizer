@@ -22,18 +22,20 @@ import 'core/register_module.dart' as _i537;
 import 'features/auth/data/repository/auth_repository_impl.dart' as _i814;
 import 'features/auth/domain/repository/auth_repository.dart' as _i279;
 import 'features/auth/presentation/cubit/auth_cubit.dart' as _i945;
-import 'features/create_shopping_list/data/repositories/shopping_list_repository_impl.dart'
-    as _i692;
-import 'features/create_shopping_list/domain/repositories/shopping_list_repository.dart'
-    as _i262;
-import 'features/create_shopping_list/presentation/cubits/shopping_list_cubit.dart'
-    as _i311;
 import 'features/custom_user/data/repositories/custom_user_repository_impl.dart'
     as _i961;
 import 'features/custom_user/domain/repositories/custom_user_repository.dart'
     as _i106;
 import 'features/custom_user/presentation/cubit/custom_user_cubit.dart'
     as _i1069;
+import 'features/shopping_list/create_shopping_list/presentation/cubits/shopping_create_list_cubit.dart'
+    as _i1025;
+import 'features/shopping_list/domain/repositories/shopping_list_repository.dart'
+    as _i617;
+import 'features/shopping_list/get_shopping_lists/presentation/cubit/shopping_list_cubit.dart'
+    as _i47;
+import 'features/shopping_list/repositories/shopping_list_repository_impl.dart'
+    as _i446;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -56,8 +58,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i706.Uuid>(() => registerModule.uuid);
     gh.lazySingleton<_i106.CustomUserRepository>(
         () => _i961.CustomUserRepositoryImpl(gh<_i974.FirebaseFirestore>()));
-    gh.lazySingleton<_i262.ShoppingListRepository>(
-        () => _i692.ShoppingListRepositoryImpl(
+    gh.lazySingleton<_i617.ShoppingListRepository>(
+        () => _i446.ShoppingListRepositoryImpl(
               gh<_i974.FirebaseFirestore>(),
               gh<_i457.FirebaseStorage>(),
             ));
@@ -74,11 +76,19 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i106.CustomUserRepository>(),
           gh<_i892.FirebaseMessaging>(),
         ));
-    gh.factory<_i311.ShoppingListCubit>(() => _i311.ShoppingListCubit(
-          gh<_i262.ShoppingListRepository>(),
-          gh<_i1069.CustomUserCubit>(),
-          gh<_i706.Uuid>(),
-        ));
+    gh.factory<_i1025.ShoppingCreateListCubit>(
+        () => _i1025.ShoppingCreateListCubit(
+              gh<_i617.ShoppingListRepository>(),
+              gh<_i1069.CustomUserCubit>(),
+              gh<_i706.Uuid>(),
+            ));
+    gh.lazySingleton<_i47.ShoppingListCubit>(
+      () => _i47.ShoppingListCubit(
+        gh<_i617.ShoppingListRepository>(),
+        gh<_i1069.CustomUserCubit>(),
+      ),
+      dispose: (i) => i.close(),
+    );
     return this;
   }
 }

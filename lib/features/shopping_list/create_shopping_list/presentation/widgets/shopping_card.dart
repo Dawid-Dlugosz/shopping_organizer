@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:shopping_organizer/core/entities%20/shopping_item_controllers.dart';
-import 'package:shopping_organizer/features/create_shopping_list/domain/entities/shopping_list_item.dart';
-import 'package:shopping_organizer/features/create_shopping_list/presentation/cubits/shopping_list_cubit.dart';
-import 'package:shopping_organizer/features/create_shopping_list/presentation/widgets/image_picker_widget.dart';
+import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_list_item.dart';
+import 'package:shopping_organizer/features/shopping_list/create_shopping_list/presentation/cubits/shopping_create_list_cubit.dart';
+import 'package:shopping_organizer/features/shopping_list/create_shopping_list/presentation/widgets/image_picker_widget.dart';
 
 class ShoppingCard extends StatelessWidget {
   const ShoppingCard({
@@ -78,7 +78,7 @@ class ShoppingCard extends StatelessWidget {
                     }).toList(),
                     onChanged: (value) {
                       final shoppingListCubit =
-                          context.read<ShoppingListCubit>();
+                          context.read<ShoppingCreateListCubit>();
 
                       shoppingListCubit.updateCountType(
                         index: index,
