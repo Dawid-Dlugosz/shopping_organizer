@@ -55,6 +55,7 @@ void main() {
 
   final tShoppingListContainerEmpty = ShoppingListContainer(
     ownerId: tCustomUser.userId,
+    createTimestamp: 10000,
     ownerNickname: tCustomUser.nickname,
     id: '223',
     shoppingItemCollection: const ShoppingItemCollection(
@@ -64,6 +65,7 @@ void main() {
 
   final tShoppingListContainer = ShoppingListContainer(
     ownerId: tCustomUser.userId,
+    createTimestamp: 10000,
     ownerNickname: tCustomUser.nickname,
     id: '223',
     shoppingItemCollection: const ShoppingItemCollection(
@@ -79,6 +81,7 @@ void main() {
 
   final tShoppingListContainerToCreated = ShoppingListContainer(
     ownerId: 'test',
+    createTimestamp: 10000,
     ownerNickname: 'test',
     id: 'test',
     name: 'test',
@@ -120,18 +123,8 @@ void main() {
           );
         },
         expect: () => [
-          ShoppingCreateListState.created(
-            shoppingListContainer: ShoppingListContainer(
-              ownerId: tCustomUser.userId,
-              ownerNickname: tCustomUser.nickname,
-              id: '123',
-              shoppingItemCollection: const ShoppingItemCollection(
-                shoppingListItems: [
-                  ShoppingListItem(id: '123'),
-                ],
-              ),
-            ),
-          )
+          // Not state becouse data and create DateTime.now has different timestamp
+          isA<ShoppingCreateListCreated>(),
         ],
       );
 

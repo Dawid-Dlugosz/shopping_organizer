@@ -16,6 +16,7 @@ class ShoppintListContainers extends StatelessWidget {
         final shoppingListContainer = shoppingListContainers[index];
         return ShoppingContainerItem(
           shoppingListContainer: shoppingListContainer,
+          showBanner: index % 3 == 0,
         );
       },
     );

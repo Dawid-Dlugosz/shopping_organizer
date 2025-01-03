@@ -29,12 +29,13 @@ void main() {
     mockedFirebaseStorage = MockedFirebaseStorage();
   });
 
-  const tShoppingListContainer = ShoppingListContainer(
+  final tShoppingListContainer = ShoppingListContainer(
     ownerId: '212132',
     ownerNickname: 'test',
+    createTimestamp: DateTime.now().millisecondsSinceEpoch,
     id: '1',
     name: 'name',
-    shoppingItemCollection: ShoppingItemCollection(
+    shoppingItemCollection: const ShoppingItemCollection(
       shoppingListItems: [
         ShoppingListItem(
           id: '1212',
