@@ -51,7 +51,7 @@ mixin _$ShoppingCreateListState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
-    required TResult Function(_Created value) created,
+    required TResult Function(ShoppingCreateListCreated value) created,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +60,7 @@ mixin _$ShoppingCreateListState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
-    TResult? Function(_Created value)? created,
+    TResult? Function(ShoppingCreateListCreated value)? created,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -69,7 +69,7 @@ mixin _$ShoppingCreateListState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
-    TResult Function(_Created value)? created,
+    TResult Function(ShoppingCreateListCreated value)? created,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -184,7 +184,7 @@ class _$InitialImpl extends _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
-    required TResult Function(_Created value) created,
+    required TResult Function(ShoppingCreateListCreated value) created,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -196,7 +196,7 @@ class _$InitialImpl extends _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
-    TResult? Function(_Created value)? created,
+    TResult? Function(ShoppingCreateListCreated value)? created,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -208,7 +208,7 @@ class _$InitialImpl extends _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
-    TResult Function(_Created value)? created,
+    TResult Function(ShoppingCreateListCreated value)? created,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -310,7 +310,7 @@ class _$LoadingImpl extends _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
-    required TResult Function(_Created value) created,
+    required TResult Function(ShoppingCreateListCreated value) created,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -322,7 +322,7 @@ class _$LoadingImpl extends _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
-    TResult? Function(_Created value)? created,
+    TResult? Function(ShoppingCreateListCreated value)? created,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -334,7 +334,7 @@ class _$LoadingImpl extends _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
-    TResult Function(_Created value)? created,
+    TResult Function(ShoppingCreateListCreated value)? created,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -477,7 +477,7 @@ class _$AddedImpl extends _Added {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
-    required TResult Function(_Created value) created,
+    required TResult Function(ShoppingCreateListCreated value) created,
     required TResult Function(_Error value) error,
   }) {
     return added(this);
@@ -489,7 +489,7 @@ class _$AddedImpl extends _Added {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
-    TResult? Function(_Created value)? created,
+    TResult? Function(ShoppingCreateListCreated value)? created,
     TResult? Function(_Error value)? error,
   }) {
     return added?.call(this);
@@ -501,7 +501,7 @@ class _$AddedImpl extends _Added {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
-    TResult Function(_Created value)? created,
+    TResult Function(ShoppingCreateListCreated value)? created,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -528,10 +528,11 @@ abstract class _Added extends ShoppingCreateListState {
 }
 
 /// @nodoc
-abstract class _$$CreatedImplCopyWith<$Res> {
-  factory _$$CreatedImplCopyWith(
-          _$CreatedImpl value, $Res Function(_$CreatedImpl) then) =
-      __$$CreatedImplCopyWithImpl<$Res>;
+abstract class _$$ShoppingCreateListCreatedImplCopyWith<$Res> {
+  factory _$$ShoppingCreateListCreatedImplCopyWith(
+          _$ShoppingCreateListCreatedImpl value,
+          $Res Function(_$ShoppingCreateListCreatedImpl) then) =
+      __$$ShoppingCreateListCreatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ShoppingListContainer shoppingListContainer});
 
@@ -539,11 +540,13 @@ abstract class _$$CreatedImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$CreatedImplCopyWithImpl<$Res>
-    extends _$ShoppingCreateListStateCopyWithImpl<$Res, _$CreatedImpl>
-    implements _$$CreatedImplCopyWith<$Res> {
-  __$$CreatedImplCopyWithImpl(
-      _$CreatedImpl _value, $Res Function(_$CreatedImpl) _then)
+class __$$ShoppingCreateListCreatedImplCopyWithImpl<$Res>
+    extends _$ShoppingCreateListStateCopyWithImpl<$Res,
+        _$ShoppingCreateListCreatedImpl>
+    implements _$$ShoppingCreateListCreatedImplCopyWith<$Res> {
+  __$$ShoppingCreateListCreatedImplCopyWithImpl(
+      _$ShoppingCreateListCreatedImpl _value,
+      $Res Function(_$ShoppingCreateListCreatedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ShoppingCreateListState
@@ -553,7 +556,7 @@ class __$$CreatedImplCopyWithImpl<$Res>
   $Res call({
     Object? shoppingListContainer = null,
   }) {
-    return _then(_$CreatedImpl(
+    return _then(_$ShoppingCreateListCreatedImpl(
       shoppingListContainer: null == shoppingListContainer
           ? _value.shoppingListContainer
           : shoppingListContainer // ignore: cast_nullable_to_non_nullable
@@ -575,8 +578,9 @@ class __$$CreatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CreatedImpl extends _Created {
-  const _$CreatedImpl({required this.shoppingListContainer}) : super._();
+class _$ShoppingCreateListCreatedImpl extends ShoppingCreateListCreated {
+  const _$ShoppingCreateListCreatedImpl({required this.shoppingListContainer})
+      : super._();
 
   @override
   final ShoppingListContainer shoppingListContainer;
@@ -590,7 +594,7 @@ class _$CreatedImpl extends _Created {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreatedImpl &&
+            other is _$ShoppingCreateListCreatedImpl &&
             (identical(other.shoppingListContainer, shoppingListContainer) ||
                 other.shoppingListContainer == shoppingListContainer));
   }
@@ -603,8 +607,9 @@ class _$CreatedImpl extends _Created {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CreatedImplCopyWith<_$CreatedImpl> get copyWith =>
-      __$$CreatedImplCopyWithImpl<_$CreatedImpl>(this, _$identity);
+  _$$ShoppingCreateListCreatedImplCopyWith<_$ShoppingCreateListCreatedImpl>
+      get copyWith => __$$ShoppingCreateListCreatedImplCopyWithImpl<
+          _$ShoppingCreateListCreatedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -654,7 +659,7 @@ class _$CreatedImpl extends _Created {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
-    required TResult Function(_Created value) created,
+    required TResult Function(ShoppingCreateListCreated value) created,
     required TResult Function(_Error value) error,
   }) {
     return created(this);
@@ -666,7 +671,7 @@ class _$CreatedImpl extends _Created {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
-    TResult? Function(_Created value)? created,
+    TResult? Function(ShoppingCreateListCreated value)? created,
     TResult? Function(_Error value)? error,
   }) {
     return created?.call(this);
@@ -678,7 +683,7 @@ class _$CreatedImpl extends _Created {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
-    TResult Function(_Created value)? created,
+    TResult Function(ShoppingCreateListCreated value)? created,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -689,19 +694,19 @@ class _$CreatedImpl extends _Created {
   }
 }
 
-abstract class _Created extends ShoppingCreateListState {
-  const factory _Created(
+abstract class ShoppingCreateListCreated extends ShoppingCreateListState {
+  const factory ShoppingCreateListCreated(
           {required final ShoppingListContainer shoppingListContainer}) =
-      _$CreatedImpl;
-  const _Created._() : super._();
+      _$ShoppingCreateListCreatedImpl;
+  const ShoppingCreateListCreated._() : super._();
 
   ShoppingListContainer get shoppingListContainer;
 
   /// Create a copy of ShoppingCreateListState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CreatedImplCopyWith<_$CreatedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ShoppingCreateListCreatedImplCopyWith<_$ShoppingCreateListCreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -790,7 +795,7 @@ class _$ErrorImpl extends _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
-    required TResult Function(_Created value) created,
+    required TResult Function(ShoppingCreateListCreated value) created,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -802,7 +807,7 @@ class _$ErrorImpl extends _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
-    TResult? Function(_Created value)? created,
+    TResult? Function(ShoppingCreateListCreated value)? created,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -814,7 +819,7 @@ class _$ErrorImpl extends _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
-    TResult Function(_Created value)? created,
+    TResult Function(ShoppingCreateListCreated value)? created,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

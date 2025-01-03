@@ -11,7 +11,7 @@ class ShoppingCreateListState with _$ShoppingCreateListState {
   }) = _Added;
   const factory ShoppingCreateListState.created({
     required ShoppingListContainer shoppingListContainer,
-  }) = _Created;
+  }) = ShoppingCreateListCreated;
   const factory ShoppingCreateListState.error() = _Error;
 
   List<ShoppingListItem> get shoppingListItems => maybeMap(

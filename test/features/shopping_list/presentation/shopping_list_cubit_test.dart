@@ -34,6 +34,7 @@ void main() {
   const tIds = ['1'];
   const tIds2 = ['2', '1'];
   const tShoppingListContainer = ShoppingListContainer(
+    createTimestamp: 10000,
     ownerId: 'test',
     ownerNickname: 'test',
     id: 'test',

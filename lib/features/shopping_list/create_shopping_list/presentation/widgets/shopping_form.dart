@@ -72,6 +72,7 @@ class _ShoppingFormState extends State<ShoppingForm> {
                               .watch<ShoppingCreateListCubit>()
                               .state
                               .shoppingListItems[index],
+                          showBanner: index % 3 == 0,
                         );
                       },
                     ),
