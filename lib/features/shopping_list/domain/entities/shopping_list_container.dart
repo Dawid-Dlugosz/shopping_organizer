@@ -11,6 +11,7 @@ class ShoppingListContainer with _$ShoppingListContainer {
     required String ownerId,
     required String ownerNickname,
     required String id,
+    required int createTimestamp,
     required ShoppingItemCollection shoppingItemCollection,
     String? name,
   }) = _ShoppingListContainer;

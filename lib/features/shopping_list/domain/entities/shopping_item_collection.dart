@@ -53,4 +53,7 @@ class ShoppingItemCollection with _$ShoppingItemCollection {
   List<ShoppingListItem> get shoppingListItemsWithImage => shoppingListItems
       .where((element) => element.localImagePath != null)
       .toList();
+
+  int get checkedItemsLength =>
+      shoppingListItems.where((item) => item.isBought).toList().length;
 }

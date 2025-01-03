@@ -35,6 +35,7 @@ class ShoppingCreateListCubit extends Cubit<ShoppingCreateListState> {
     emit(
       ShoppingCreateListState.created(
         shoppingListContainer: ShoppingListContainer(
+          createTimestamp: DateTime.now().millisecondsSinceEpoch,
           ownerId: customUserCubit.state.customUser!.userId,
           ownerNickname: customUserCubit.state.customUser!.nickname,
           id: uuid.v4(),

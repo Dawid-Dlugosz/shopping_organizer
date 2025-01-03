@@ -12,6 +12,7 @@ _$ShoppingListContainerImpl _$$ShoppingListContainerImplFromJson(
       ownerId: json['ownerId'] as String,
       ownerNickname: json['ownerNickname'] as String,
       id: json['id'] as String,
+      createTimestamp: (json['createTimestamp'] as num).toInt(),
       shoppingItemCollection: ShoppingItemCollection.fromJson(
           json['shoppingItemCollection'] as Map<String, dynamic>),
       name: json['name'] as String?,
@@ -23,6 +24,7 @@ Map<String, dynamic> _$$ShoppingListContainerImplToJson(
       'ownerId': instance.ownerId,
       'ownerNickname': instance.ownerNickname,
       'id': instance.id,
+      'createTimestamp': instance.createTimestamp,
       'shoppingItemCollection': instance.shoppingItemCollection.toJson(),
       'name': instance.name,
     };

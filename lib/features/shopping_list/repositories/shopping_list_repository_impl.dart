@@ -67,6 +67,10 @@ class ShoppingListRepositoryImpl implements ShoppingListRepository {
     List<String> idLists,
   ) async {
     try {
+      if (idLists.isEmpty) {
+        return const Right([]);
+      }
+
       final querySnapshot = await firebaseFirestore
           .collection(FirestoreCollectionType.shoppingList.type)
           .where(

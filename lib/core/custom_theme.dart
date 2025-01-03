@@ -94,5 +94,10 @@ class CustomTheme {
       circularTrackColor: colorExtension.accentColor,
       color: colorExtension.mainDark.withAlpha(90),
     ),
+    cardTheme: CardThemeData(
+      shadowColor: colorExtension.accentColor.withAlpha(30),
+      margin: const EdgeInsets.all(10),
+      elevation: 4,
+    ),
   );
 }

@@ -24,6 +24,7 @@ mixin _$ShoppingListContainer {
   String get ownerId => throw _privateConstructorUsedError;
   String get ownerNickname => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
+  int get createTimestamp => throw _privateConstructorUsedError;
   ShoppingItemCollection get shoppingItemCollection =>
       throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
@@ -48,6 +49,7 @@ abstract class $ShoppingListContainerCopyWith<$Res> {
       {String ownerId,
       String ownerNickname,
       String id,
+      int createTimestamp,
       ShoppingItemCollection shoppingItemCollection,
       String? name});
 
@@ -73,6 +75,7 @@ class _$ShoppingListContainerCopyWithImpl<$Res,
     Object? ownerId = null,
     Object? ownerNickname = null,
     Object? id = null,
+    Object? createTimestamp = null,
     Object? shoppingItemCollection = null,
     Object? name = freezed,
   }) {
@@ -89,6 +92,10 @@ class _$ShoppingListContainerCopyWithImpl<$Res,
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createTimestamp: null == createTimestamp
+          ? _value.createTimestamp
+          : createTimestamp // ignore: cast_nullable_to_non_nullable
+              as int,
       shoppingItemCollection: null == shoppingItemCollection
           ? _value.shoppingItemCollection
           : shoppingItemCollection // ignore: cast_nullable_to_non_nullable
@@ -125,6 +132,7 @@ abstract class _$$ShoppingListContainerImplCopyWith<$Res>
       {String ownerId,
       String ownerNickname,
       String id,
+      int createTimestamp,
       ShoppingItemCollection shoppingItemCollection,
       String? name});
 
@@ -149,6 +157,7 @@ class __$$ShoppingListContainerImplCopyWithImpl<$Res>
     Object? ownerId = null,
     Object? ownerNickname = null,
     Object? id = null,
+    Object? createTimestamp = null,
     Object? shoppingItemCollection = null,
     Object? name = freezed,
   }) {
@@ -165,6 +174,10 @@ class __$$ShoppingListContainerImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createTimestamp: null == createTimestamp
+          ? _value.createTimestamp
+          : createTimestamp // ignore: cast_nullable_to_non_nullable
+              as int,
       shoppingItemCollection: null == shoppingItemCollection
           ? _value.shoppingItemCollection
           : shoppingItemCollection // ignore: cast_nullable_to_non_nullable
@@ -185,6 +198,7 @@ class _$ShoppingListContainerImpl implements _ShoppingListContainer {
       {required this.ownerId,
       required this.ownerNickname,
       required this.id,
+      required this.createTimestamp,
       required this.shoppingItemCollection,
       this.name});
 
@@ -198,13 +212,15 @@ class _$ShoppingListContainerImpl implements _ShoppingListContainer {
   @override
   final String id;
   @override
+  final int createTimestamp;
+  @override
   final ShoppingItemCollection shoppingItemCollection;
   @override
   final String? name;
 
   @override
   String toString() {
-    return 'ShoppingListContainer(ownerId: $ownerId, ownerNickname: $ownerNickname, id: $id, shoppingItemCollection: $shoppingItemCollection, name: $name)';
+    return 'ShoppingListContainer(ownerId: $ownerId, ownerNickname: $ownerNickname, id: $id, createTimestamp: $createTimestamp, shoppingItemCollection: $shoppingItemCollection, name: $name)';
   }
 
   @override
@@ -216,6 +232,8 @@ class _$ShoppingListContainerImpl implements _ShoppingListContainer {
             (identical(other.ownerNickname, ownerNickname) ||
                 other.ownerNickname == ownerNickname) &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.createTimestamp, createTimestamp) ||
+                other.createTimestamp == createTimestamp) &&
             (identical(other.shoppingItemCollection, shoppingItemCollection) ||
                 other.shoppingItemCollection == shoppingItemCollection) &&
             (identical(other.name, name) || other.name == name));
@@ -223,8 +241,8 @@ class _$ShoppingListContainerImpl implements _ShoppingListContainer {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, ownerId, ownerNickname, id, shoppingItemCollection, name);
+  int get hashCode => Object.hash(runtimeType, ownerId, ownerNickname, id,
+      createTimestamp, shoppingItemCollection, name);
 
   /// Create a copy of ShoppingListContainer
   /// with the given fields replaced by the non-null parameter values.
@@ -248,6 +266,7 @@ abstract class _ShoppingListContainer implements ShoppingListContainer {
       {required final String ownerId,
       required final String ownerNickname,
       required final String id,
+      required final int createTimestamp,
       required final ShoppingItemCollection shoppingItemCollection,
       final String? name}) = _$ShoppingListContainerImpl;
 
@@ -260,6 +279,8 @@ abstract class _ShoppingListContainer implements ShoppingListContainer {
   String get ownerNickname;
   @override
   String get id;
+  @override
+  int get createTimestamp;
   @override
   ShoppingItemCollection get shoppingItemCollection;
   @override
