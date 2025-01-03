@@ -24,7 +24,7 @@ mixin _$ShoppingListContainer {
   String get ownerId => throw _privateConstructorUsedError;
   String get ownerNickname => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
-  ShoppingItemCollection get shoppingListItemCollection =>
+  ShoppingItemCollection get shoppingItemCollection =>
       throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
@@ -48,10 +48,10 @@ abstract class $ShoppingListContainerCopyWith<$Res> {
       {String ownerId,
       String ownerNickname,
       String id,
-      ShoppingItemCollection shoppingListItemCollection,
+      ShoppingItemCollection shoppingItemCollection,
       String? name});
 
-  $ShoppingItemCollectionCopyWith<$Res> get shoppingListItemCollection;
+  $ShoppingItemCollectionCopyWith<$Res> get shoppingItemCollection;
 }
 
 /// @nodoc
@@ -73,7 +73,7 @@ class _$ShoppingListContainerCopyWithImpl<$Res,
     Object? ownerId = null,
     Object? ownerNickname = null,
     Object? id = null,
-    Object? shoppingListItemCollection = null,
+    Object? shoppingItemCollection = null,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
@@ -89,9 +89,9 @@ class _$ShoppingListContainerCopyWithImpl<$Res,
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      shoppingListItemCollection: null == shoppingListItemCollection
-          ? _value.shoppingListItemCollection
-          : shoppingListItemCollection // ignore: cast_nullable_to_non_nullable
+      shoppingItemCollection: null == shoppingItemCollection
+          ? _value.shoppingItemCollection
+          : shoppingItemCollection // ignore: cast_nullable_to_non_nullable
               as ShoppingItemCollection,
       name: freezed == name
           ? _value.name
@@ -104,10 +104,10 @@ class _$ShoppingListContainerCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ShoppingItemCollectionCopyWith<$Res> get shoppingListItemCollection {
-    return $ShoppingItemCollectionCopyWith<$Res>(
-        _value.shoppingListItemCollection, (value) {
-      return _then(_value.copyWith(shoppingListItemCollection: value) as $Val);
+  $ShoppingItemCollectionCopyWith<$Res> get shoppingItemCollection {
+    return $ShoppingItemCollectionCopyWith<$Res>(_value.shoppingItemCollection,
+        (value) {
+      return _then(_value.copyWith(shoppingItemCollection: value) as $Val);
     });
   }
 }
@@ -125,11 +125,11 @@ abstract class _$$ShoppingListContainerImplCopyWith<$Res>
       {String ownerId,
       String ownerNickname,
       String id,
-      ShoppingItemCollection shoppingListItemCollection,
+      ShoppingItemCollection shoppingItemCollection,
       String? name});
 
   @override
-  $ShoppingItemCollectionCopyWith<$Res> get shoppingListItemCollection;
+  $ShoppingItemCollectionCopyWith<$Res> get shoppingItemCollection;
 }
 
 /// @nodoc
@@ -149,7 +149,7 @@ class __$$ShoppingListContainerImplCopyWithImpl<$Res>
     Object? ownerId = null,
     Object? ownerNickname = null,
     Object? id = null,
-    Object? shoppingListItemCollection = null,
+    Object? shoppingItemCollection = null,
     Object? name = freezed,
   }) {
     return _then(_$ShoppingListContainerImpl(
@@ -165,9 +165,9 @@ class __$$ShoppingListContainerImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      shoppingListItemCollection: null == shoppingListItemCollection
-          ? _value.shoppingListItemCollection
-          : shoppingListItemCollection // ignore: cast_nullable_to_non_nullable
+      shoppingItemCollection: null == shoppingItemCollection
+          ? _value.shoppingItemCollection
+          : shoppingItemCollection // ignore: cast_nullable_to_non_nullable
               as ShoppingItemCollection,
       name: freezed == name
           ? _value.name
@@ -185,7 +185,7 @@ class _$ShoppingListContainerImpl implements _ShoppingListContainer {
       {required this.ownerId,
       required this.ownerNickname,
       required this.id,
-      required this.shoppingListItemCollection,
+      required this.shoppingItemCollection,
       this.name});
 
   factory _$ShoppingListContainerImpl.fromJson(Map<String, dynamic> json) =>
@@ -198,13 +198,13 @@ class _$ShoppingListContainerImpl implements _ShoppingListContainer {
   @override
   final String id;
   @override
-  final ShoppingItemCollection shoppingListItemCollection;
+  final ShoppingItemCollection shoppingItemCollection;
   @override
   final String? name;
 
   @override
   String toString() {
-    return 'ShoppingListContainer(ownerId: $ownerId, ownerNickname: $ownerNickname, id: $id, shoppingListItemCollection: $shoppingListItemCollection, name: $name)';
+    return 'ShoppingListContainer(ownerId: $ownerId, ownerNickname: $ownerNickname, id: $id, shoppingItemCollection: $shoppingItemCollection, name: $name)';
   }
 
   @override
@@ -216,17 +216,15 @@ class _$ShoppingListContainerImpl implements _ShoppingListContainer {
             (identical(other.ownerNickname, ownerNickname) ||
                 other.ownerNickname == ownerNickname) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.shoppingListItemCollection,
-                    shoppingListItemCollection) ||
-                other.shoppingListItemCollection ==
-                    shoppingListItemCollection) &&
+            (identical(other.shoppingItemCollection, shoppingItemCollection) ||
+                other.shoppingItemCollection == shoppingItemCollection) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, ownerId, ownerNickname, id,
-      shoppingListItemCollection, name);
+  int get hashCode => Object.hash(
+      runtimeType, ownerId, ownerNickname, id, shoppingItemCollection, name);
 
   /// Create a copy of ShoppingListContainer
   /// with the given fields replaced by the non-null parameter values.
@@ -250,7 +248,7 @@ abstract class _ShoppingListContainer implements ShoppingListContainer {
       {required final String ownerId,
       required final String ownerNickname,
       required final String id,
-      required final ShoppingItemCollection shoppingListItemCollection,
+      required final ShoppingItemCollection shoppingItemCollection,
       final String? name}) = _$ShoppingListContainerImpl;
 
   factory _ShoppingListContainer.fromJson(Map<String, dynamic> json) =
@@ -263,7 +261,7 @@ abstract class _ShoppingListContainer implements ShoppingListContainer {
   @override
   String get id;
   @override
-  ShoppingItemCollection get shoppingListItemCollection;
+  ShoppingItemCollection get shoppingItemCollection;
   @override
   String? get name;
 

@@ -7,6 +7,8 @@ abstract class ShoppingListRepository {
   Future<Either<Failure, String>> createShoppingList(
     ShoppingListContainer shoppingListContainer,
   );
-  Future<Either<Failure, List<ShoppingListContainer>>> getShoppingListStream(
-      List<String> idLists);
+
+  Future<Either<Failure, List<ShoppingListContainer>>> getShoppingList(
+    List<String> idLists,
+  );
 }

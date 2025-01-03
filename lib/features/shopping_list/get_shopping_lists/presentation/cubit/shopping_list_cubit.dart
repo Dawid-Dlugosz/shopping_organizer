@@ -10,7 +10,6 @@ import 'package:shopping_organizer/features/shopping_list/domain/repositories/sh
 part 'shopping_list_state.dart';
 part 'shopping_list_cubit.freezed.dart';
 
-// TODO TESTY
 @LazySingleton()
 class ShoppingListCubit extends Cubit<ShoppingListState> {
   ShoppingListCubit(
@@ -39,7 +38,7 @@ class ShoppingListCubit extends Cubit<ShoppingListState> {
   void getShoppingListContainers(List<String> idLists) async {
     emit(const ShoppingListState.loading());
     final failureOrShoppingListContainers =
-        await shoppingListRepository.getShoppingListStream(idLists);
+        await shoppingListRepository.getShoppingList(idLists);
 
     failureOrShoppingListContainers.fold(
       (_) => emit(

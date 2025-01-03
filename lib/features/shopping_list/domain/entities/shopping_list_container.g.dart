@@ -12,8 +12,8 @@ _$ShoppingListContainerImpl _$$ShoppingListContainerImplFromJson(
       ownerId: json['ownerId'] as String,
       ownerNickname: json['ownerNickname'] as String,
       id: json['id'] as String,
-      shoppingListItemCollection: ShoppingItemCollection.fromJson(
-          json['shoppingListItemCollection'] as Map<String, dynamic>),
+      shoppingItemCollection: ShoppingItemCollection.fromJson(
+          json['shoppingItemCollection'] as Map<String, dynamic>),
       name: json['name'] as String?,
     );
 
@@ -23,7 +23,6 @@ Map<String, dynamic> _$$ShoppingListContainerImplToJson(
       'ownerId': instance.ownerId,
       'ownerNickname': instance.ownerNickname,
       'id': instance.id,
-      'shoppingListItemCollection':
-          instance.shoppingListItemCollection.toJson(),
+      'shoppingItemCollection': instance.shoppingItemCollection.toJson(),
       'name': instance.name,
     };

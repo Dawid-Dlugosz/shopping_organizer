@@ -22,9 +22,9 @@ mixin _$ShoppingCreateListState {
     required TResult Function() loading,
     required TResult Function(ShoppingListContainer shoppingListContainer)
         added,
-    required TResult Function(
-            ShoppingListContainer shoppingListContainer, bool? error)
+    required TResult Function(ShoppingListContainer shoppingListContainer)
         created,
+    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,8 +32,8 @@ mixin _$ShoppingCreateListState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ShoppingListContainer shoppingListContainer)? added,
-    TResult? Function(ShoppingListContainer shoppingListContainer, bool? error)?
-        created,
+    TResult? Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,8 +41,8 @@ mixin _$ShoppingCreateListState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ShoppingListContainer shoppingListContainer)? added,
-    TResult Function(ShoppingListContainer shoppingListContainer, bool? error)?
-        created,
+    TResult Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +52,7 @@ mixin _$ShoppingCreateListState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
     required TResult Function(_Created value) created,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +61,7 @@ mixin _$ShoppingCreateListState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
     TResult? Function(_Created value)? created,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +70,7 @@ mixin _$ShoppingCreateListState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
     TResult Function(_Created value)? created,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,9 +143,9 @@ class _$InitialImpl extends _Initial {
     required TResult Function() loading,
     required TResult Function(ShoppingListContainer shoppingListContainer)
         added,
-    required TResult Function(
-            ShoppingListContainer shoppingListContainer, bool? error)
+    required TResult Function(ShoppingListContainer shoppingListContainer)
         created,
+    required TResult Function() error,
   }) {
     return initial();
   }
@@ -153,8 +156,8 @@ class _$InitialImpl extends _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ShoppingListContainer shoppingListContainer)? added,
-    TResult? Function(ShoppingListContainer shoppingListContainer, bool? error)?
-        created,
+    TResult? Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult? Function()? error,
   }) {
     return initial?.call();
   }
@@ -165,8 +168,8 @@ class _$InitialImpl extends _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ShoppingListContainer shoppingListContainer)? added,
-    TResult Function(ShoppingListContainer shoppingListContainer, bool? error)?
-        created,
+    TResult Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -182,6 +185,7 @@ class _$InitialImpl extends _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
     required TResult Function(_Created value) created,
+    required TResult Function(_Error value) error,
   }) {
     return initial(this);
   }
@@ -193,6 +197,7 @@ class _$InitialImpl extends _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
     TResult? Function(_Created value)? created,
+    TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -204,6 +209,7 @@ class _$InitialImpl extends _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
     TResult Function(_Created value)? created,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -263,9 +269,9 @@ class _$LoadingImpl extends _Loading {
     required TResult Function() loading,
     required TResult Function(ShoppingListContainer shoppingListContainer)
         added,
-    required TResult Function(
-            ShoppingListContainer shoppingListContainer, bool? error)
+    required TResult Function(ShoppingListContainer shoppingListContainer)
         created,
+    required TResult Function() error,
   }) {
     return loading();
   }
@@ -276,8 +282,8 @@ class _$LoadingImpl extends _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ShoppingListContainer shoppingListContainer)? added,
-    TResult? Function(ShoppingListContainer shoppingListContainer, bool? error)?
-        created,
+    TResult? Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult? Function()? error,
   }) {
     return loading?.call();
   }
@@ -288,8 +294,8 @@ class _$LoadingImpl extends _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ShoppingListContainer shoppingListContainer)? added,
-    TResult Function(ShoppingListContainer shoppingListContainer, bool? error)?
-        created,
+    TResult Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -305,6 +311,7 @@ class _$LoadingImpl extends _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
     required TResult Function(_Created value) created,
+    required TResult Function(_Error value) error,
   }) {
     return loading(this);
   }
@@ -316,6 +323,7 @@ class _$LoadingImpl extends _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
     TResult? Function(_Created value)? created,
+    TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -327,6 +335,7 @@ class _$LoadingImpl extends _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
     TResult Function(_Created value)? created,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -427,9 +436,9 @@ class _$AddedImpl extends _Added {
     required TResult Function() loading,
     required TResult Function(ShoppingListContainer shoppingListContainer)
         added,
-    required TResult Function(
-            ShoppingListContainer shoppingListContainer, bool? error)
+    required TResult Function(ShoppingListContainer shoppingListContainer)
         created,
+    required TResult Function() error,
   }) {
     return added(shoppingListContainer);
   }
@@ -440,8 +449,8 @@ class _$AddedImpl extends _Added {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ShoppingListContainer shoppingListContainer)? added,
-    TResult? Function(ShoppingListContainer shoppingListContainer, bool? error)?
-        created,
+    TResult? Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult? Function()? error,
   }) {
     return added?.call(shoppingListContainer);
   }
@@ -452,8 +461,8 @@ class _$AddedImpl extends _Added {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ShoppingListContainer shoppingListContainer)? added,
-    TResult Function(ShoppingListContainer shoppingListContainer, bool? error)?
-        created,
+    TResult Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (added != null) {
@@ -469,6 +478,7 @@ class _$AddedImpl extends _Added {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
     required TResult Function(_Created value) created,
+    required TResult Function(_Error value) error,
   }) {
     return added(this);
   }
@@ -480,6 +490,7 @@ class _$AddedImpl extends _Added {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
     TResult? Function(_Created value)? created,
+    TResult? Function(_Error value)? error,
   }) {
     return added?.call(this);
   }
@@ -491,6 +502,7 @@ class _$AddedImpl extends _Added {
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
     TResult Function(_Created value)? created,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (added != null) {
@@ -521,7 +533,7 @@ abstract class _$$CreatedImplCopyWith<$Res> {
           _$CreatedImpl value, $Res Function(_$CreatedImpl) then) =
       __$$CreatedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ShoppingListContainer shoppingListContainer, bool? error});
+  $Res call({ShoppingListContainer shoppingListContainer});
 
   $ShoppingListContainerCopyWith<$Res> get shoppingListContainer;
 }
@@ -540,17 +552,12 @@ class __$$CreatedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? shoppingListContainer = null,
-    Object? error = freezed,
   }) {
     return _then(_$CreatedImpl(
       shoppingListContainer: null == shoppingListContainer
           ? _value.shoppingListContainer
           : shoppingListContainer // ignore: cast_nullable_to_non_nullable
               as ShoppingListContainer,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ));
   }
 
@@ -569,17 +576,14 @@ class __$$CreatedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CreatedImpl extends _Created {
-  const _$CreatedImpl({required this.shoppingListContainer, this.error})
-      : super._();
+  const _$CreatedImpl({required this.shoppingListContainer}) : super._();
 
   @override
   final ShoppingListContainer shoppingListContainer;
-  @override
-  final bool? error;
 
   @override
   String toString() {
-    return 'ShoppingCreateListState.created(shoppingListContainer: $shoppingListContainer, error: $error)';
+    return 'ShoppingCreateListState.created(shoppingListContainer: $shoppingListContainer)';
   }
 
   @override
@@ -588,12 +592,11 @@ class _$CreatedImpl extends _Created {
         (other.runtimeType == runtimeType &&
             other is _$CreatedImpl &&
             (identical(other.shoppingListContainer, shoppingListContainer) ||
-                other.shoppingListContainer == shoppingListContainer) &&
-            (identical(other.error, error) || other.error == error));
+                other.shoppingListContainer == shoppingListContainer));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, shoppingListContainer, error);
+  int get hashCode => Object.hash(runtimeType, shoppingListContainer);
 
   /// Create a copy of ShoppingCreateListState
   /// with the given fields replaced by the non-null parameter values.
@@ -610,11 +613,11 @@ class _$CreatedImpl extends _Created {
     required TResult Function() loading,
     required TResult Function(ShoppingListContainer shoppingListContainer)
         added,
-    required TResult Function(
-            ShoppingListContainer shoppingListContainer, bool? error)
+    required TResult Function(ShoppingListContainer shoppingListContainer)
         created,
+    required TResult Function() error,
   }) {
-    return created(shoppingListContainer, error);
+    return created(shoppingListContainer);
   }
 
   @override
@@ -623,10 +626,10 @@ class _$CreatedImpl extends _Created {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(ShoppingListContainer shoppingListContainer)? added,
-    TResult? Function(ShoppingListContainer shoppingListContainer, bool? error)?
-        created,
+    TResult? Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult? Function()? error,
   }) {
-    return created?.call(shoppingListContainer, error);
+    return created?.call(shoppingListContainer);
   }
 
   @override
@@ -635,12 +638,12 @@ class _$CreatedImpl extends _Created {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(ShoppingListContainer shoppingListContainer)? added,
-    TResult Function(ShoppingListContainer shoppingListContainer, bool? error)?
-        created,
+    TResult Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (created != null) {
-      return created(shoppingListContainer, error);
+      return created(shoppingListContainer);
     }
     return orElse();
   }
@@ -652,6 +655,7 @@ class _$CreatedImpl extends _Created {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Added value) added,
     required TResult Function(_Created value) created,
+    required TResult Function(_Error value) error,
   }) {
     return created(this);
   }
@@ -663,6 +667,7 @@ class _$CreatedImpl extends _Created {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Added value)? added,
     TResult? Function(_Created value)? created,
+    TResult? Function(_Error value)? error,
   }) {
     return created?.call(this);
   }
@@ -674,6 +679,7 @@ class _$CreatedImpl extends _Created {
     TResult Function(_Loading value)? loading,
     TResult Function(_Added value)? added,
     TResult Function(_Created value)? created,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (created != null) {
@@ -685,16 +691,141 @@ class _$CreatedImpl extends _Created {
 
 abstract class _Created extends ShoppingCreateListState {
   const factory _Created(
-      {required final ShoppingListContainer shoppingListContainer,
-      final bool? error}) = _$CreatedImpl;
+          {required final ShoppingListContainer shoppingListContainer}) =
+      _$CreatedImpl;
   const _Created._() : super._();
 
   ShoppingListContainer get shoppingListContainer;
-  bool? get error;
 
   /// Create a copy of ShoppingCreateListState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreatedImplCopyWith<_$CreatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$ShoppingCreateListStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ShoppingCreateListState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ErrorImpl extends _Error {
+  const _$ErrorImpl() : super._();
+
+  @override
+  String toString() {
+    return 'ShoppingCreateListState.error()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(ShoppingListContainer shoppingListContainer)
+        added,
+    required TResult Function(ShoppingListContainer shoppingListContainer)
+        created,
+    required TResult Function() error,
+  }) {
+    return error();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(ShoppingListContainer shoppingListContainer)? added,
+    TResult? Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult? Function()? error,
+  }) {
+    return error?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(ShoppingListContainer shoppingListContainer)? added,
+    TResult Function(ShoppingListContainer shoppingListContainer)? created,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Added value) added,
+    required TResult Function(_Created value) created,
+    required TResult Function(_Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_Created value)? created,
+    TResult? Function(_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Added value)? added,
+    TResult Function(_Created value)? created,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error extends ShoppingCreateListState {
+  const factory _Error() = _$ErrorImpl;
+  const _Error._() : super._();
 }

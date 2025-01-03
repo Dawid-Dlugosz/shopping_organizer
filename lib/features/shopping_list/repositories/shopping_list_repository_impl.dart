@@ -47,12 +47,12 @@ class ShoppingListRepositoryImpl implements ShoppingListRepository {
   Future<void> _sendImagesToStorage(
     ShoppingListContainer shoppingListContainer,
   ) async {
-    if (shoppingListContainer.shoppingListItemCollection.isAnyImage) {
+    if (shoppingListContainer.shoppingItemCollection.isAnyImage) {
       final reference =
           firebaseStorage.ref().child('${shoppingListContainer.id}/');
 
       final shoppingListItemsWithImage = shoppingListContainer
-          .shoppingListItemCollection.shoppingListItemsWithImage;
+          .shoppingItemCollection.shoppingListItemsWithImage;
 
       await Future.forEach(shoppingListItemsWithImage, (element) async {
         final file = File(element.localImagePath!);
@@ -63,7 +63,7 @@ class ShoppingListRepositoryImpl implements ShoppingListRepository {
   }
 
   @override
-  Future<Either<Failure, List<ShoppingListContainer>>> getShoppingListStream(
+  Future<Either<Failure, List<ShoppingListContainer>>> getShoppingList(
     List<String> idLists,
   ) async {
     try {
@@ -82,6 +82,7 @@ class ShoppingListRepositoryImpl implements ShoppingListRepository {
         final body = element.data();
         shoppingListContainers.add(ShoppingListContainer.fromJson(body));
       }
+
       return Right(shoppingListContainers);
     } catch (e, s) {
       logger.e(
