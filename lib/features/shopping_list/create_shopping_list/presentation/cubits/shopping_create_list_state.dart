@@ -11,18 +11,17 @@ class ShoppingCreateListState with _$ShoppingCreateListState {
   }) = _Added;
   const factory ShoppingCreateListState.created({
     required ShoppingListContainer shoppingListContainer,
-    bool? error,
   }) = _Created;
+  const factory ShoppingCreateListState.error() = _Error;
 
   List<ShoppingListItem> get shoppingListItems => maybeMap(
         created: (value) => value
-            .shoppingListContainer.shoppingListItemCollection.shoppingListItems,
+            .shoppingListContainer.shoppingItemCollection.shoppingListItems,
         orElse: () => [],
       );
 
-  ShoppingItemCollection? get shoppingListItemCollection => maybeMap(
-        created: (value) =>
-            value.shoppingListContainer.shoppingListItemCollection,
+  ShoppingItemCollection? get shoppingItemCollection => maybeMap(
+        created: (value) => value.shoppingListContainer.shoppingItemCollection,
         orElse: () => null,
       );
 

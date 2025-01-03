@@ -71,19 +71,17 @@ class _ShoppingCreatePageState extends State<ShoppingCreatePage> {
       body: BlocConsumer<ShoppingCreateListCubit, ShoppingCreateListState>(
         listener: (context, state) {
           state.mapOrNull(
-            created: (value) {
-              if (value.error == false) {
-                ScaffoldMessenger.of(context).clearSnackBars();
+            error: (value) {
+              ScaffoldMessenger.of(context).clearSnackBars();
 
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      AppLocalizations.of(context)!.unservicedError,
-                    ),
-                    duration: const Duration(seconds: 2),
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    AppLocalizations.of(context)!.unservicedError,
                   ),
-                );
-              }
+                  duration: const Duration(seconds: 2),
+                ),
+              );
             },
             added: (value) {
               final snackBar = SnackBar(

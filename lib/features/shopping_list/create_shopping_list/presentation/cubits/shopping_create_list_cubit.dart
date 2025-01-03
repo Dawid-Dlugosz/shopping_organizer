@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shopping_organizer/core/entities%20/shopping_item_controllers.dart';
 import 'package:uuid/uuid.dart';
 
+import 'package:shopping_organizer/core/entities%20/shopping_item_controllers.dart';
+import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
+import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_item_collection.dart';
 import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_list_container.dart';
 import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_list_item.dart';
-import 'package:shopping_organizer/features/shopping_list/domain/entities/shopping_item_collection.dart';
 import 'package:shopping_organizer/features/shopping_list/domain/repositories/shopping_list_repository.dart';
-import 'package:shopping_organizer/features/custom_user/presentation/cubit/custom_user_cubit.dart';
 
 part 'shopping_create_list_state.dart';
 part 'shopping_create_list_cubit.freezed.dart';
@@ -27,10 +27,6 @@ class ShoppingCreateListCubit extends Cubit<ShoppingCreateListState> {
   final ShoppingListRepository shoppingListRepository;
   final CustomUserCubit customUserCubit;
 
-  Future<void> getAllList() async {
-    emit(const ShoppingCreateListState.loading());
-  }
-
   Future<void> createNewShoppingList() async {
     final shoppingItem = ShoppingListItem(
       id: uuid.v4(),
@@ -42,7 +38,7 @@ class ShoppingCreateListCubit extends Cubit<ShoppingCreateListState> {
           ownerId: customUserCubit.state.customUser!.userId,
           ownerNickname: customUserCubit.state.customUser!.nickname,
           id: uuid.v4(),
-          shoppingListItemCollection: ShoppingItemCollection(
+          shoppingItemCollection: ShoppingItemCollection(
             shoppingListItems: [
               shoppingItem,
             ],
@@ -55,13 +51,12 @@ class ShoppingCreateListCubit extends Cubit<ShoppingCreateListState> {
   Future<void> addShoppingListElement(
     ShoppingListItem shoppingListItem,
   ) async {
-    final shoppingListItemCollection = state.shoppingListItemCollection;
+    final shoppingItemCollection = state.shoppingItemCollection;
 
     emit(
       ShoppingCreateListState.created(
         shoppingListContainer: state.shoppingListContainer!.copyWith(
-          shoppingListItemCollection:
-              shoppingListItemCollection!.add(shoppingListItem),
+          shoppingItemCollection: shoppingItemCollection!.add(shoppingListItem),
         ),
       ),
     );
@@ -71,15 +66,14 @@ class ShoppingCreateListCubit extends Cubit<ShoppingCreateListState> {
     required CountType countType,
     required int index,
   }) async {
-    final shoppingListItemCollection = state.shoppingListItemCollection;
-    final shoppingListItem = shoppingListItemCollection!
-        .shoppingListItems[index]
+    final shoppingItemCollection = state.shoppingItemCollection;
+    final shoppingListItem = shoppingItemCollection!.shoppingListItems[index]
         .updateCountType(countType);
 
     emit(
       ShoppingCreateListState.created(
         shoppingListContainer: state.shoppingListContainer!.copyWith(
-          shoppingListItemCollection: shoppingListItemCollection.updateItem(
+          shoppingItemCollection: shoppingItemCollection.updateItem(
             shoppingListItem: shoppingListItem,
             index: index,
           ),
@@ -92,9 +86,9 @@ class ShoppingCreateListCubit extends Cubit<ShoppingCreateListState> {
     required int index,
     required String? path,
   }) async {
-    final shoppingListItemCollection = state.shoppingListItemCollection;
+    final shoppingItemCollection = state.shoppingItemCollection;
     final shoppingListItem =
-        shoppingListItemCollection!.shoppingListItems[index].updateImagePaths(
+        shoppingItemCollection!.shoppingListItems[index].updateImagePaths(
       localPath: path,
       containerId: state.shoppingListContainer!.id,
     );
@@ -102,7 +96,7 @@ class ShoppingCreateListCubit extends Cubit<ShoppingCreateListState> {
     emit(
       ShoppingCreateListState.created(
         shoppingListContainer: state.shoppingListContainer!.copyWith(
-          shoppingListItemCollection: shoppingListItemCollection.updateItem(
+          shoppingItemCollection: shoppingItemCollection.updateItem(
             shoppingListItem: shoppingListItem,
             index: index,
           ),
@@ -115,7 +109,7 @@ class ShoppingCreateListCubit extends Cubit<ShoppingCreateListState> {
     required List<ShoppingItemControllers> shoppingItemControllers,
     required String name,
   }) async {
-    final shoppingListItemCollection = state.shoppingListItemCollection;
+    final shoppingItemCollection = state.shoppingItemCollection;
     var shoppingListContainer = state.shoppingListContainer!;
 
     emit(const ShoppingCreateListState.loading());
@@ -123,7 +117,7 @@ class ShoppingCreateListCubit extends Cubit<ShoppingCreateListState> {
 
     for (var i = 0; i < shoppingItemControllers.length; i++) {
       final shoppingListItem =
-          shoppingListItemCollection!.shoppingListItems[i].copyWith(
+          shoppingItemCollection!.shoppingListItems[i].copyWith(
         name: shoppingItemControllers[i].nameController.text,
         quantity: shoppingItemControllers[i].quantityController.text,
       );
@@ -131,20 +125,17 @@ class ShoppingCreateListCubit extends Cubit<ShoppingCreateListState> {
     }
 
     shoppingListContainer = shoppingListContainer.copyWith(
-        name: name,
-        shoppingListItemCollection: shoppingListContainer
-            .shoppingListItemCollection
-            .updateCollection(shopingListItems));
+      name: name,
+      shoppingItemCollection: shoppingListContainer.shoppingItemCollection
+          .updateCollection(shopingListItems),
+    );
 
     final failureOrUnit =
         await shoppingListRepository.createShoppingList(shoppingListContainer);
 
     failureOrUnit.fold(
       (_) => emit(
-        ShoppingCreateListState.created(
-          shoppingListContainer: shoppingListContainer,
-          error: true,
-        ),
+        const ShoppingCreateListState.error(),
       ),
       (_) => emit(
         ShoppingCreateListState.added(
